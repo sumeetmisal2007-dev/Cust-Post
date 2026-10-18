@@ -72,7 +72,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
       "Start seeds in seed trays; transplant into 20L+ container once seedlings have 4 true leaves.",
     compostBlendRatioMaxPercent: 30,
     compostSafetyWarnings: [
-      "Compost provides rich slow-release nutrients, but must be limited to max 30% of pot volume.",
+      "Never plant tomato seedlings in 100% pure compost; blend maximum 30% mature compost into 70% garden soil or coco peat.",
       "Never apply immature or unverified compost to edible fruiting vegetables.",
     ],
     seasonNotes: "Best planted post-monsoon (September–November) for bountiful winter fruiting in urban India.",
