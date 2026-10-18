@@ -109,115 +109,115 @@ flowchart TD
 ## Phase 2: Pure Domain Logic & Rule Engines
 
 ### Task 04: Domain Models & Zod Schemas
-- [ ] **Task 04 Overview**: Define type-safe TypeScript interfaces and Zod validation schemas for all domain entities matching the PRD and Tech Stack docs.
+- [x] **Task 04 Overview**: Define type-safe TypeScript interfaces and Zod validation schemas for all domain entities matching the PRD and Tech Stack docs.
   - **Files**:
     - Create: `src/lib/validation/space-container.schema.ts`, `src/lib/validation/waste-materials.schema.ts`, `src/lib/validation/batch-observation.schema.ts`, `src/lib/validation/rules.schema.ts`, `src/types/domain.ts`, `tests/unit/schemas.test.ts`
   - **Interfaces**:
     - Consumes: Task 03 test runner.
     - Produces: Validated TypeScript types: `LocationType`, `SpaceDimensions`, `ContainerDimensions`, `ContainerCheckInputs`, `WasteInputItem`, `MethodRecommendation`, `BatchObservation`, `MaturityChecklist`.
-  - **Step 4.1**: Define schemas rejecting non-positive numbers for dimensions, requiring explicit units (`cm`, `litres`, `kg`).
-  - **Step 4.2**: Enforce enum values for `LocationType` (`indoor`, `balcony`, `terrace`, `garden`).
-  - **Step 4.3**: Enforce 4-tier recommendation status: `'suitable'`, `'suitable_with_changes'`, `'unsuitable'`, `'more_info_needed'`.
-  - **Step 4.4**: Enforce observation chip status: `'measured'`, `'estimated'`, `'user_reported'`, `'unknown'`.
-  - **Step 4.5**: Write unit tests verifying that negative dimensions, unknown materials without flags, and blank mandatory units fail validation with user-friendly errors.
+  - [x] **Step 4.1**: Define schemas rejecting non-positive numbers for dimensions, requiring explicit units (`cm`, `litres`, `kg`).
+  - [x] **Step 4.2**: Enforce enum values for `LocationType` (`indoor`, `balcony`, `terrace`, `garden`).
+  - [x] **Step 4.3**: Enforce 4-tier recommendation status: `'suitable'`, `'suitable_with_changes'`, `'unsuitable'`, `'more_info_needed'`.
+  - [x] **Step 4.4**: Enforce observation chip status: `'measured'`, `'estimated'`, `'user_reported'`, `'unknown'`.
+  - [x] **Step 4.5**: Write unit tests verifying that negative dimensions, unknown materials without flags, and blank mandatory units fail validation with user-friendly errors.
   - **Verification**: `npx vitest run tests/unit/schemas.test.ts` passes.
 
 ---
 
 ### Task 05: Space & Volume Calculation Engine
-- [ ] **Task 05 Overview**: Implement pure functions for geometric container volume calculation and space envelope validation.
+- [x] **Task 05 Overview**: Implement pure functions for geometric container volume calculation and space envelope validation.
   - **Files**:
     - Create: `src/lib/compost-rules/volume-calculator.ts`, `tests/unit/volume-calculator.test.ts`
   - **Interfaces**:
     - Consumes: `ContainerDimensions`, `SpaceDimensions` from Task 04.
     - Produces: `calculateGeometricVolume(dim: ContainerDimensions): { volumeLitres: number; isApproximate: boolean; label: string }`, `validateSpaceFit(space: SpaceDimensions, container: ContainerDimensions): { fits: boolean; clearanceCm: { length: number; width: number; height: number } }`.
-  - **Step 5.1**: Write failing unit tests for rectangular box ($L \times W \times H \div 1000 = \text{litres}$), cylindrical containers ($\pi r^2 h \div 1000$), and irregular shape handling.
-  - **Step 5.2**: Implement calculations with strict rounding (1 decimal place) and explicit disclaimer that geometric volume $\neq$ composting capacity.
-  - **Step 5.3**: Implement clearance verification between available space footprint and external container dimensions.
+  - [x] **Step 5.1**: Write failing unit tests for rectangular box ($L \times W \times H \div 1000 = \text{litres}$), cylindrical containers ($\pi r^2 h \div 1000$), and irregular shape handling.
+  - [x] **Step 5.2**: Implement calculations with strict rounding (1 decimal place) and explicit disclaimer that geometric volume $\neq$ composting capacity.
+  - [x] **Step 5.3**: Implement clearance verification between available space footprint and external container dimensions.
   - **Verification**: `npx vitest run tests/unit/volume-calculator.test.ts` passes all regular and edge cases.
 
 ---
 
 ### Task 06: ContainerCheck Suitability Engine
-- [ ] **Task 06 Overview**: Implement deterministic ContainerCheck logic evaluating material, previous use, ventilation, drainage, lid, and placement.
+- [x] **Task 06 Overview**: Implement deterministic ContainerCheck logic evaluating material, previous use, ventilation, drainage, lid, and placement.
   - **Files**:
     - Create: `src/lib/compost-rules/container-evaluator.ts`, `tests/unit/container-evaluator.test.ts`
   - **Interfaces**:
     - Consumes: `ContainerCheckInputs` from Task 04.
     - Produces: `evaluateContainer(inputs: ContainerCheckInputs): ContainerEvaluationResult` with fields: `status`, `reasons`, `requiredModifications`, `unresolvedChecks`, `ruleVersion`, `sourceReference`.
-  - **Step 6.1**: Write failing unit tests covering critical safety rules:
+  - [x] **Step 6.1**: Write failing unit tests covering critical safety rules:
     - *Safety Guardrail 1*: Prior hazardous chemical storage must immediately return `'unsuitable'` with high-risk warning.
     - *Safety Guardrail 2*: Unknown prior use must return `'more_info_needed'` (never auto-cleared as safe).
     - *Safety Guardrail 3*: Inadequate drainage/aeration must return `'suitable_with_changes'` with specific drill hole guidance.
-  - **Step 6.2**: Implement rule engine with transparent condition trees linked to rule IDs (e.g. `RULE-CONT-01`).
-  - **Step 6.3**: Verify that plastic/metal containers without known resin/food-grade indicators retain caution flags.
+  - [x] **Step 6.2**: Implement rule engine with transparent condition trees linked to rule IDs (e.g. `RULE-CONT-01`).
+  - [x] **Step 6.3**: Verify that plastic/metal containers without known resin/food-grade indicators retain caution flags.
   - **Verification**: `npx vitest run tests/unit/container-evaluator.test.ts` passes with 100% branch coverage on safety guardrails.
 
 ---
 
 ### Task 07: Method & Mixture Recommendation Engine
-- [ ] **Task 07 Overview**: Implement rule-based composting method planner (Aerobic Bin Composting, Vermicomposting, Bokashi) and brown/green waste balance checker.
+- [x] **Task 07 Overview**: Implement rule-based composting method planner (Aerobic Bin Composting, Vermicomposting, Bokashi) and brown/green waste balance checker.
   - **Files**:
     - Create: `src/lib/compost-rules/method-recommender.ts`, `src/lib/compost-rules/mixture-evaluator.ts`, `tests/unit/method-recommender.test.ts`
   - **Interfaces**:
     - Consumes: Outputs from Task 05 & Task 06.
     - Produces: `recommendCompostingMethod(space, containerEval, wasteInputs, maintenanceWillingness): MethodPlanResult`, `evaluateStartingMixture(materials: WasteInputItem[]): MixtureBalanceResult`.
-  - **Step 7.1**: Write failing unit tests checking constraints:
+  - [x] **Step 7.1**: Write failing unit tests checking constraints:
     - Indoor with high cooked/dairy scraps $\to$ Bokashi flagged or strict odor controls required.
     - Balcony with raw veggie scraps & 30-50L ventilated bin $\to$ Aerobic small-batch composting.
     - Incompatible materials (meat, plastic, diseased foliage) flagged as excluded materials.
-  - **Step 7.2**: Implement deterministic recommendation logic with explicit `rationale`, `limitations`, `startingSequence`, and `excludedItems`.
-  - **Step 7.3**: Implement brown/green ratio estimator providing volumetric guidance (e.g., 2:1 dry leaves/cardboard to wet greens) without claiming spurious universal chemical precision.
+  - [x] **Step 7.2**: Implement deterministic recommendation logic with explicit `rationale`, `limitations`, `startingSequence`, and `excludedItems`.
+  - [x] **Step 7.3**: Implement brown/green ratio estimator providing volumetric guidance (e.g., 2:1 dry leaves/cardboard to wet greens) without claiming spurious universal chemical precision.
   - **Verification**: `npx vitest run tests/unit/method-recommender.test.ts` passes.
 
 ---
 
 ### Task 08: Symptom-Based Troubleshooting Engine
-- [ ] **Task 08 Overview**: Build deterministic troubleshooter module mapping user-reported symptoms to verified corrective actions.
+- [x] **Task 08 Overview**: Build deterministic troubleshooter module mapping user-reported symptoms to verified corrective actions.
   - **Files**:
     - Create: `src/lib/compost-rules/troubleshooter.ts`, `tests/unit/troubleshooter.test.ts`
   - **Interfaces**:
     - Consumes: Domain enums from Task 04.
     - Produces: `troubleshootCompost(symptom: CompostSymptom, context: BatchContext): TroubleshootingResolution`.
-  - **Step 8.1**: Write unit tests for PRD symptom cases:
+  - [x] **Step 8.1**: Write unit tests for PRD symptom cases:
     - Rot/ammonia odor $\to$ check drainage, add dry browns, aerate, verify moisture.
     - Excess standing water $\to$ check bottom drainage holes, elevate bin, add absorbent brown bedding.
     - Fruit flies / maggots $\to$ cover food scraps with 5cm brown layer, verify tight lid, avoid surface meat/dairy.
     - Dry / slow breakdown $\to$ check moisture (sponge test), add moist green scraps, check ambient temperature.
-  - **Step 8.2**: Implement follow-up condition questions where symptom is ambiguous.
-  - **Step 8.3**: Attach source IDs (EPA, ADEQ, MCGM handbook) and recommended immediate log action to every resolution.
+  - [x] **Step 8.2**: Implement follow-up condition questions where symptom is ambiguous.
+  - [x] **Step 8.3**: Attach source IDs (EPA, ADEQ, MCGM handbook) and recommended immediate log action to every resolution.
   - **Verification**: `npx vitest run tests/unit/troubleshooter.test.ts` passes.
 
 ---
 
 ### Task 09: Readiness Window & Physical Maturity Checklist Evaluator
-- [ ] **Task 09 Overview**: Implement readiness estimation and physical maturity verification logic.
+- [x] **Task 09 Overview**: Implement readiness estimation and physical maturity verification logic.
   - **Files**:
     - Create: `src/lib/compost-rules/readiness-evaluator.ts`, `tests/unit/readiness-evaluator.test.ts`
   - **Interfaces**:
     - Consumes: Task 04 batch & observation models.
     - Produces: `estimateReadinessWindow(startDate: Date, method: CompostingMethod, totalInputsKg: number): ReadinessEstimate`, `evaluateMaturityChecklist(checks: PhysicalMaturityChecks): MaturityVerdict`.
-  - **Step 9.1**: Write tests ensuring no single calendar date is ever returned as a guarantee; output must be a bounded window (e.g. 8–12 weeks).
-  - **Step 9.2**: Implement `evaluateMaturityChecklist` requiring 4 observable physical confirmations before compost is declared ready for use:
+  - [x] **Step 9.1**: Write tests ensuring no single calendar date is ever returned as a guarantee; output must be a bounded window (e.g. 8–12 weeks).
+  - [x] **Step 9.2**: Implement `evaluateMaturityChecklist` requiring 4 observable physical confirmations before compost is declared ready for use:
     1. Dark brown / black crumbly soil-like texture.
     2. Earthy forest smell (no sour/ammonia/rotten odor).
     3. Ambient temperature (pile no longer generates internal heat).
     4. Original food scrap identity completely broken down (except resistant avocado skins/twigs).
-  - **Step 9.3**: Implement safety stop: warn against applying immature compost to edible garden plants.
+  - [x] **Step 9.3**: Implement safety stop: warn against applying immature compost to edible garden plants.
   - **Verification**: `npx vitest run tests/unit/readiness-evaluator.test.ts` passes.
 
 ---
 
 ### Task 10: Rule Sources & Curated Plant Registry
-- [ ] **Task 10 Overview**: Create the static, expert-reviewed data registry for composting rules, citations, and the 3 pilot plant guides.
+- [x] **Task 10 Overview**: Create the static, expert-reviewed data registry for composting rules, citations, and the 3 pilot plant guides.
   - **Files**:
     - Create: `src/lib/data/sources-registry.ts`, `src/lib/data/plant-guides.ts`, `tests/unit/data-registry.test.ts`
   - **Interfaces**:
     - Consumes: Domain schemas from Task 04.
     - Produces: `SOURCES_REGISTRY` mapping rule IDs to citations (EPA Composting Guide, MCGM Citizen's Handbook, ADEQ Troubleshooting Guide), and `PLANT_GUIDES` for 3 starter plants (e.g., Holy Basil/Tulsi, Mint/Pudina, Tomato/Cherry Tomato) with specific compost ratio restrictions.
-  - **Step 10.1**: Build `SOURCES_REGISTRY` with title, organization, version, accessed date, and URL.
-  - **Step 10.2**: Build `PLANT_GUIDES` defining light needs, pot size, watering, and strict caution that mature compost must be blended (max 20–30% in potting mix) rather than used as 100% soil substitute.
-  - **Step 10.3**: Write unit test validating that all referenced rule IDs in Tasks 05–09 exist in `SOURCES_REGISTRY`.
+  - [x] **Step 10.1**: Build `SOURCES_REGISTRY` with title, organization, version, accessed date, and URL.
+  - [x] **Step 10.2**: Build `PLANT_GUIDES` defining light needs, pot size, watering, and strict caution that mature compost must be blended (max 20–30% in potting mix) rather than used as 100% soil substitute.
+  - [x] **Step 10.3**: Write unit test validating that all referenced rule IDs in Tasks 05–09 exist in `SOURCES_REGISTRY`.
   - **Verification**: `npx vitest run tests/unit/data-registry.test.ts` passes.
 
 ---
