@@ -12,12 +12,14 @@ import { recommendCompostingMethod } from "@/lib/compost-rules/method-recommende
 import { getSourceByRuleId } from "@/lib/data/sources-registry";
 import { RecommendationCard } from "@/components/compost/recommendation-card";
 import { SourceDrawer } from "@/components/compost/source-drawer";
+import { StartBatchModal } from "@/components/compost/start-batch-modal";
 import { RuleSource } from "@/types/domain";
 
 export default function SetupResultPage() {
   const router = useRouter();
   const { spaceProfile, containerInputs, wasteItems, preferences } = useSetupWizardStore();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isStartModalOpen, setIsStartModalOpen] = useState(false);
 
   if (!containerInputs || !spaceProfile) {
     return (
@@ -74,8 +76,7 @@ export default function SetupResultPage() {
   }
 
   const handleStartBatch = () => {
-    // Navigate to batch initialization (Task 21)
-    router.push("/batches/new");
+    setIsStartModalOpen(true);
   };
 
   return (
@@ -106,6 +107,14 @@ export default function SetupResultPage() {
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
         sources={sources}
+      />
+
+      {/* Start Batch Modal */}
+      <StartBatchModal
+        isOpen={isStartModalOpen}
+        onClose={() => setIsStartModalOpen(false)}
+        defaultMethod={methodPlan?.chosenMethod}
+        containerVolumeLitres={volumeLitres}
       />
     </div>
   );

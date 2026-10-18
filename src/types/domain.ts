@@ -97,3 +97,39 @@ export interface PhysicalMaturityChecks {
   ambientTemperature: boolean;
   foodScrapsDecomposed: boolean;
 }
+
+export type BatchStatus = "active" | "curing" | "completed" | "abandoned";
+
+export interface CompostBatch {
+  id: string;
+  ownerId?: string;
+  containerId?: string;
+  batchName: string;
+  method: CompostingMethod;
+  startDate: string;
+  status: BatchStatus;
+  totalMeasuredInputKg: number;
+  totalEstimatedInputKg: number;
+  readinessWindowStart?: string;
+  readinessWindowEnd?: string;
+  completedAt?: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface BatchObservation {
+  id: string;
+  batchId: string;
+  observedAt: string;
+  moisture: MoistureLevel;
+  odour: OdourType;
+  temperatureC?: number | null;
+  temperatureStatus?: DataStatus;
+  wasteAddedKg?: number;
+  wasteDataStatus?: DataStatus;
+  turned: boolean;
+  notes?: string;
+  pests?: PestType;
+  createdAt: string;
+}
