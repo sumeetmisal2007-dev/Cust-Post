@@ -62,46 +62,46 @@ flowchart TD
 ## Phase 1: Foundation, Tooling & Design System
 
 ### Task 01: Project Setup & Tooling Configuration
-- [ ] **Task 01 Overview**: Initialize Next.js 15+ App Router application with TypeScript, ESLint, Prettier, and path aliases.
+- [x] **Task 01 Overview**: Initialize Next.js 15+ App Router application with TypeScript, ESLint, Prettier, and path aliases.
   - **Files**:
     - Create: `package.json`, `tsconfig.json`, `next.config.ts`, `.eslintrc.json`, `.prettierrc`, `.env.example`, `.gitignore`
   - **Interfaces**:
     - Consumes: None (root baseline).
     - Produces: Runnable Next.js dev server, strict TypeScript compilation, formatting scripts.
-  - **Step 1.1**: Initialize Next.js project with App Router, TypeScript, and Tailwind CSS.
-  - **Step 1.2**: Configure strict TypeScript paths in `tsconfig.json` (`@/*` pointing to `./src/*`).
-  - **Step 1.3**: Configure ESLint and Prettier rules to enforce clean code and formatting.
-  - **Step 1.4**: Define environment variable definitions in `.env.example` (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`).
+  - [x] **Step 1.1**: Initialize Next.js project with App Router, TypeScript, and Tailwind CSS.
+  - [x] **Step 1.2**: Configure strict TypeScript paths in `tsconfig.json` (`@/*` pointing to `./src/*`).
+  - [x] **Step 1.3**: Configure ESLint and Prettier rules to enforce clean code and formatting.
+  - [x] **Step 1.4**: Define environment variable definitions in `.env.example` (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`).
   - **Verification**: `npm run build` succeeds with zero TypeScript or linting errors.
 
 ---
 
 ### Task 02: Design Tokens & Base UI Component Primitives
-- [ ] **Task 02 Overview**: Implement the Cust-Post botanical editorial visual system tokens (Tailwind CSS) and base accessible components via shadcn/ui.
+- [x] **Task 02 Overview**: Implement the Cust-Post botanical editorial visual system tokens (Tailwind CSS) and base accessible components via shadcn/ui.
   - **Files**:
     - Create/Modify: `tailwind.config.ts`, `src/app/globals.css`, `src/components/ui/button.tsx`, `src/components/ui/input.tsx`, `src/components/ui/card.tsx`, `src/components/ui/stepper.tsx`, `src/components/ui/status-chip.tsx`, `src/components/ui/drawer.tsx`
   - **Interfaces**:
     - Consumes: Tailwind CSS config from Task 01.
     - Produces: Brand tokens (`--color-brand: #009775`, `--color-action: #00664F`, `--color-accent: #F6B73E`, `--color-canvas: #F8F3E9`, `--color-surface: #FFFDF8`, `--color-mint: #E4F0E8`, `--color-ink: #17372E`, `--color-text: #34483F`, `--color-muted: #5E6F65`, `--color-border: #D7E1D8`, `--color-warning: #8B4A11`, `--color-error: #A12A24`), custom typography scale (Manrope display font, Inter/DM Sans body), and reusable primitives.
-  - **Step 2.1**: Map CSS custom properties into `src/app/globals.css` and extend `tailwind.config.ts`.
-  - **Step 2.2**: Implement `Button` with variants: primary action (`#00664F`), secondary paper outline, and icon support (Lucide React).
-  - **Step 2.3**: Implement `Input` and `NumberInput` with explicit unit badges (cm, L, kg) and error message slots.
-  - **Step 2.4**: Implement `ProgressStepper` (5 discrete steps with accessible non-color-only state indicator).
-  - **Step 2.5**: Implement `StatusChip` supporting 4 states: `measured`, `estimated`, `user-reported`, `unknown`.
+  - [x] **Step 2.1**: Map CSS custom properties into `src/app/globals.css` and extend `tailwind.config.ts`.
+  - [x] **Step 2.2**: Implement `Button` with variants: primary action (`#00664F`), secondary paper outline, and icon support (Lucide React).
+  - [x] **Step 2.3**: Implement `Input` and `NumberInput` with explicit unit badges (cm, L, kg) and error message slots.
+  - [x] **Step 2.4**: Implement `ProgressStepper` (5 discrete steps with accessible non-color-only state indicator).
+  - [x] **Step 2.5**: Implement `StatusChip` supporting 4 states: `measured`, `estimated`, `user-reported`, `unknown`.
   - **Verification**: Visual check and Storybook/smoke test confirming all tokens render correctly and meet WCAG contrast thresholds.
 
 ---
 
 ### Task 03: Vitest Test Harness Setup
-- [ ] **Task 03 Overview**: Set up Vitest and React Testing Library for fast, isolated unit and integration testing of pure rules and UI components.
+- [x] **Task 03 Overview**: Set up Vitest and React Testing Library for fast, isolated unit and integration testing of pure rules and UI components.
   - **Files**:
     - Create: `vitest.config.ts`, `tests/setup.ts`, `tests/unit/smoke.test.ts`
   - **Interfaces**:
     - Consumes: Task 01 & Task 02 setup.
     - Produces: Automated test runner script (`npm run test:unit`).
-  - **Step 3.1**: Install `vitest`, `@testing-library/react`, `jsdom`, `@testing-library/jest-dom`.
-  - **Step 3.2**: Configure `vitest.config.ts` with JSDOM environment, alias resolution, and setup files.
-  - **Step 3.3**: Write a smoke test in `tests/unit/smoke.test.ts` verifying assertion framework functionality.
+  - [x] **Step 3.1**: Install `vitest`, `@testing-library/react`, `jsdom`, `@testing-library/jest-dom`.
+  - [x] **Step 3.2**: Configure `vitest.config.ts` with JSDOM environment, alias resolution, and setup files.
+  - [x] **Step 3.3**: Write a smoke test in `tests/unit/smoke.test.ts` verifying assertion framework functionality.
   - **Verification**: Run `npm run test:unit`; test passes in < 1 second.
 
 ---
