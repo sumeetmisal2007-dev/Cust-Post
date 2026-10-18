@@ -1,0 +1,270 @@
+"use client";
+
+import React, { useMemo } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { VolumeDisplay } from "@/components/setup/volume-display";
+import {
+  containerCheckSchema,
+  ContainerCheckFormValues,
+} from "@/lib/validation/space-container.schema";
+import {
+  calculateGeometricVolume,
+  validateSpaceFit,
+} from "@/lib/compost-rules/volume-calculator";
+import { useSetupWizardStore } from "@/lib/stores/setup-wizard.store";
+import { ContainerShape, ContainerMaterial, PreviousUse } from "@/types/domain";
+
+interface StepContainerProps {
+  onNext: () => void;
+  onBack: () => void;
+}
+
+export function StepContainer({ onNext, onBack }: StepContainerProps) {
+  const { spaceProfile, containerInputs, setContainerInputs } = useSetupWizardStore();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<ContainerCheckFormValues>({
+    resolver: zodResolver(containerCheckSchema),
+    defaultValues: {
+      shape: (containerInputs?.shape as ContainerShape) || "rectangular",
+      internalLengthCm: containerInputs?.internalLengthCm || (undefined as unknown as number),
+      internalWidthCm: containerInputs?.internalWidthCm || (undefined as unknown as number),
+      internalHeightCm: containerInputs?.internalHeightCm || (undefined as unknown as number),
+      diameterCm: containerInputs?.diameterCm || (undefined as unknown as number),
+      material: (containerInputs?.material as ContainerMaterial) || "plastic_bucket",
+      previousUse: (containerInputs?.previousUse as PreviousUse) || "food",
+      condition: containerInputs?.condition || "good",
+      hasLid: containerInputs?.hasLid ?? true,
+      hasVentilationHoles: containerInputs?.hasVentilationHoles ?? false,
+      hasDrainageHoles: containerInputs?.hasDrainageHoles ?? false,
+      isFoodGrade: containerInputs?.isFoodGrade || "unknown",
+    },
+  });
+
+  const watchedShape = watch("shape");
+  const watchedLength = watch("internalLengthCm");
+  const watchedWidth = watch("internalWidthCm");
+  const watchedHeight = watch("internalHeightCm");
+  const watchedDiameter = watch("diameterCm");
+
+  // Calculate live geometric volume and space clearance
+  const volumeResult = useMemo(() => {
+    try {
+      if (!watchedHeight || watchedHeight <= 0) return null;
+      if (watchedShape === "rectangular" && (!watchedLength || !watchedWidth)) return null;
+      if (watchedShape === "cylindrical" && !watchedDiameter) return null;
+
+      return calculateGeometricVolume({
+        shape: watchedShape,
+        internalLengthCm: watchedLength,
+        internalWidthCm: watchedWidth,
+        internalHeightCm: watchedHeight,
+        diameterCm: watchedDiameter,
+      });
+    } catch {
+      return null;
+    }
+  }, [watchedShape, watchedLength, watchedWidth, watchedHeight, watchedDiameter]);
+
+  const spaceFitResult = useMemo(() => {
+    if (!spaceProfile || !watchedHeight || watchedHeight <= 0) return null;
+    try {
+      return validateSpaceFit(spaceProfile, {
+        shape: watchedShape,
+        internalLengthCm: watchedLength,
+        internalWidthCm: watchedWidth,
+        internalHeightCm: watchedHeight,
+        diameterCm: watchedDiameter,
+      });
+    } catch {
+      return null;
+    }
+  }, [spaceProfile, watchedShape, watchedLength, watchedWidth, watchedHeight, watchedDiameter]);
+
+  const onSubmit = (data: ContainerCheckFormValues) => {
+    setContainerInputs(data);
+    onNext();
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 max-w-2xl mx-auto text-left">
+      <div className="space-y-2">
+        <h2 className="font-display text-2xl sm:text-3xl font-bold text-ink">
+          Check your container
+        </h2>
+        <p className="text-sm text-muted">
+          Measure internal dimensions and screen the vessel material and prior use history.
+        </p>
+      </div>
+
+      {/* Shape and Dimensions */}
+      <div className="space-y-4">
+        <div>
+          <label htmlFor="container-shape" className="block text-sm font-semibold text-ink">
+            Container Geometry Shape
+          </label>
+          <select
+            id="container-shape"
+            {...register("shape")}
+            className="mt-1 flex min-h-[48px] w-full rounded-control border border-border bg-surface px-4 py-2 text-base text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action"
+          >
+            <option value="rectangular">Rectangular Box / Plastic Crate</option>
+            <option value="cylindrical">Cylindrical Bucket / Drum / Pot</option>
+            <option value="irregular">Irregular Shaped Vessel</option>
+          </select>
+        </div>
+
+        {watchedShape === "cylindrical" ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input
+              label="Diameter"
+              unit="cm"
+              type="number"
+              placeholder="e.g. 40"
+              error={errors.diameterCm?.message}
+              {...register("diameterCm", { valueAsNumber: true })}
+            />
+            <Input
+              label="Internal Height"
+              unit="cm"
+              type="number"
+              placeholder="e.g. 50"
+              error={errors.internalHeightCm?.message}
+              {...register("internalHeightCm", { valueAsNumber: true })}
+            />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Input
+              label="Internal Length"
+              unit="cm"
+              type="number"
+              placeholder="e.g. 50"
+              error={errors.internalLengthCm?.message}
+              {...register("internalLengthCm", { valueAsNumber: true })}
+            />
+            <Input
+              label="Internal Width"
+              unit="cm"
+              type="number"
+              placeholder="e.g. 40"
+              error={errors.internalWidthCm?.message}
+              {...register("internalWidthCm", { valueAsNumber: true })}
+            />
+            <Input
+              label="Internal Height"
+              unit="cm"
+              type="number"
+              placeholder="e.g. 35"
+              error={errors.internalHeightCm?.message}
+              {...register("internalHeightCm", { valueAsNumber: true })}
+            />
+          </div>
+        )}
+
+        {/* Live Volume and Space Fit Display */}
+        <VolumeDisplay volumeResult={volumeResult} spaceFitResult={spaceFitResult} />
+      </div>
+
+      {/* Material & History */}
+      <div className="space-y-4 pt-4 border-t border-border">
+        <h3 className="font-display text-lg font-semibold text-ink">
+          Vessel Material & Safety History
+        </h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="container-material" className="block text-sm font-medium text-ink">
+              Material Type
+            </label>
+            <select
+              id="container-material"
+              {...register("material")}
+              className="mt-1 flex min-h-[48px] w-full rounded-control border border-border bg-surface px-4 py-2 text-base text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action"
+            >
+              <option value="plastic_bucket">Plastic Bucket / Tub</option>
+              <option value="terracotta">Terracotta / Clay Pot</option>
+              <option value="wooden_crate">Wooden Crate / Box</option>
+              <option value="metal_drum">Metal Drum / Bin</option>
+              <option value="mesh_wire">Wire Mesh Bin</option>
+              <option value="other">Other Material</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="container-previous-use" className="block text-sm font-medium text-ink">
+              Previous Contents & Use
+            </label>
+            <select
+              id="container-previous-use"
+              {...register("previousUse")}
+              className="mt-1 flex min-h-[48px] w-full rounded-control border border-border bg-surface px-4 py-2 text-base text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action"
+            >
+              <option value="food">Food or Beverage Storage (Safe)</option>
+              <option value="new_unused">Brand New / Unused</option>
+              <option value="soil_garden">Soil or Garden Plants</option>
+              <option value="unknown">Unknown Prior Use (Caution)</option>
+              <option value="paint_chemicals">Paint, Motor Oil, or Chemicals (Hazardous)</option>
+            </select>
+            <p className="text-xs text-muted mt-1">
+              Safety rule: Unknown containers are never assumed to be clean.
+            </p>
+          </div>
+        </div>
+
+        {/* Physical Features Checkboxes */}
+        <div className="space-y-3 pt-2">
+          <label className="block text-sm font-medium text-ink">
+            Current Physical Features
+          </label>
+          <div className="space-y-2 text-sm text-text">
+            <label className="flex items-center gap-3 p-3 rounded-control border border-border bg-surface cursor-pointer hover:bg-canvas">
+              <input
+                type="checkbox"
+                className="h-4 w-4 rounded text-action focus:ring-action"
+                {...register("hasLid")}
+              />
+              <span>Has a fitted lid, cover, or breathable mesh sheet</span>
+            </label>
+            <label className="flex items-center gap-3 p-3 rounded-control border border-border bg-surface cursor-pointer hover:bg-canvas">
+              <input
+                type="checkbox"
+                className="h-4 w-4 rounded text-action focus:ring-action"
+                {...register("hasVentilationHoles")}
+              />
+              <span>Has ventilation holes drilled on sides or rim</span>
+            </label>
+            <label className="flex items-center gap-3 p-3 rounded-control border border-border bg-surface cursor-pointer hover:bg-canvas">
+              <input
+                type="checkbox"
+                className="h-4 w-4 rounded text-action focus:ring-action"
+                {...register("hasDrainageHoles")}
+              />
+              <span>Has drainage holes in the base</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Buttons */}
+      <div className="pt-4 flex items-center justify-between gap-4 border-t border-border">
+        <Button type="button" variant="secondary" onClick={onBack}>
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          <span>Back to Space</span>
+        </Button>
+        <Button type="submit" size="lg">
+          <span>Continue to Materials</span>
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
+      </div>
+    </form>
+  );
+}
