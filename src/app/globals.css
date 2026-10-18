@@ -42,3 +42,63 @@ h1, h2, h3, h4, h5, h6 {
   outline: 2px solid var(--color-action);
   outline-offset: 2px;
 }
+
+/* AMC Natural Inspired Organic Fluid Animations */
+@keyframes amcFluidGradient {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(12deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes amcStrokeDraw {
+  0% {
+    stroke-dashoffset: 320;
+    opacity: 0.2;
+    transform: scale(0.92);
+  }
+  60% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes amcPulseGlow {
+  0%, 100% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.06);
+  }
+}
+
+.animate-amc-gradient {
+  background-size: 200% 200%;
+  animation: amcFluidGradient 8s ease-in-out infinite;
+}
+
+.animate-amc-stroke {
+  stroke-dasharray: 320;
+  animation: amcStrokeDraw 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.animate-amc-glow {
+  animation: amcPulseGlow 3.5s ease-in-out infinite;
+}
+
