@@ -12,12 +12,14 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@better-auth/infra": "^0.4.20",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.49.1",
+    "better-auth": "^1.7.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
@@ -30,11 +32,17 @@
     "zod": "^3.24.2",
     "zustand": "^5.0.3"
   },
+  "overrides": {
+    "@better-auth/infra": {
+      "zod": "4.6.7"
+    }
+  },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
     "@eslint/eslintrc": "^3.3.0",
     "@playwright/test": "^1.64.1",
     "@tailwindcss/postcss": "^4.0.9",
+    "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@types/node": "^22.13.9",
