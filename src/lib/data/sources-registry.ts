@@ -119,3 +119,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     reviewDate: "2026-10-18",
   },
 };
+
+export function getSourceByRuleId(ruleId: string): RuleSource | undefined {
+  return SOURCES_REGISTRY[ruleId];
+}
