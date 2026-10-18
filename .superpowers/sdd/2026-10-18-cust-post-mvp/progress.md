@@ -10,6 +10,9 @@ Pre-flight scan:
 - Task 08 Consumes: Task 04; Produces: Symptom-based troubleshooter engine
 - Task 09 Consumes: Task 04; Produces: Readiness window & physical maturity checklist evaluator
 - Task 10 Consumes: Tasks 04–09; Produces: Rule sources registry and 3 reviewed plant guides
+- Task 11 Consumes: Tasks 04 & 10; Produces: PostgreSQL schema tables
+- Task 12 Consumes: Task 11; Produces: Row Level Security policies
+- Task 13 Consumes: Task 01 env & Task 12; Produces: Supabase SSR integration helpers
 
 ## Phase 1 Completions
 Task 01: complete (commits 19edb6f..3f1cd94, build: npm run build → success)
@@ -25,5 +28,10 @@ Task 08: complete (commit e65f9d5, symptom-based troubleshooter → 5/5 passed)
 Task 09: complete (commit 0d9f9c1, readiness-evaluator & maturity checklist → 5/5 passed)
 Task 10: complete (commit 0b7b888, sources-registry & 3 plant-guides → 5/5 passed)
 
-Total Suite Status: 8 test files, 48/48 unit tests passing (100% green), Next.js build clean (exit code 0).
-Status: Phase 2 complete. Ready for Phase 3 (Database Schema, Migrations & Row-Level Security).
+## Phase 3 Completions
+Task 11: complete (commit 3f2fec1, schema: profiles, containers, batches, observations, logs, feedback)
+Task 12: complete (commit 3f2fec1, RLS policies on all 6 tables with tests: tests/unit/rls-sql.test.ts → 17/17 passed)
+Task 13: complete (commit 3f2fec1, Supabase SSR client/server/middleware with tests: tests/unit/supabase-client.test.ts → passed)
+
+Total Suite Status: 10 test files, 66/66 unit tests passing (100% green), Next.js build clean with middleware (exit code 0).
+Status: Phase 3 complete. Ready for Phase 4 (Frontend Application & Core User Flows).

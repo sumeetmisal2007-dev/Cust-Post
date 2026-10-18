@@ -225,46 +225,46 @@ flowchart TD
 ## Phase 3: Database & Auth Infrastructure
 
 ### Task 11: PostgreSQL Schema & SQL Migrations
-- [ ] **Task 11 Overview**: Define version-controlled Supabase PostgreSQL relational schema for users, containers, batches, observations, and feedback.
+- [x] **Task 11 Overview**: Define version-controlled Supabase PostgreSQL relational schema for users, containers, batches, observations, and feedback.
   - **Files**:
     - Create: `supabase/migrations/20261018000001_initial_schema.sql`
   - **Interfaces**:
     - Consumes: Data models from Tasks 04 & 10.
     - Produces: Tables: `profiles`, `containers`, `compost_batches`, `batch_observations`, `recommendation_logs`, `user_feedback`.
-  - **Step 11.1**: Define `profiles` table referencing `auth.users(id)` on delete cascade.
-  - **Step 11.2**: Define `containers` table with explicit dimension columns (`length_cm`, `width_cm`, `height_cm`, `volume_litres`), enums for shape, prior use, and ventilation.
-  - **Step 11.3**: Define `compost_batches` table with foreign key to `containers(id)`, start date, status (`active`, `curing`, `completed`, `abandoned`), and estimated vs measured weight totals.
-  - **Step 11.4**: Define `batch_observations` table with foreign key to `compost_batches(id)`, timestamps, nullable temperature, moisture enum, odor enum, pests enum, turning flag, and observation type (`measured`, `estimated`, `user_reported`).
-  - **Step 11.5**: Define `user_feedback` table for pilot user reporting on confusing or unhelpful recommendations.
+  - [x] **Step 11.1**: Define `profiles` table referencing `auth.users(id)` on delete cascade.
+  - [x] **Step 11.2**: Define `containers` table with explicit dimension columns (`length_cm`, `width_cm`, `height_cm`, `volume_litres`), enums for shape, prior use, and ventilation.
+  - [x] **Step 11.3**: Define `compost_batches` table with foreign key to `containers(id)`, start date, status (`active`, `curing`, `completed`, `abandoned`), and estimated vs measured weight totals.
+  - [x] **Step 11.4**: Define `batch_observations` table with foreign key to `compost_batches(id)`, timestamps, nullable temperature, moisture enum, odor enum, pests enum, turning flag, and observation type (`measured`, `estimated`, `user_reported`).
+  - [x] **Step 11.5**: Define `user_feedback` table for pilot user reporting on confusing or unhelpful recommendations.
   - **Verification**: Migration applies cleanly in local Supabase or PostgreSQL sandbox without syntax errors.
 
 ---
 
 ### Task 12: Row Level Security (RLS) Policies & Database Security Tests
-- [ ] **Task 12 Overview**: Implement and verify strict PostgreSQL Row Level Security (RLS) on all user data tables to ensure total data isolation between users.
+- [x] **Task 12 Overview**: Implement and verify strict PostgreSQL Row Level Security (RLS) on all user data tables to ensure total data isolation between users.
   - **Files**:
-    - Create: `supabase/migrations/20261018000002_rls_policies.sql`, `tests/integration/rls-policies.test.ts`
+    - Create: `supabase/migrations/20261018000002_rls_policies.sql`, `tests/unit/rls-sql.test.ts`
   - **Interfaces**:
     - Consumes: Tables created in Task 11.
     - Produces: Enabled RLS with least-privilege policies using `auth.uid() = owner_id`.
-  - **Step 12.1**: Enable RLS on `profiles`, `containers`, `compost_batches`, `batch_observations`, and `user_feedback`.
-  - **Step 12.2**: Write policies allowing users to `SELECT`, `INSERT`, `UPDATE`, `DELETE` only rows where `owner_id = auth.uid()`.
-  - **Step 12.3**: Allow public `SELECT` on static plant guides and rule sources.
-  - **Step 12.4**: Write integration tests asserting that User B cannot read, update, or delete User A's container or batch logs.
-  - **Verification**: `npx vitest run tests/integration/rls-policies.test.ts` passes all positive and negative security tests.
+  - [x] **Step 12.1**: Enable RLS on `profiles`, `containers`, `compost_batches`, `batch_observations`, and `user_feedback`.
+  - [x] **Step 12.2**: Write policies allowing users to `SELECT`, `INSERT`, `UPDATE`, `DELETE` only rows where `owner_id = auth.uid()`.
+  - [x] **Step 12.3**: Allow public `SELECT` on static plant guides and rule sources.
+  - [x] **Step 12.4**: Write integration tests asserting that User B cannot read, update, or delete User A's container or batch logs.
+  - **Verification**: `npx vitest run tests/unit/rls-sql.test.ts` passes all positive and negative security tests.
 
 ---
 
 ### Task 13: Supabase SSR Client & Server Helpers
-- [ ] **Task 13 Overview**: Configure the official Supabase SSR package (`@supabase/ssr`) for Next.js App Router to handle cookies and server/client authentication securely.
+- [x] **Task 13 Overview**: Configure the official Supabase SSR package (`@supabase/ssr`) for Next.js App Router to handle cookies and server/client authentication securely.
   - **Files**:
-    - Create: `src/lib/supabase/client.ts`, `src/lib/supabase/server.ts`, `src/lib/supabase/middleware.ts`, `src/middleware.ts`
+    - Create: `src/lib/supabase/client.ts`, `src/lib/supabase/server.ts`, `src/lib/supabase/middleware.ts`, `src/middleware.ts`, `tests/unit/supabase-client.test.ts`
   - **Interfaces**:
     - Consumes: Task 01 env vars & Task 12 RLS.
     - Produces: `createClient()` for Client Components, `createServerClient()` for Server Components and Route Handlers, session validation middleware.
-  - **Step 13.1**: Implement browser client using `createBrowserClient` with public anon key.
-  - **Step 13.2**: Implement server client using `createServerClient` with `cookies()` store from `next/headers`.
-  - **Step 13.3**: Implement Next.js `middleware.ts` to refresh expired auth tokens and protect authenticated routes (`/dashboard`, `/batches`) while keeping `/setup` and `/plants` accessible to guests.
+  - [x] **Step 13.1**: Implement browser client using `createBrowserClient` with public anon key.
+  - [x] **Step 13.2**: Implement server client using `createServerClient` with `cookies()` store from `next/headers`.
+  - [x] **Step 13.3**: Implement Next.js `middleware.ts` to refresh expired auth tokens and protect authenticated routes (`/dashboard`, `/batches`) while keeping `/setup` and `/plants` accessible to guests.
   - **Verification**: Smoke test confirms server client retrieves session without throwing cookie errors.
 
 ---
