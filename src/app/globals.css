@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-brand: #009775;
+  --color-action: #00664F;
+  --color-accent: #F6B73E;
+  --color-canvas: #F8F3E9;
+  --color-surface: #FFFDF8;
+  --color-mint: #E4F0E8;
+  --color-ink: #17372E;
+  --color-text: #34483F;
+  --color-muted: #5E6F65;
+  --color-border: #D7E1D8;
+  --color-warning: #8B4A11;
+  --color-error: #A12A24;
+
+  --radius-panel: 22px;
+  --radius-card: 16px;
+  --radius-control: 12px;
+
+  --content-max: 1200px;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-text);
+  font-family: var(--font-inter, system-ui, -apple-system, sans-serif);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-ink);
+  font-family: var(--font-manrope, system-ui, -apple-system, sans-serif);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}
