@@ -272,7 +272,7 @@ flowchart TD
 ## Phase 4: Frontend Application & Core User Flows
 
 ### Task 14: App Shell, Responsive Navigation & Layout
-- [ ] **Task 14 Overview**: Build the responsive header, navigation bar, footer, and page container applying the warm paper visual theme (`#F8F3E9`).
+- [x] **Task 14 Overview**: Build the responsive header, navigation bar, footer, and page container applying the warm paper visual theme (`#F8F3E9`).
   - **Files**:
     - Create: `src/components/layout/header.tsx`, `src/components/layout/footer.tsx`, `src/app/layout.tsx`, `src/components/layout/guest-banner.tsx`
   - **Interfaces**:
@@ -287,7 +287,7 @@ flowchart TD
 ---
 
 ### Task 15: Public Editorial Landing Page
-- [ ] **Task 15 Overview**: Implement the editorial landing page with asymmetric hero, value proposition, and the 3 core feature pillars.
+- [x] **Task 15 Overview**: Implement the editorial landing page with asymmetric hero, value proposition, and the 3 core feature pillars.
   - **Files**:
     - Create: `src/app/(marketing)/page.tsx`, `src/components/marketing/hero.tsx`, `src/components/marketing/feature-cards.tsx`
   - **Interfaces**:
@@ -304,7 +304,7 @@ flowchart TD
 ---
 
 ### Task 16: Setup Wizard - Step 1: Space Profile Form
-- [ ] **Task 16 Overview**: Implement Step 1 of the Setup Wizard capturing available space constraints separate from container dimensions.
+- [x] **Task 16 Overview**: Implement Step 1 of the Setup Wizard capturing available space constraints separate from container dimensions.
   - **Files**:
     - Create: `src/app/(app)/setup/page.tsx`, `src/components/setup/step-space.tsx`, `src/lib/stores/setup-wizard.store.ts`
   - **Interfaces**:
@@ -319,7 +319,7 @@ flowchart TD
 ---
 
 ### Task 17: Setup Wizard - Step 2: ContainerCheck & Geometric Volume Form
-- [ ] **Task 17 Overview**: Implement Step 2 capturing internal container dimensions, calculating geometric volume, and recording container history.
+- [x] **Task 17 Overview**: Implement Step 2 capturing internal container dimensions, calculating geometric volume, and recording container history.
   - **Files**:
     - Create: `src/components/setup/step-container.tsx`, `src/components/setup/volume-display.tsx`
   - **Interfaces**:
@@ -333,7 +333,7 @@ flowchart TD
 ---
 
 ### Task 18: Setup Wizard - Step 3: Waste Inputs Inventory Form
-- [ ] **Task 18 Overview**: Implement Step 3 capturing typical organic waste categories and approximate weekly quantities.
+- [x] **Task 18 Overview**: Implement Step 3 capturing typical organic waste categories and approximate weekly quantities.
   - **Files**:
     - Create: `src/components/setup/step-materials.tsx`, `src/components/setup/material-picker.tsx`
   - **Interfaces**:
@@ -351,7 +351,7 @@ flowchart TD
 ---
 
 ### Task 19: Setup Wizard - Steps 4 & 5: Method & Plan Review
-- [ ] **Task 19 Overview**: Implement Step 4 (Maintenance willingness & preferences) and Step 5 (Summary review of all inputs before running recommendations).
+- [x] **Task 19 Overview**: Implement Step 4 (Maintenance willingness & preferences) and Step 5 (Summary review of all inputs before running recommendations).
   - **Files**:
     - Create: `src/components/setup/step-preferences.tsx`, `src/components/setup/step-review.tsx`
   - **Interfaces**:
@@ -365,7 +365,7 @@ flowchart TD
 ---
 
 ### Task 20: Explainable Recommendation Results Screen & Source Drawer
-- [ ] **Task 20 Overview**: Implement the recommendation results view displaying one of the 4 explicit statuses, detailed rationale, required actions, and source citations.
+- [x] **Task 20 Overview**: Implement the recommendation results view displaying one of the 4 explicit statuses, detailed rationale, required actions, and source citations.
   - **Files**:
     - Create: `src/app/(app)/setup/result/page.tsx`, `src/components/compost/recommendation-card.tsx`, `src/components/compost/source-drawer.tsx`
   - **Interfaces**:
@@ -380,7 +380,7 @@ flowchart TD
 ---
 
 ### Task 21: Batch Initialization & Persistence Layer
-- [ ] **Task 21 Overview**: Implement batch creation allowing users to save their setup and begin tracking an active compost batch (supports local storage for guests and Supabase for authenticated users).
+- [x] **Task 21 Overview**: Implement batch creation allowing users to save their setup and begin tracking an active compost batch (supports local storage for guests and Supabase for authenticated users).
   - **Files**:
     - Create: `src/app/api/batches/route.ts`, `src/lib/services/batch-storage.service.ts`, `src/components/compost/start-batch-modal.tsx`, `tests/integration/batch-api.test.ts`
   - **Interfaces**:
@@ -395,7 +395,7 @@ flowchart TD
 ---
 
 ### Task 22: Active Batch Dashboard & Metric Tracking
-- [ ] **Task 22 Overview**: Build the active batch overview dashboard displaying batch age, current status, metric indicators, and recent timeline.
+- [x] **Task 22 Overview**: Build the active batch overview dashboard displaying batch age, current status, metric indicators, and recent timeline.
   - **Files**:
     - Create: `src/app/(app)/batches/[id]/page.tsx`, `src/components/dashboard/batch-header.tsx`, `src/components/dashboard/metric-summary.tsx`
   - **Interfaces**:
@@ -412,7 +412,7 @@ flowchart TD
 ---
 
 ### Task 23: Batch Observation Logger & Timeline
-- [ ] **Task 23 Overview**: Implement form for recording dated batch observations and the chronological timeline view.
+- [x] **Task 23 Overview**: Implement form for recording dated batch observations and the chronological timeline view.
   - **Files**:
     - Create: `src/components/dashboard/log-observation-modal.tsx`, `src/components/dashboard/batch-timeline.tsx`, `src/app/api/batches/[id]/observations/route.ts`
   - **Interfaces**:
@@ -433,7 +433,7 @@ flowchart TD
 ---
 
 ### Task 24: Interactive Troubleshooting Assistant
-- [ ] **Task 24 Overview**: Build the guided troubleshooting flow allowing users to report symptoms, answer follow-up checks, and receive cited corrective actions.
+- [x] **Task 24 Overview**: Build the guided troubleshooting flow allowing users to report symptoms, answer follow-up checks, and receive cited corrective actions.
   - **Files**:
     - Create: `src/app/(app)/batches/[id]/troubleshoot/page.tsx`, `src/components/troubleshoot/symptom-selector.tsx`, `src/components/troubleshoot/resolution-view.tsx`
   - **Interfaces**:
@@ -451,7 +451,7 @@ flowchart TD
 ---
 
 ### Task 25: Physical Maturity Checklist & Batch Completion Flow
-- [ ] **Task 25 Overview**: Implement the 4-step observable maturity checklist required before a batch can be marked completed and ready for use.
+- [x] **Task 25 Overview**: Implement the 4-step observable maturity checklist required before a batch can be marked completed and ready for use.
   - **Files**:
     - Create: `src/app/(app)/batches/[id]/maturity/page.tsx`, `src/components/compost/maturity-checklist.tsx`, `src/components/compost/batch-completion-modal.tsx`
   - **Interfaces**:
@@ -469,7 +469,7 @@ flowchart TD
 ---
 
 ### Task 26: Plant Guide & Safe Compost Application Hub
-- [ ] **Task 26 Overview**: Build the curated plant guide page featuring the 3 starter plants with strict compost usage guidelines.
+- [x] **Task 26 Overview**: Build the curated plant guide page featuring the 3 starter plants with strict compost usage guidelines.
   - **Files**:
     - Create: `src/app/(app)/plants/page.tsx`, `src/app/(app)/plants/[slug]/page.tsx`, `src/components/plants/plant-card.tsx`
   - **Interfaces**:
@@ -485,7 +485,7 @@ flowchart TD
 ---
 
 ### Task 27: Rule Provenance & User Feedback Mechanism
-- [ ] **Task 27 Overview**: Implement transparent rule citation browser and user feedback modal allowing pilot testers to flag confusing or unhelpful recommendations.
+- [x] **Task 27 Overview**: Implement transparent rule citation browser and user feedback modal allowing pilot testers to flag confusing or unhelpful recommendations.
   - **Files**:
     - Create: `src/app/(app)/sources/page.tsx`, `src/components/feedback/feedback-modal.tsx`, `src/app/api/feedback/route.ts`
   - **Interfaces**:
@@ -501,7 +501,7 @@ flowchart TD
 ---
 
 ### Task 28: User Privacy, Auth & Data Deletion Flow
-- [ ] **Task 28 Overview**: Implement user profile management, authentication modal (magic link / password), privacy summary, and full account/data deletion.
+- [x] **Task 28 Overview**: Implement user profile management, authentication modal (magic link / password), privacy summary, and full account/data deletion.
   - **Files**:
     - Create: `src/app/(app)/profile/page.tsx`, `src/components/auth/auth-modal.tsx`, `src/app/api/user/delete/route.ts`
   - **Interfaces**:
@@ -517,7 +517,7 @@ flowchart TD
 ## Phase 5: Verification, Accessibility & Production Release
 
 ### Task 29: End-to-End User Journey Tests
-- [ ] **Task 29 Overview**: Implement comprehensive browser-level E2E tests with Playwright validating critical user paths.
+- [x] **Task 29 Overview**: Implement comprehensive browser-level E2E tests with Playwright validating critical user paths.
   - **Files**:
     - Create: `playwright.config.ts`, `tests/e2e/setup-wizard.spec.ts`, `tests/e2e/batch-tracking.spec.ts`, `tests/e2e/troubleshooter.spec.ts`
   - **Interfaces**:
@@ -532,7 +532,7 @@ flowchart TD
 ---
 
 ### Task 30: WCAG 2.2 AA Accessibility & Mobile Responsiveness Audit
-- [ ] **Task 30 Overview**: Execute automated and manual accessibility audits ensuring keyboard navigability, contrast compliance, and responsive stability.
+- [x] **Task 30 Overview**: Execute automated and manual accessibility audits ensuring keyboard navigability, contrast compliance, and responsive stability.
   - **Files**:
     - Create/Modify: `tests/e2e/accessibility.spec.ts`, styling adjustments across UI components.
   - **Interfaces**:
@@ -547,7 +547,7 @@ flowchart TD
 ---
 
 ### Task 31: Vercel & Supabase Cloud Deployment Configuration
-- [ ] **Task 31 Overview**: Configure production deployment on Vercel and Supabase Cloud, verify environment variables, security headers, and pilot readiness.
+- [x] **Task 31 Overview**: Configure production deployment on Vercel and Supabase Cloud, verify environment variables, security headers, and pilot readiness.
   - **Files**:
     - Create: `vercel.json`, `README.md`, `docs/PILOT_GUIDE.md`
   - **Interfaces**:
