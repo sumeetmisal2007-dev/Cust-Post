@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { GuestBanner } from "@/components/layout/guest-banner";
 
 export const metadata: Metadata = {
   title: "Cust-Post — Space-Aware Composting Assistant",
@@ -15,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased min-h-screen flex flex-col bg-canvas text-text">
-        {children}
+        <GuestBanner />
+        <Header />
+        <div className="flex-1 flex flex-col">{children}</div>
+        <Footer />
       </body>
     </html>
   );
