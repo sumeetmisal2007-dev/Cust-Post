@@ -1,6 +1,5 @@
 import React from "react";
 import { ShieldCheck, ClipboardList, Sparkles } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { StatusChip } from "@/components/ui/status-chip";
 
 export function FeatureCards() {
@@ -18,52 +17,58 @@ export function FeatureCards() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
-          <Card className="hover:border-action/40 transition-colors">
-            <CardHeader>
+          <div className="rounded-card border border-border bg-surface text-text shadow-sm p-6 flex flex-col justify-between space-y-4 hover:border-action/40 transition-colors">
+            <div className="space-y-2">
               <div className="h-12 w-12 rounded-control bg-mint flex items-center justify-center text-action mb-3">
                 <ShieldCheck className="h-6 w-6" aria-hidden="true" />
               </div>
-              <CardTitle>Screen Your Container</CardTitle>
-              <CardDescription>
+              <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-ink">
+                Screen Your Container
+              </h3>
+              <p className="text-sm text-muted">
                 Screen plastic buckets, crates, and terracotta pots for aeration, drainage, and toxic chemical history before starting.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
+            </div>
+            <div>
               <StatusChip status="estimated" label="Calculates geometric volume" />
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Card 2 */}
-          <Card className="hover:border-action/40 transition-colors">
-            <CardHeader>
+          <div className="rounded-card border border-border bg-surface text-text shadow-sm p-6 flex flex-col justify-between space-y-4 hover:border-action/40 transition-colors">
+            <div className="space-y-2">
               <div className="h-12 w-12 rounded-control bg-mint flex items-center justify-center text-action mb-3">
                 <ClipboardList className="h-6 w-6" aria-hidden="true" />
               </div>
-              <CardTitle>Track Real Batches</CardTitle>
-              <CardDescription>
+              <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-ink">
+                Track Real Batches
+              </h3>
+              <p className="text-sm text-muted">
                 Log weekly scrap additions, moisture checks, temperature readings, and turning actions with an honest chronological timeline.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
+            </div>
+            <div>
               <StatusChip status="measured" label="Direct measured weights" />
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Card 3 */}
-          <Card className="hover:border-action/40 transition-colors">
-            <CardHeader>
+          <div className="rounded-card border border-border bg-surface text-text shadow-sm p-6 flex flex-col justify-between space-y-4 hover:border-action/40 transition-colors">
+            <div className="space-y-2">
               <div className="h-12 w-12 rounded-control bg-mint flex items-center justify-center text-action mb-3">
                 <Sparkles className="h-6 w-6" aria-hidden="true" />
               </div>
-              <CardTitle>Evidence-First Advice</CardTitle>
-              <CardDescription>
+              <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-ink">
+                Evidence-First Advice
+              </h3>
+              <p className="text-sm text-muted">
                 Diagnose odor, excess moisture, or fruit flies with step-by-step conditional troubleshooting cited to EPA and MCGM handbooks.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
+            </div>
+            <div>
               <StatusChip status="user_reported" label="Cites EPA & MCGM guides" />
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </section>

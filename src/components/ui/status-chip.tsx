@@ -1,35 +1,22 @@
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
 import { Scale, Sparkles, UserCheck, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const statusChipVariants = cva(
-  "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors",
-  {
-    variants: {
-      status: {
-        measured: "bg-action/10 text-action border border-action/30",
-        estimated: "bg-accent/20 text-ink border border-accent/40",
-        user_reported: "bg-mint text-ink border border-border",
-        unknown: "bg-muted/15 text-muted border border-border",
-      },
-    },
-    defaultVariants: {
-      status: "unknown",
-    },
-  }
-);
-
 export type DataStatus = "measured" | "estimated" | "user_reported" | "unknown";
 
-export interface StatusChipProps
-  extends React.HTMLAttributes<HTMLSpanElement>,
-    VariantProps<typeof statusChipVariants> {
+const statusClasses: Record<DataStatus, string> = {
+  measured: "bg-action/10 text-action border border-action/30",
+  estimated: "bg-accent/20 text-ink border border-accent/40",
+  user_reported: "bg-mint text-ink border border-border",
+  unknown: "bg-muted/15 text-muted border border-border",
+};
+
+export interface StatusChipProps extends React.HTMLAttributes<HTMLSpanElement> {
   status: DataStatus;
   label?: string;
 }
 
-export function StatusChip({ status, label, className, ...props }: StatusChipProps) {
+export function StatusChip({ status = "unknown", label, className, ...props }: StatusChipProps) {
   const defaultLabels: Record<DataStatus, string> = {
     measured: "Measured",
     estimated: "Estimated",
@@ -46,7 +33,11 @@ export function StatusChip({ status, label, className, ...props }: StatusChipPro
 
   return (
     <span
-      className={cn(statusChipVariants({ status, className }))}
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors",
+        statusClasses[status] || statusClasses.unknown,
+        className
+      )}
       role="status"
       {...props}
     >

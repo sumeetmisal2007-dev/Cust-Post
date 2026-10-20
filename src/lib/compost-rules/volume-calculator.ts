@@ -20,6 +20,9 @@ export const GEOMETRIC_VOLUME_DISCLAIMER =
   "Geometric volume only; does not equal biological compost processing capacity or completion time.";
 
 export function calculateGeometricVolume(dim: ContainerDimensions): GeometricVolumeResult {
+  let volumeCm3: number;
+  let isApproximate = false;
+
   if (dim.shape === "rectangular") {
     if (
       dim.internalLengthCm === undefined ||
@@ -28,39 +31,27 @@ export function calculateGeometricVolume(dim: ContainerDimensions): GeometricVol
     ) {
       throw new Error("Rectangular container dimensions missing (length, width, or height)");
     }
-    const volumeCm3 = dim.internalLengthCm * dim.internalWidthCm * dim.internalHeightCm;
-    const volumeLitres = Math.round((volumeCm3 / 1000) * 10) / 10;
-    return {
-      volumeLitres,
-      isApproximate: false,
-      disclaimer: GEOMETRIC_VOLUME_DISCLAIMER,
-    };
-  }
-
-  if (dim.shape === "cylindrical") {
+    volumeCm3 = dim.internalLengthCm * dim.internalWidthCm * dim.internalHeightCm;
+  } else if (dim.shape === "cylindrical") {
     if (dim.diameterCm === undefined || dim.internalHeightCm === undefined) {
       throw new Error("Cylindrical container dimensions missing (diameter or height)");
     }
     const radius = dim.diameterCm / 2;
-    const volumeCm3 = Math.PI * Math.pow(radius, 2) * dim.internalHeightCm;
-    const volumeLitres = Math.round((volumeCm3 / 1000) * 10) / 10;
-    return {
-      volumeLitres,
-      isApproximate: false,
-      disclaimer: GEOMETRIC_VOLUME_DISCLAIMER,
-    };
+    volumeCm3 = Math.PI * radius * radius * dim.internalHeightCm;
+  } else {
+    // Irregular shape approximation (using 85% bounding box factor)
+    const l = dim.internalLengthCm || dim.diameterCm || 30;
+    const w = dim.internalWidthCm || dim.diameterCm || 30;
+    volumeCm3 = l * w * dim.internalHeightCm * 0.85;
+    isApproximate = true;
   }
 
-  // Irregular shape approximation (using 85% bounding box factor)
-  const l = dim.internalLengthCm || dim.diameterCm || 30;
-  const w = dim.internalWidthCm || dim.diameterCm || 30;
-  const h = dim.internalHeightCm;
-  const volumeCm3 = l * w * h * 0.85;
-  const volumeLitres = Math.round((volumeCm3 / 1000) * 10) / 10;
   return {
-    volumeLitres,
-    isApproximate: true,
-    disclaimer: `${GEOMETRIC_VOLUME_DISCLAIMER} (Approximation for irregular geometry)`,
+    volumeLitres: Math.round((volumeCm3 / 1000) * 10) / 10,
+    isApproximate,
+    disclaimer: isApproximate
+      ? `${GEOMETRIC_VOLUME_DISCLAIMER} (Approximation for irregular geometry)`
+      : GEOMETRIC_VOLUME_DISCLAIMER,
   };
 }
 

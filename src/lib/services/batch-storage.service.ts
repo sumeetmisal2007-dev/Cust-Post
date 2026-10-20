@@ -59,7 +59,7 @@ function saveLocalStorageObservations(batchId: string, obs: BatchObservation[]):
 
 export class BatchStorageService {
   async createBatch(input: CreateBatchInput, ownerId?: string): Promise<CompostBatch> {
-    const id = typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `batch-${Date.now()}`;
+    const id = crypto.randomUUID();
     const nowIso = new Date().toISOString();
     const startDateObj = new Date(input.startDate);
 
@@ -125,7 +125,7 @@ export class BatchStorageService {
   async addObservation(
     observationInput: Omit<BatchObservation, "id" | "createdAt">
   ): Promise<BatchObservation> {
-    const id = typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `obs-${Date.now()}`;
+    const id = crypto.randomUUID();
     const newObs: BatchObservation = {
       ...observationInput,
       id,
