@@ -12,30 +12,51 @@ const config: Config = {
       colors: {
         brand: {
           DEFAULT: "var(--color-brand)",
-          light: "#00B890",
+          light: "var(--color-brand-light)",
+          dark: "var(--color-brand-dark)",
         },
         action: {
           DEFAULT: "var(--color-action)",
-          hover: "#004D3B",
+          hover: "var(--color-action-hover)",
+        },
+        earth: {
+          DEFAULT: "var(--color-earth)",
+          dark: "var(--color-earth-dark)",
+          light: "var(--color-earth-light)",
+          subtle: "var(--color-earth-subtle)",
         },
         accent: {
           DEFAULT: "var(--color-accent)",
-          light: "#FBD17E",
+          light: "var(--color-accent-light)",
+          soft: "var(--color-accent-soft)",
         },
         canvas: "var(--color-canvas)",
-        surface: "var(--color-surface)",
-        mint: "var(--color-mint)",
+        surface: {
+          DEFAULT: "var(--color-surface)",
+          soft: "var(--color-surface-soft)",
+        },
+        mint: {
+          DEFAULT: "var(--color-mint)",
+          light: "var(--color-mint-light)",
+        },
         ink: "var(--color-ink)",
         text: "var(--color-text)",
         muted: "var(--color-muted)",
-        border: "var(--color-border)",
+        border: {
+          DEFAULT: "var(--color-border)",
+          subtle: "var(--color-border-subtle)",
+        },
         warning: {
           DEFAULT: "var(--color-warning)",
-          bg: "#FEF7EE",
+          bg: "var(--color-warning-bg)",
         },
         error: {
           DEFAULT: "var(--color-error)",
-          bg: "#FDF2F2",
+          bg: "var(--color-error-bg)",
+        },
+        success: {
+          DEFAULT: "var(--color-success)",
+          bg: "var(--color-success-bg)",
         },
       },
       fontFamily: {

@@ -3,18 +3,45 @@
 @tailwind utilities;
 
 :root {
-  --color-brand: #009775;
-  --color-action: #00664F;
-  --color-accent: #F6B73E;
-  --color-canvas: #F8F3E9;
-  --color-surface: #FFFDF8;
-  --color-mint: #E4F0E8;
-  --color-ink: #17372E;
-  --color-text: #34483F;
-  --color-muted: #5E6F65;
-  --color-border: #D7E1D8;
-  --color-warning: #8B4A11;
-  --color-error: #A12A24;
+  /* Earthy Greens */
+  --color-brand: #24563E;
+  --color-brand-light: #327555;
+  --color-brand-dark: #193E2D;
+  --color-action: #1D4734;
+  --color-action-hover: #133325;
+  --color-mint: #E7EFEA;
+  --color-mint-light: #F2F7F4;
+
+  /* Natural Earth & Bark Browns */
+  --color-earth: #6B4C35;
+  --color-earth-dark: #4C3423;
+  --color-earth-light: #8E684D;
+  --color-earth-subtle: #F3ECE5;
+
+  /* Warm Creams & Canvas */
+  --color-canvas: #FAF6EF;
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #F5EFE6;
+
+  /* Accents */
+  --color-accent: #C26815;
+  --color-accent-light: #E0852A;
+  --color-accent-soft: #FEF3C7;
+
+  /* High Contrast Typography */
+  --color-ink: #14281E;
+  --color-text: #2C3C33;
+  --color-muted: #58695E;
+  --color-border: #D8D2C4;
+  --color-border-subtle: #E8E2D6;
+
+  /* System States */
+  --color-warning: #85430D;
+  --color-warning-bg: #FEF7EE;
+  --color-error: #991B1B;
+  --color-error-bg: #FEF2F2;
+  --color-success: #166534;
+  --color-success-bg: #F0FDF4;
 
   --radius-panel: 22px;
   --radius-card: 16px;
@@ -26,11 +53,11 @@
 body {
   background-color: var(--color-canvas);
   background-image: 
-    radial-gradient(at 12% 15%, rgba(0, 151, 117, 0.09) 0px, transparent 50%),
-    radial-gradient(at 88% 18%, rgba(246, 183, 62, 0.14) 0px, transparent 45%),
-    radial-gradient(at 50% 55%, rgba(228, 240, 232, 0.55) 0px, transparent 60%),
-    radial-gradient(at 82% 88%, rgba(0, 102, 79, 0.07) 0px, transparent 50%),
-    radial-gradient(at 18% 85%, rgba(246, 183, 62, 0.09) 0px, transparent 45%);
+    radial-gradient(at 10% 12%, rgba(36, 86, 62, 0.08) 0px, transparent 48%),
+    radial-gradient(at 90% 15%, rgba(107, 76, 53, 0.07) 0px, transparent 45%),
+    radial-gradient(at 50% 50%, rgba(231, 239, 234, 0.6) 0px, transparent 65%),
+    radial-gradient(at 85% 85%, rgba(29, 71, 52, 0.06) 0px, transparent 50%),
+    radial-gradient(at 15% 85%, rgba(194, 104, 21, 0.05) 0px, transparent 45%);
   background-attachment: fixed;
   background-size: 100% 100%;
   color: var(--color-text);
@@ -139,14 +166,27 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glass & Organic Soft Shadows */
 .amc-glass-card {
-  background: rgba(255, 253, 248, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(215, 225, 216, 0.7);
+  border: 1px solid rgba(216, 210, 196, 0.8);
 }
 
 .amc-radial-glow {
-  background: radial-gradient(circle, rgba(0, 151, 117, 0.15) 0%, rgba(246, 183, 62, 0.08) 50%, transparent 75%);
+  background: radial-gradient(circle, rgba(36, 86, 62, 0.12) 0%, rgba(107, 76, 53, 0.08) 50%, transparent 75%);
+}
+
+.shadow-soft {
+  box-shadow: 0 2px 14px -2px rgba(20, 40, 30, 0.05), 0 1px 3px rgba(20, 40, 30, 0.03);
+}
+
+.shadow-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shadow-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(20, 40, 30, 0.08), 0 2px 6px rgba(20, 40, 30, 0.04);
 }
 
 

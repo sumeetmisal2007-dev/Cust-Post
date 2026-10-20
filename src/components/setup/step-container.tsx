@@ -175,38 +175,43 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
       </div>
 
       {/* Material & History */}
-      <div className="space-y-4 pt-4 border-t border-border">
-        <h3 className="font-display text-lg font-semibold text-ink">
-          Vessel Material & Safety History
-        </h3>
+      <div className="space-y-5 pt-6 border-t border-border">
+        <div>
+          <h3 className="font-display text-lg font-semibold text-ink">
+            Vessel Material & Safety History
+          </h3>
+          <p className="text-xs text-muted">
+            Ensure the container is non-toxic, safe for soil biology, and suited to small-space moisture retention.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="container-material" className="block text-sm font-medium text-ink">
+          <div className="space-y-1.5 text-left">
+            <label htmlFor="container-material" className="block text-sm font-semibold text-ink">
               Material Type
             </label>
             <select
               id="container-material"
               {...register("material")}
-              className="mt-1 flex min-h-[48px] w-full rounded-control border border-border bg-surface px-4 py-2 text-base text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action"
+              className="flex min-h-[48px] w-full rounded-control border border-border bg-surface px-4 py-2.5 text-base text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action shadow-xs"
             >
-              <option value="plastic_bucket">Plastic Bucket / Tub</option>
-              <option value="terracotta">Terracotta / Clay Pot</option>
-              <option value="wooden_crate">Wooden Crate / Box</option>
+              <option value="plastic_bucket">Plastic Bucket / Tub (Common &amp; Durable)</option>
+              <option value="terracotta">Terracotta / Clay Pot (Natural Aeration)</option>
+              <option value="wooden_crate">Wooden Crate / Box (High Aeration)</option>
               <option value="metal_drum">Metal Drum / Bin</option>
               <option value="mesh_wire">Wire Mesh Bin</option>
               <option value="other">Other Material</option>
             </select>
           </div>
 
-          <div>
-            <label htmlFor="container-previous-use" className="block text-sm font-medium text-ink">
+          <div className="space-y-1.5 text-left">
+            <label htmlFor="container-previous-use" className="block text-sm font-semibold text-ink">
               Previous Contents & Use
             </label>
             <select
               id="container-previous-use"
               {...register("previousUse")}
-              className="mt-1 flex min-h-[48px] w-full rounded-control border border-border bg-surface px-4 py-2 text-base text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action"
+              className="flex min-h-[48px] w-full rounded-control border border-border bg-surface px-4 py-2.5 text-base text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action shadow-xs"
             >
               <option value="food">Food or Beverage Storage (Safe)</option>
               <option value="new_unused">Brand New / Unused</option>
@@ -222,33 +227,42 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
 
         {/* Physical Features Checkboxes */}
         <div className="space-y-3 pt-2">
-          <label className="block text-sm font-medium text-ink">
+          <label className="block text-sm font-semibold text-ink">
             Current Physical Features
           </label>
-          <div className="space-y-2 text-sm text-text">
-            <label className="flex items-center gap-3 p-3 rounded-control border border-border bg-surface cursor-pointer hover:bg-canvas">
+          <div className="space-y-2.5 text-sm text-text">
+            <label className="flex items-center gap-3 p-3.5 rounded-control border border-border bg-surface cursor-pointer hover:bg-canvas transition-colors shadow-xs">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded text-action focus:ring-action"
+                className="h-4 w-4 rounded text-action focus:ring-action border-border"
                 {...register("hasLid")}
               />
-              <span>Has a fitted lid, cover, or breathable mesh sheet</span>
+              <div>
+                <span className="font-medium text-ink block">Fitted Lid / Breathable Cover</span>
+                <span className="text-xs text-muted">Keeps pests, flies, and rain out of your apartment setup</span>
+              </div>
             </label>
-            <label className="flex items-center gap-3 p-3 rounded-control border border-border bg-surface cursor-pointer hover:bg-canvas">
+            <label className="flex items-center gap-3 p-3.5 rounded-control border border-border bg-surface cursor-pointer hover:bg-canvas transition-colors shadow-xs">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded text-action focus:ring-action"
+                className="h-4 w-4 rounded text-action focus:ring-action border-border"
                 {...register("hasVentilationHoles")}
               />
-              <span>Has ventilation holes drilled on sides or rim</span>
+              <div>
+                <span className="font-medium text-ink block">Side / Rim Ventilation Holes</span>
+                <span className="text-xs text-muted">Essential for oxygen flow to prevent anaerobic odors</span>
+              </div>
             </label>
-            <label className="flex items-center gap-3 p-3 rounded-control border border-border bg-surface cursor-pointer hover:bg-canvas">
+            <label className="flex items-center gap-3 p-3.5 rounded-control border border-border bg-surface cursor-pointer hover:bg-canvas transition-colors shadow-xs">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded text-action focus:ring-action"
+                className="h-4 w-4 rounded text-action focus:ring-action border-border"
                 {...register("hasDrainageHoles")}
               />
-              <span>Has drainage holes in the base</span>
+              <div>
+                <span className="font-medium text-ink block">Base Drainage Holes</span>
+                <span className="text-xs text-muted">Allows leachate drainage; place a tray underneath</span>
+              </div>
             </label>
           </div>
         </div>
