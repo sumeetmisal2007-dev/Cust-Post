@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { CompostBatch, BatchObservation } from "@/types/domain";
 import { batchStorageService } from "@/lib/services/batch-storage.service";
 import { BatchHeader } from "@/components/dashboard/batch-header";
+import { TurnReminderBanner } from "@/components/dashboard/turn-reminder-banner";
 import { MetricSummary } from "@/components/dashboard/metric-summary";
 import { BatchTimeline } from "@/components/dashboard/batch-timeline";
 import { LogObservationModal } from "@/components/dashboard/log-observation-modal";
@@ -75,6 +76,13 @@ export default function BatchDashboardPage() {
     <div className="py-8 sm:py-12 max-w-4xl mx-auto px-4 space-y-8">
       {/* Batch Header */}
       <BatchHeader batch={batch} />
+
+      {/* Dynamic Aeration & Turn Reminder Banner (Feature 2) */}
+      <TurnReminderBanner
+        batch={batch}
+        observations={observations}
+        onTurnRecorded={loadBatchData}
+      />
 
       {/* Metric Summary & Quick Actions */}
       <MetricSummary

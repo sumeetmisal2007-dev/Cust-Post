@@ -3,6 +3,8 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import React from "react";
 import { BatchHeader } from "@/components/dashboard/batch-header";
 import { MetricSummary } from "@/components/dashboard/metric-summary";
+import { TurnReminderBanner } from "@/components/dashboard/turn-reminder-banner";
+import { generateTurningCalendarIcs } from "@/lib/utils/calendar-export";
 import { CompostBatch, BatchObservation } from "@/types/domain";
 
 const mockBatch: CompostBatch = {
@@ -110,6 +112,31 @@ describe("Task 22: Active Batch Dashboard & Metric Tracking", () => {
         "href",
         "/batches/test-batch-123/maturity"
       );
+    });
+  });
+
+  describe("TurnReminderBanner & Push Notifications", () => {
+    it("renders aeration reminder banner with cadence target and 1-tap quick turn", () => {
+      const handleTurn = vi.fn();
+      render(
+        <TurnReminderBanner
+          batch={mockBatch}
+          observations={mockObservations}
+          onTurnRecorded={handleTurn}
+        />
+      );
+
+      expect(screen.getByText(/target cadence/i)).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /1-tap quick turn/i })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /calendar/i })).toBeInTheDocument();
+    });
+
+    it("generates standard iCalendar .ics formatted turning schedule", () => {
+      const ics = generateTurningCalendarIcs("Balcony Bin #1", "aerobic_bin");
+      expect(ics).toContain("BEGIN:VCALENDAR");
+      expect(ics).toContain("SUMMARY:Aerate Compost Batch: Balcony Bin #1");
+      expect(ics).toContain("RRULE:FREQ=WEEKLY;INTERVAL=1");
+      expect(ics).toContain("END:VCALENDAR");
     });
   });
 });

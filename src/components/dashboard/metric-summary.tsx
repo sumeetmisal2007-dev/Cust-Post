@@ -25,11 +25,13 @@ export function MetricSummary({ batch, observations, onLogObservation }: MetricS
   // Calculate days since last aeration
   const lastTurnedObs = observations.find((o) => o.turned);
   let aerationStatusText = "Not yet turned";
+  let isOverdue = false;
   if (lastTurnedObs) {
     const daysSince = Math.floor(
       (Date.now() - new Date(lastTurnedObs.observedAt).getTime()) / (1000 * 60 * 60 * 24)
     );
     aerationStatusText = daysSince === 0 ? "Turned today" : `${daysSince} days ago`;
+    isOverdue = daysSince >= 4;
   }
 
   const windowStart = batch.readinessWindowStart || "Pending";
@@ -100,6 +102,11 @@ export function MetricSummary({ batch, observations, onLogObservation }: MetricS
               <RotateCw className="h-4 w-4 text-action" />
               <span>Pile Aeration</span>
             </span>
+            {isOverdue && (
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 font-bold border border-rose-200">
+                Turn Due
+              </span>
+            )}
           </div>
 
           <div className="space-y-1">
