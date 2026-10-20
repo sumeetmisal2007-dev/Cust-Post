@@ -85,6 +85,49 @@ describe("Domain Validation Schemas (Task 04)", () => {
       const result = containerCheckSchema.safeParse(invalid);
       expect(result.success).toBe(false);
     });
+
+    it("requires footprint length and width for irregular shape containers", () => {
+      const irregularWithoutFootprint = {
+        shape: "irregular",
+        internalHeightCm: 35,
+        material: "plastic_bucket",
+        previousUse: "food",
+        condition: "good",
+        hasLid: true,
+        hasVentilationHoles: true,
+        hasDrainageHoles: true,
+      };
+      const result = containerCheckSchema.safeParse(irregularWithoutFootprint);
+      expect(result.success).toBe(false);
+
+      const irregularWithFootprint = {
+        ...irregularWithoutFootprint,
+        internalLengthCm: 45,
+        internalWidthCm: 35,
+      };
+      const validResult = containerCheckSchema.safeParse(irregularWithFootprint);
+      expect(validResult.success).toBe(true);
+    });
+
+    it("accepts separate external dimensions for space fit checks", () => {
+      const withExternal = {
+        shape: "rectangular",
+        internalLengthCm: 45,
+        internalWidthCm: 35,
+        internalHeightCm: 40,
+        externalLengthCm: 50,
+        externalWidthCm: 40,
+        externalHeightCm: 45,
+        material: "plastic_bucket",
+        previousUse: "food",
+        condition: "good",
+        hasLid: true,
+        hasVentilationHoles: true,
+        hasDrainageHoles: true,
+      };
+      const result = containerCheckSchema.safeParse(withExternal);
+      expect(result.success).toBe(true);
+    });
   });
 
   describe("Waste Inputs Schema", () => {

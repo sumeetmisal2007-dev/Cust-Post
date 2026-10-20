@@ -49,6 +49,10 @@ export const containerCheckSchema = z
     internalWidthCm: z.number().positive("Internal width must be positive").optional(),
     internalHeightCm: z.number().positive("Internal height must be positive"),
     diameterCm: z.number().positive("Diameter must be positive").optional(),
+    externalLengthCm: z.number().positive("External length must be positive").optional(),
+    externalWidthCm: z.number().positive("External width must be positive").optional(),
+    externalHeightCm: z.number().positive("External height must be positive").optional(),
+    externalDiameterCm: z.number().positive("External diameter must be positive").optional(),
     material: containerMaterialEnum,
     previousUse: previousUseEnum,
     condition: containerConditionEnum,
@@ -79,6 +83,21 @@ export const containerCheckSchema = z
           code: z.ZodIssueCode.custom,
           message: "Diameter is required for cylindrical containers",
           path: ["diameterCm"],
+        });
+      }
+    } else if (data.shape === "irregular") {
+      if (!data.internalLengthCm || data.internalLengthCm <= 0) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Footprint length is required for irregular containers",
+          path: ["internalLengthCm"],
+        });
+      }
+      if (!data.internalWidthCm || data.internalWidthCm <= 0) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Footprint width is required for irregular containers",
+          path: ["internalWidthCm"],
         });
       }
     }

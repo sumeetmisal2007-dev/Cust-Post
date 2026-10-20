@@ -62,6 +62,10 @@ export interface ContainerDimensions {
   internalWidthCm?: number;
   internalHeightCm: number;
   diameterCm?: number;
+  externalLengthCm?: number;
+  externalWidthCm?: number;
+  externalHeightCm?: number;
+  externalDiameterCm?: number;
 }
 
 export interface ContainerCheckInputs extends ContainerDimensions {

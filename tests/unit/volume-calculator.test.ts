@@ -56,6 +56,18 @@ describe("Volume Calculator & Space Fitting Engine (Task 05)", () => {
         /dimensions missing/i
       );
     });
+
+    it("requires footprint dimensions for irregular shapes and throws error if missing", () => {
+      const irregularWithoutFootprint: ContainerDimensions = {
+        shape: "irregular",
+        internalLengthCm: undefined,
+        internalWidthCm: undefined,
+        internalHeightCm: 40,
+      };
+      expect(() => calculateGeometricVolume(irregularWithoutFootprint)).toThrowError(
+        /footprint/i
+      );
+    });
   });
 
   describe("validateSpaceFit", () => {
@@ -104,6 +116,41 @@ describe("Volume Calculator & Space Fitting Engine (Task 05)", () => {
       const check = validateSpaceFit(space, tightContainer);
       expect(check.fits).toBe(true);
       expect(check.warnings.some((w) => w.toLowerCase().includes("clearance"))).toBe(true);
+    });
+
+    it("uses external dimensions for space fit when outer container exceeds space even if internal fits", () => {
+      // Space is 100 x 80 x 120.
+      // Internal is 95 x 75 x 110 (would fit internally).
+      // External with rim & handles is 106 x 84 x 125 (does not fit physically).
+      const outerBulkyContainer: ContainerDimensions = {
+        shape: "rectangular",
+        internalLengthCm: 95,
+        internalWidthCm: 75,
+        internalHeightCm: 110,
+        externalLengthCm: 106,
+        externalWidthCm: 84,
+        externalHeightCm: 125,
+      };
+
+      const check = validateSpaceFit(space, outerBulkyContainer);
+      expect(check.fits).toBe(false);
+      expect(check.clearanceCm.length).toBe(-6);
+      expect(check.clearanceCm.width).toBe(-4);
+      expect(check.clearanceCm.height).toBe(-5);
+      expect(check.warnings.some((w) => w.includes("Length"))).toBe(true);
+      expect(check.warnings.some((w) => w.includes("Width"))).toBe(true);
+      expect(check.warnings.some((w) => w.includes("Height"))).toBe(true);
+    });
+
+    it("requires actual footprint measurements for irregular containers and warns when missing", () => {
+      const irregularNoFootprint: ContainerDimensions = {
+        shape: "irregular",
+        internalHeightCm: 40,
+      };
+
+      const check = validateSpaceFit(space, irregularNoFootprint);
+      expect(check.fits).toBe(false);
+      expect(check.warnings.some((w) => w.toLowerCase().includes("irregular"))).toBe(true);
     });
   });
 });

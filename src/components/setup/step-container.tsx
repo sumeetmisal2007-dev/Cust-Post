@@ -16,7 +16,7 @@ import {
   validateSpaceFit,
 } from "@/lib/compost-rules/volume-calculator";
 import { useSetupWizardStore } from "@/lib/stores/setup-wizard.store";
-import { ContainerShape, ContainerMaterial, PreviousUse } from "@/types/domain";
+import { ContainerShape, ContainerMaterial, PreviousUse, ContainerCheckInputs } from "@/types/domain";
 
 interface StepContainerProps {
   onNext: () => void;
@@ -39,6 +39,10 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
       internalWidthCm: containerInputs?.internalWidthCm || (undefined as unknown as number),
       internalHeightCm: containerInputs?.internalHeightCm || (undefined as unknown as number),
       diameterCm: containerInputs?.diameterCm || (undefined as unknown as number),
+      externalLengthCm: containerInputs?.externalLengthCm,
+      externalWidthCm: containerInputs?.externalWidthCm,
+      externalHeightCm: containerInputs?.externalHeightCm,
+      externalDiameterCm: containerInputs?.externalDiameterCm,
       material: (containerInputs?.material as ContainerMaterial) || "plastic_bucket",
       previousUse: (containerInputs?.previousUse as PreviousUse) || "food",
       condition: containerInputs?.condition || "good",
@@ -54,43 +58,80 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
   const watchedWidth = watch("internalWidthCm");
   const watchedHeight = watch("internalHeightCm");
   const watchedDiameter = watch("diameterCm");
+  const watchedExtLength = watch("externalLengthCm");
+  const watchedExtWidth = watch("externalWidthCm");
+  const watchedExtHeight = watch("externalHeightCm");
+  const watchedExtDiameter = watch("externalDiameterCm");
 
-  // Calculate live geometric volume and space clearance
+  const cleanNum = (val: unknown): number | undefined =>
+    typeof val === "number" && !isNaN(val) && val > 0 ? val : undefined;
+
+  // Calculate live geometric volume strictly based on internal capacity
   const volumeResult = useMemo(() => {
     try {
-      if (!watchedHeight || watchedHeight <= 0) return null;
-      if (watchedShape === "rectangular" && (!watchedLength || !watchedWidth)) return null;
-      if (watchedShape === "cylindrical" && !watchedDiameter) return null;
+      const cleanH = cleanNum(watchedHeight);
+      if (!cleanH) return null;
+      if (
+        (watchedShape === "rectangular" || watchedShape === "irregular") &&
+        (!cleanNum(watchedLength) || !cleanNum(watchedWidth))
+      ) {
+        return null;
+      }
+      if (watchedShape === "cylindrical" && !cleanNum(watchedDiameter)) return null;
 
       return calculateGeometricVolume({
         shape: watchedShape,
-        internalLengthCm: watchedLength,
-        internalWidthCm: watchedWidth,
-        internalHeightCm: watchedHeight,
-        diameterCm: watchedDiameter,
+        internalLengthCm: cleanNum(watchedLength),
+        internalWidthCm: cleanNum(watchedWidth),
+        internalHeightCm: cleanH,
+        diameterCm: cleanNum(watchedDiameter),
       });
     } catch {
       return null;
     }
   }, [watchedShape, watchedLength, watchedWidth, watchedHeight, watchedDiameter]);
 
+  // Calculate space fit using external dimensions (fallback to internal if external is blank)
   const spaceFitResult = useMemo(() => {
-    if (!spaceProfile || !watchedHeight || watchedHeight <= 0) return null;
+    const cleanH = cleanNum(watchedHeight);
+    if (!spaceProfile || !cleanH) return null;
     try {
       return validateSpaceFit(spaceProfile, {
         shape: watchedShape,
-        internalLengthCm: watchedLength,
-        internalWidthCm: watchedWidth,
-        internalHeightCm: watchedHeight,
-        diameterCm: watchedDiameter,
+        internalLengthCm: cleanNum(watchedLength),
+        internalWidthCm: cleanNum(watchedWidth),
+        internalHeightCm: cleanH,
+        diameterCm: cleanNum(watchedDiameter),
+        externalLengthCm: cleanNum(watchedExtLength),
+        externalWidthCm: cleanNum(watchedExtWidth),
+        externalHeightCm: cleanNum(watchedExtHeight),
+        externalDiameterCm: cleanNum(watchedExtDiameter),
       });
     } catch {
       return null;
     }
-  }, [spaceProfile, watchedShape, watchedLength, watchedWidth, watchedHeight, watchedDiameter]);
+  }, [
+    spaceProfile,
+    watchedShape,
+    watchedLength,
+    watchedWidth,
+    watchedHeight,
+    watchedDiameter,
+    watchedExtLength,
+    watchedExtWidth,
+    watchedExtHeight,
+    watchedExtDiameter,
+  ]);
 
   const onSubmit = (data: ContainerCheckFormValues) => {
-    setContainerInputs(data);
+    const cleanedData: ContainerCheckInputs = {
+      ...data,
+      externalLengthCm: cleanNum(data.externalLengthCm),
+      externalWidthCm: cleanNum(data.externalWidthCm),
+      externalHeightCm: cleanNum(data.externalHeightCm),
+      externalDiameterCm: cleanNum(data.externalDiameterCm),
+    };
+    setContainerInputs(cleanedData);
     onNext();
   };
 
@@ -169,6 +210,81 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
             />
           </div>
         )}
+
+        {/* External Outer Dimensions for Space Fit Check */}
+        <div className="pt-2 space-y-2.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-left">
+            <span className="text-xs font-semibold text-ink uppercase tracking-wider">
+              Outer External Dimensions (Optional for Space Fit)
+            </span>
+            <span className="text-[11px] text-muted">
+              Includes rim, handles & lid; prevents tight space overhang
+            </span>
+          </div>
+
+          {watchedShape === "cylindrical" ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Input
+                label="External Diameter"
+                unit="cm"
+                type="number"
+                placeholder={watchedDiameter ? `e.g. ${watchedDiameter + 4}` : "e.g. 44"}
+                error={errors.externalDiameterCm?.message}
+                {...register("externalDiameterCm", {
+                  setValueAs: (v) =>
+                    v === "" || v === null || Number.isNaN(Number(v)) ? undefined : Number(v),
+                })}
+              />
+              <Input
+                label="External Height (With Lid)"
+                unit="cm"
+                type="number"
+                placeholder={watchedHeight ? `e.g. ${watchedHeight + 5}` : "e.g. 55"}
+                error={errors.externalHeightCm?.message}
+                {...register("externalHeightCm", {
+                  setValueAs: (v) =>
+                    v === "" || v === null || Number.isNaN(Number(v)) ? undefined : Number(v),
+                })}
+              />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Input
+                label="External Length"
+                unit="cm"
+                type="number"
+                placeholder={watchedLength ? `e.g. ${watchedLength + 4}` : "e.g. 54"}
+                error={errors.externalLengthCm?.message}
+                {...register("externalLengthCm", {
+                  setValueAs: (v) =>
+                    v === "" || v === null || Number.isNaN(Number(v)) ? undefined : Number(v),
+                })}
+              />
+              <Input
+                label="External Width"
+                unit="cm"
+                type="number"
+                placeholder={watchedWidth ? `e.g. ${watchedWidth + 4}` : "e.g. 44"}
+                error={errors.externalWidthCm?.message}
+                {...register("externalWidthCm", {
+                  setValueAs: (v) =>
+                    v === "" || v === null || Number.isNaN(Number(v)) ? undefined : Number(v),
+                })}
+              />
+              <Input
+                label="External Height (With Lid)"
+                unit="cm"
+                type="number"
+                placeholder={watchedHeight ? `e.g. ${watchedHeight + 5}` : "e.g. 40"}
+                error={errors.externalHeightCm?.message}
+                {...register("externalHeightCm", {
+                  setValueAs: (v) =>
+                    v === "" || v === null || Number.isNaN(Number(v)) ? undefined : Number(v),
+                })}
+              />
+            </div>
+          )}
+        </div>
 
         {/* Live Volume and Space Fit Display */}
         <VolumeDisplay volumeResult={volumeResult} spaceFitResult={spaceFitResult} />
