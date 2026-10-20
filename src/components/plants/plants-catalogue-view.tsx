@@ -28,7 +28,7 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
 
   return (
     <div className="py-8 sm:py-12 max-w-6xl mx-auto px-4 sm:px-6 space-y-10 text-left">
-      {/* Top Breadcrumb & Tag */}
+      {/* Top Breadcrumb */}
       <div className="flex items-center justify-between border-b border-border/60 pb-4">
         <Link
           href="/"
@@ -37,12 +37,6 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
           <ArrowLeft className="mr-1.5 h-3.5 w-3.5" />
           <span>Home</span>
         </Link>
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1 text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-100/70 text-emerald-900 border border-emerald-300/80 font-semibold">
-            <Sparkles className="h-3 w-3 text-emerald-700" />
-            AMC Natural Inspired Guide
-          </span>
-        </div>
       </div>
 
       {/* Hero Header */}
