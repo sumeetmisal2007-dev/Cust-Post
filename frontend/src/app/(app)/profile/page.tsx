@@ -104,7 +104,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Account Info Card */}
-      <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-3">
+      <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-3 amc-card-smooth amc-stagger-1">
         <h3 className="text-xs font-bold uppercase tracking-wider text-muted">
           Account Status
         </h3>
@@ -119,7 +119,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Transparent Data Summary */}
-      <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-4">
+      <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-4 amc-card-smooth amc-stagger-2">
         <div className="flex items-center gap-2 text-ink font-bold text-sm">
           <Database className="h-4 w-4 text-action" />
           <span>Stored Composting Data Summary</span>

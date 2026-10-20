@@ -64,10 +64,10 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
   return (
     <div className="py-8 sm:py-14 max-w-5xl mx-auto px-4 sm:px-6 space-y-12 text-left">
       {/* Top Breadcrumb & Status Ribbon */}
-      <div className="flex items-center justify-between border-b border-border/70 pb-4">
+      <div className="flex items-center justify-between border-b border-border/70 pb-4 amc-stagger-1">
         <Link
           href="/plants"
-          className="group inline-flex items-center text-xs font-semibold text-muted hover:text-ink transition-colors"
+          className="group inline-flex items-center text-xs font-semibold text-muted hover:text-ink transition-colors amc-pill-smooth"
         >
           <ArrowLeft className="mr-1.5 h-3.5 w-3.5 group-hover:-translate-x-0.5 transition-transform" />
           <span>All Curated Plants</span>
@@ -83,11 +83,11 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
       </div>
 
       {/* Hero Display Section - AMC Natural Editorial Hierarchy with Botanical Photo & Emblem */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-2">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-2 amc-stagger-1">
         <div className="space-y-4 max-w-2xl">
           <div className="space-y-2">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold inline-flex items-center gap-1.5">
+              <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold inline-flex items-center gap-1.5 animate-amc-float">
                 <Sparkles className="h-3 w-3 text-emerald-600" />
                 Max {plant.compostBlendRatioMaxPercent}% Compost Ratio
               </span>
@@ -110,7 +110,7 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </div>
 
         {/* Hero Curated Botanical Photography Card */}
-        <div className="relative w-full md:w-80 h-64 sm:h-72 rounded-[28px] overflow-hidden border border-border/80 shadow-lg shrink-0 self-start md:self-center group">
+        <div className="relative w-full md:w-80 h-64 sm:h-72 rounded-[28px] overflow-hidden border border-border/80 shadow-lg shrink-0 self-start md:self-center group amc-card-smooth">
           <Image
             src={plant.imageUrl}
             alt={plant.name}
@@ -133,7 +133,7 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
       </div>
 
       {/* Floating AMC Natural Radial Gradient Stat Orb Card */}
-      <div className="relative overflow-hidden rounded-[32px] border border-emerald-200/80 bg-gradient-to-br from-emerald-50/80 via-surface/90 to-amber-50/60 p-6 sm:p-10 shadow-lg backdrop-blur-sm">
+      <div className="relative overflow-hidden rounded-[32px] border border-emerald-200/80 bg-gradient-to-br from-emerald-50/80 via-surface/90 to-amber-50/60 p-6 sm:p-10 shadow-lg backdrop-blur-sm amc-stagger-2 amc-card-smooth">
         {/* Ambient Glowing Orbs */}
         <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-emerald-400/20 blur-3xl" />
         <div className="pointer-events-none absolute -right-16 -bottom-16 h-64 w-64 rounded-full bg-amber-400/20 blur-3xl" />

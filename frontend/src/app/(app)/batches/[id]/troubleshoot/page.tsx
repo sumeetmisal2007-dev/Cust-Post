@@ -106,10 +106,10 @@ export default function TroubleshootPage() {
   return (
     <div className="py-8 sm:py-12 max-w-3xl mx-auto px-4 space-y-8">
       {/* Navigation header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between amc-stagger-1">
         <Link
           href={`/batches/${batch.id}`}
-          className="inline-flex items-center text-xs font-semibold text-muted hover:text-ink transition-colors"
+          className="inline-flex items-center text-xs font-semibold text-muted hover:text-ink transition-colors amc-pill-smooth"
         >
           <ArrowLeft className="mr-1 h-3.5 w-3.5" />
           <span>Back to {batch.batchName}</span>
@@ -117,9 +117,9 @@ export default function TroubleshootPage() {
         <span className="text-xs font-mono text-muted uppercase">Guided Troubleshooting</span>
       </div>
 
-      <div className="space-y-2 text-left">
+      <div className="space-y-2 text-left amc-stagger-1">
         <h1 className="font-display text-2xl sm:text-3xl font-bold text-ink flex items-center gap-2">
-          <Wrench className="h-6 w-6 text-action" />
+          <Wrench className="h-6 w-6 text-action animate-amc-float" />
           <span>Interactive Troubleshooting Assistant</span>
         </h1>
         <p className="text-sm text-muted">
@@ -128,18 +128,22 @@ export default function TroubleshootPage() {
       </div>
 
       {/* Symptom Selection */}
-      <SymptomSelector
-        selectedSymptom={selectedInputs?.symptom || null}
-        onSelectSymptom={handleSelectSymptom}
-      />
+      <div className="amc-stagger-2">
+        <SymptomSelector
+          selectedSymptom={selectedInputs?.symptom || null}
+          onSelectSymptom={handleSelectSymptom}
+        />
+      </div>
 
       {/* Resolution Details */}
       {resolution && (
-        <ResolutionView
-          resolution={resolution}
-          onApplyLog={handleApplyLog}
-          isApplying={isApplying}
-        />
+        <div className="amc-stagger-3">
+          <ResolutionView
+            resolution={resolution}
+            onApplyLog={handleApplyLog}
+            isApplying={isApplying}
+          />
+        </div>
       )}
     </div>
   );

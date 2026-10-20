@@ -48,9 +48,9 @@ export default function SourcesPage() {
       </div>
 
       {/* SDG Trust Strip */}
-      <div className="p-4 rounded-card border border-emerald-300 bg-emerald-50/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="p-4 rounded-card border border-emerald-300 bg-emerald-50/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 amc-stagger-1 amc-card-smooth">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-full bg-white shadow-xs text-action">
+          <div className="p-2.5 rounded-full bg-white shadow-xs text-action animate-amc-float">
             <Award className="h-6 w-6" />
           </div>
           <div>
@@ -68,7 +68,7 @@ export default function SourcesPage() {
           variant="secondary"
           size="sm"
           onClick={() => setIsFeedbackOpen(true)}
-          className="shrink-0"
+          className="shrink-0 amc-button-smooth"
         >
           <MessageSquare className="mr-1.5 h-3.5 w-3.5" />
           <span>Suggest Source / Correction</span>
@@ -76,7 +76,7 @@ export default function SourcesPage() {
       </div>
 
       {/* Sources Grid */}
-      <div className="space-y-4">
+      <div className="space-y-4 amc-stagger-2">
         <h2 className="font-display text-xl font-bold text-ink flex items-center gap-2">
           <BookOpen className="h-5 w-5 text-action" />
           <span>Active Citation Index ({sources.length} Rules)</span>
@@ -86,7 +86,7 @@ export default function SourcesPage() {
           {sources.map((src) => (
             <div
               key={src.ruleId}
-              className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-3 text-left flex flex-col justify-between"
+              className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-3 text-left flex flex-col justify-between amc-card-smooth"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between gap-2">

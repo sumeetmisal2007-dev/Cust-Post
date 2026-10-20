@@ -191,4 +191,166 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 8px 24px -4px rgba(20, 40, 30, 0.08), 0 2px 6px rgba(20, 40, 30, 0.04);
 }
 
+/* ========================================================
+   AMC Natural & AMC Ideas Inspired Fluid Motion Language
+   Awwwards Honorable Mention Aesthetic — Rubio & del Amo
+   ======================================================== */
+
+:root {
+  --ease-amc: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-amc-spring: cubic-bezier(0.34, 1.45, 0.64, 1);
+  --ease-amc-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Page Mount & Route Transition */
+@keyframes amcPageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.994);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.amc-page-enter {
+  animation: amcPageEnter 0.65s var(--ease-amc) forwards;
+  will-change: opacity, transform;
+}
+
+/* Cascade Stagger Reveal */
+@keyframes amcItemFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.amc-stagger-1 {
+  animation: amcItemFadeUp 0.6s var(--ease-amc) 0.05s both;
+}
+.amc-stagger-2 {
+  animation: amcItemFadeUp 0.6s var(--ease-amc) 0.12s both;
+}
+.amc-stagger-3 {
+  animation: amcItemFadeUp 0.6s var(--ease-amc) 0.19s both;
+}
+.amc-stagger-4 {
+  animation: amcItemFadeUp 0.6s var(--ease-amc) 0.26s both;
+}
+.amc-stagger-5 {
+  animation: amcItemFadeUp 0.6s var(--ease-amc) 0.33s both;
+}
+
+/* Gentle Organic Floating Breath */
+@keyframes amcFloatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.4deg);
+  }
+}
+
+.animate-amc-float {
+  animation: amcFloatSlow 6s ease-in-out infinite;
+}
+
+/* AMC Signature Interactive Card Hover Physics */
+.amc-card-smooth {
+  transition: 
+    transform 0.45s var(--ease-amc),
+    box-shadow 0.45s var(--ease-amc),
+    border-color 0.45s var(--ease-amc),
+    background-color 0.45s var(--ease-amc);
+  will-change: transform, box-shadow;
+}
+
+.amc-card-smooth:hover {
+  transform: translateY(-5px) scale(1.008);
+  box-shadow: 
+    0 20px 40px -12px rgba(20, 40, 30, 0.14),
+    0 4px 12px -2px rgba(20, 40, 30, 0.05);
+  border-color: rgba(36, 86, 62, 0.35);
+}
+
+/* Smooth Interactive Pill & Filter Tab */
+.amc-pill-smooth {
+  transition: all 0.35s var(--ease-amc);
+}
+.amc-pill-smooth:hover {
+  transform: translateY(-2px);
+}
+.amc-pill-smooth:active {
+  transform: translateY(0px) scale(0.97);
+}
+
+/* Tactile Button Feedback */
+.amc-button-smooth {
+  transition: 
+    transform 0.25s var(--ease-amc),
+    box-shadow 0.25s var(--ease-amc),
+    background-color 0.25s var(--ease-amc),
+    color 0.25s var(--ease-amc);
+}
+.amc-button-smooth:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(29, 71, 52, 0.25);
+}
+.amc-button-smooth:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Soft Shimmer Light Bar */
+@keyframes amcShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.amc-shimmer-hover:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: amcShimmer 1.5s infinite;
+}
+
+/* Liquid Smooth Meter & Progress Bar */
+.amc-progress-fill {
+  transition: width 0.8s var(--ease-amc);
+}
+
+/* Respect Accessibility Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .amc-page-enter,
+  .amc-stagger-1,
+  .amc-stagger-2,
+  .amc-stagger-3,
+  .amc-stagger-4,
+  .amc-stagger-5,
+  .animate-amc-float,
+  .animate-amc-gradient,
+  .animate-marquee,
+  .animate-marquee-slow,
+  .amc-card-smooth,
+  .amc-pill-smooth,
+  .amc-button-smooth {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 

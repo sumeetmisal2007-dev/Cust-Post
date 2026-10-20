@@ -88,18 +88,20 @@ export default function SetupWizardPage() {
       </div>
 
       {/* Step Components */}
-      <div className="bg-surface rounded-card p-6 sm:p-8 border border-border shadow-soft">
-        {currentStep === 1 && <StepSpace onNext={handleNext} />}
-        {currentStep === 2 && <StepContainer onNext={handleNext} onBack={handleBack} />}
-        {currentStep === 3 && <StepMaterials onNext={handleNext} onBack={handleBack} />}
-        {currentStep === 4 && <StepPreferences onNext={handleNext} onBack={handleBack} />}
-        {currentStep === 5 && (
-          <StepReview
-            onEditStep={handleJumpToStep}
-            onSubmit={handleGenerateRecommendation}
-            onBack={handleBack}
-          />
-        )}
+      <div className="bg-surface rounded-card p-6 sm:p-8 border border-border shadow-soft amc-card-smooth">
+        <div key={currentStep} className="amc-page-enter">
+          {currentStep === 1 && <StepSpace onNext={handleNext} />}
+          {currentStep === 2 && <StepContainer onNext={handleNext} onBack={handleBack} />}
+          {currentStep === 3 && <StepMaterials onNext={handleNext} onBack={handleBack} />}
+          {currentStep === 4 && <StepPreferences onNext={handleNext} onBack={handleBack} />}
+          {currentStep === 5 && (
+            <StepReview
+              onEditStep={handleJumpToStep}
+              onSubmit={handleGenerateRecommendation}
+              onBack={handleBack}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

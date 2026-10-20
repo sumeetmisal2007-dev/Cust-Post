@@ -154,10 +154,10 @@ export default function SetupResultPage() {
   return (
     <div className="py-8 sm:py-12 max-w-4xl mx-auto px-4 space-y-8">
       {/* Top Breadcrumb & Nav */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between amc-stagger-1">
         <Link
           href="/setup"
-          className="inline-flex items-center text-xs font-semibold text-muted hover:text-ink transition-colors"
+          className="inline-flex items-center text-xs font-semibold text-muted hover:text-ink transition-colors amc-pill-smooth"
         >
           <ArrowLeft className="mr-1 h-3.5 w-3.5" />
           <span>Edit Wizard Inputs</span>
@@ -166,13 +166,15 @@ export default function SetupResultPage() {
       </div>
 
       {/* Main Explainable Recommendation Card */}
-      <RecommendationCard
-        containerResult={containerResult}
-        methodPlan={methodPlan}
-        volumeLitres={volumeLitres}
-        onViewSources={() => setIsDrawerOpen(true)}
-        onStartBatch={handleStartBatch}
-      />
+      <div className="amc-stagger-2">
+        <RecommendationCard
+          containerResult={containerResult}
+          methodPlan={methodPlan}
+          volumeLitres={volumeLitres}
+          onViewSources={() => setIsDrawerOpen(true)}
+          onStartBatch={handleStartBatch}
+        />
+      </div>
 
       {/* Source Provenance Slide-over Drawer */}
       <SourceDrawer

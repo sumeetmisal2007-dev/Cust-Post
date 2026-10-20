@@ -80,10 +80,10 @@ export default function MaturityChecklistPage() {
   return (
     <div className="py-8 sm:py-12 max-w-3xl mx-auto px-4 space-y-8">
       {/* Navigation header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between amc-stagger-1">
         <Link
           href={`/batches/${batch.id}`}
-          className="inline-flex items-center text-xs font-semibold text-muted hover:text-ink transition-colors"
+          className="inline-flex items-center text-xs font-semibold text-muted hover:text-ink transition-colors amc-pill-smooth"
         >
           <ArrowLeft className="mr-1 h-3.5 w-3.5" />
           <span>Back to {batch.batchName}</span>
@@ -92,10 +92,12 @@ export default function MaturityChecklistPage() {
       </div>
 
       {/* Main checklist */}
-      <MaturityChecklist
-        batchId={batch.id}
-        onComplete={() => setIsModalOpen(true)}
-      />
+      <div className="amc-stagger-2">
+        <MaturityChecklist
+          batchId={batch.id}
+          onComplete={() => setIsModalOpen(true)}
+        />
+      </div>
 
       {/* Celebratory Completion Modal */}
       <BatchCompletionModal

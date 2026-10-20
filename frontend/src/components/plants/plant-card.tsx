@@ -21,7 +21,7 @@ export function PlantCard({ plant }: PlantCardProps) {
   }[plant.category] || "bg-emerald-950/85 text-emerald-200 border-emerald-400/50";
 
   return (
-    <div className="group relative rounded-[22px] border border-stone-800 bg-stone-900 overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 min-h-[390px] sm:min-h-[420px] flex flex-col justify-between">
+    <div className="group relative rounded-[22px] border border-stone-800 bg-stone-900 overflow-hidden shadow-md hover:shadow-2xl amc-card-smooth min-h-[390px] sm:min-h-[420px] flex flex-col justify-between">
       {/* Background Photography / Botanical Art Fallback */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {!imageError ? (

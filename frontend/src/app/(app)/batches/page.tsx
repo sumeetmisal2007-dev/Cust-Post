@@ -63,7 +63,7 @@ export default function BatchesIndexPage() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-6">
         <div className="space-y-1.5">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint border border-border text-xs font-semibold text-action">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint border border-border text-xs font-semibold text-action shadow-xs animate-amc-float">
             <Sprout className="h-3.5 w-3.5" />
             <span>Apartment Composting Tracker</span>
           </div>
@@ -76,7 +76,7 @@ export default function BatchesIndexPage() {
         </div>
 
         <div>
-          <Button asChild size="default">
+          <Button asChild size="default" className="amc-button-smooth">
             <Link href="/setup">
               <PlusCircle className="mr-2 h-4 w-4" />
               <span>Start New Batch</span>
@@ -89,8 +89,8 @@ export default function BatchesIndexPage() {
       {batches.length > 0 ? (
         <div className="space-y-8">
           {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-1.5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 amc-stagger-1">
+            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-1.5 amc-card-smooth">
               <span className="text-xs font-semibold text-muted uppercase tracking-wider">
                 Active Bins
               </span>
@@ -107,7 +107,7 @@ export default function BatchesIndexPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-1.5">
+            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-1.5 amc-card-smooth">
               <span className="text-xs font-semibold text-muted uppercase tracking-wider">
                 Measured Kitchen Waste
               </span>
@@ -120,7 +120,7 @@ export default function BatchesIndexPage() {
               </div>
             </div>
 
-            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-1.5">
+            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-1.5 amc-card-smooth">
               <span className="text-xs font-semibold text-muted uppercase tracking-wider">
                 Estimated Organic Inputs
               </span>
@@ -135,7 +135,7 @@ export default function BatchesIndexPage() {
           </div>
 
           {/* Batches Grid */}
-          <div className="space-y-4">
+          <div className="space-y-4 amc-stagger-2">
             <h2 className="font-display text-xl font-bold text-ink">
               Your Batch Registry
             </h2>
@@ -155,7 +155,7 @@ export default function BatchesIndexPage() {
                 return (
                   <div
                     key={batch.id}
-                    className="p-6 rounded-card border border-border bg-surface shadow-soft hover:border-action/40 transition-all flex flex-col justify-between space-y-5"
+                    className="p-6 rounded-card border border-border bg-surface shadow-soft hover:border-action/40 transition-all flex flex-col justify-between space-y-5 amc-card-smooth"
                   >
                     <div className="space-y-3">
                       <div className="flex items-start justify-between gap-2">
@@ -229,9 +229,9 @@ export default function BatchesIndexPage() {
         </div>
       ) : (
         /* Empty State for Apartment Beginners */
-        <div className="space-y-8">
-          <div className="p-8 sm:p-12 rounded-panel border border-border bg-gradient-to-br from-surface via-surface to-mint/20 shadow-soft text-center space-y-6 max-w-2xl mx-auto">
-            <div className="h-16 w-16 rounded-full bg-mint/80 border border-border text-action flex items-center justify-center mx-auto shadow-sm">
+        <div className="space-y-8 amc-stagger-1">
+          <div className="p-8 sm:p-12 rounded-panel border border-border bg-gradient-to-br from-surface via-surface to-mint/20 shadow-soft text-center space-y-6 max-w-2xl mx-auto amc-card-smooth">
+            <div className="h-16 w-16 rounded-full bg-mint/80 border border-border text-action flex items-center justify-center mx-auto shadow-sm animate-amc-float">
               <Sprout className="h-8 w-8" />
             </div>
 
@@ -245,7 +245,7 @@ export default function BatchesIndexPage() {
             </div>
 
             <div className="pt-2">
-              <Button asChild size="lg" className="w-full sm:w-auto">
+              <Button asChild size="lg" className="w-full sm:w-auto amc-button-smooth">
                 <Link href="/setup">
                   <span>Start Your First Setup</span>
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -255,8 +255,8 @@ export default function BatchesIndexPage() {
           </div>
 
           {/* Beginner Apartment Steps */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-2.5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 amc-stagger-2">
+            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-2.5 amc-card-smooth">
               <div className="h-9 w-9 rounded-control bg-mint text-action font-display font-bold flex items-center justify-center text-sm">
                 1
               </div>
@@ -268,7 +268,7 @@ export default function BatchesIndexPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-2.5">
+            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-2.5 amc-card-smooth">
               <div className="h-9 w-9 rounded-control bg-earth-subtle text-earth font-display font-bold flex items-center justify-center text-sm">
                 2
               </div>
@@ -280,7 +280,7 @@ export default function BatchesIndexPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-2.5">
+            <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-2.5 amc-card-smooth">
               <div className="h-9 w-9 rounded-control bg-accent/20 text-accent font-display font-bold flex items-center justify-center text-sm">
                 3
               </div>

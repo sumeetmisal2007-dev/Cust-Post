@@ -53,9 +53,9 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
       </div>
 
       {/* Safety Guardrail Callout */}
-      <div className="relative overflow-hidden p-6 rounded-[22px] border border-amber-300/90 bg-gradient-to-br from-amber-50/90 via-amber-50/60 to-surface/90 shadow-sm backdrop-blur-xs">
+      <div className="relative overflow-hidden p-6 rounded-[22px] border border-amber-300/90 bg-gradient-to-br from-amber-50/90 via-amber-50/60 to-surface/90 shadow-sm backdrop-blur-xs amc-card-smooth amc-stagger-1">
         <div className="flex items-start gap-3.5">
-          <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-300/80 text-amber-800 shrink-0 mt-0.5">
+          <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-300/80 text-amber-800 shrink-0 mt-0.5 animate-amc-float">
             <AlertTriangle className="h-5 w-5 text-amber-700" />
           </div>
           <div className="space-y-1.5">
@@ -82,7 +82,7 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
           <div className="flex items-center gap-2 flex-wrap">
             <button
               onClick={() => setActiveCategory("all")}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide amc-pill-smooth cursor-pointer ${
                 activeCategory === "all"
                   ? "bg-action text-white shadow-xs"
                   : "bg-surface text-muted hover:text-ink border border-border hover:bg-mint/30"
@@ -92,7 +92,7 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
             </button>
             <button
               onClick={() => setActiveCategory("herb")}
-              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide amc-pill-smooth cursor-pointer ${
                 activeCategory === "herb"
                   ? "bg-emerald-800 text-white shadow-xs"
                   : "bg-surface text-emerald-900 border border-emerald-200/80 hover:bg-emerald-50"
@@ -103,7 +103,7 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
             </button>
             <button
               onClick={() => setActiveCategory("vegetable")}
-              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide amc-pill-smooth cursor-pointer ${
                 activeCategory === "vegetable"
                   ? "bg-amber-800 text-white shadow-xs"
                   : "bg-surface text-amber-900 border border-amber-200/80 hover:bg-amber-50"
@@ -114,7 +114,7 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
             </button>
             <button
               onClick={() => setActiveCategory("fruit")}
-              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide amc-pill-smooth cursor-pointer ${
                 activeCategory === "fruit"
                   ? "bg-rose-800 text-white shadow-xs"
                   : "bg-surface text-rose-900 border border-rose-200/80 hover:bg-rose-50"
@@ -127,7 +127,7 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
         </div>
 
         {/* Plant Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 amc-stagger-2">
           {filteredPlants.map((plant) => (
             <PlantCard key={plant.slug} plant={plant} />
           ))}
