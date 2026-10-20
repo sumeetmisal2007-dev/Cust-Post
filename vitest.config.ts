@@ -19,7 +19,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@cust-post/backend": path.resolve(__dirname, "./backend/src/index.ts"),
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./frontend/src"),
     },
   },
 });

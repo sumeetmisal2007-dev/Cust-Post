@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { batchStorageService } from "@/lib/services/batch-storage.service";
+import { batchStorageService } from "@cust-post/backend";
 import { POST, GET } from "@/app/api/batches/route";
 import { NextRequest } from "next/server";
 
