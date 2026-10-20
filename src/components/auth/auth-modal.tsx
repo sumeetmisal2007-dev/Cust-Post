@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Mail, Key, Sparkles, Check, Info } from "lucide-react";
+import { X, Mail, Key, Sparkles, Check, Info, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createClient } from "@/lib/supabase/client";
@@ -159,6 +159,18 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
             </button>
           </div>
         </form>
+
+        {/* Guest Continuation Action */}
+        <div className="pt-2 border-t border-border/60">
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-control border border-border bg-surface-soft hover:bg-white text-xs font-semibold text-ink transition-colors shadow-xs"
+          >
+            <span>Continue as Guest</span>
+            <ArrowRight className="w-3.5 h-3.5 text-action" />
+          </button>
+        </div>
       </div>
     </div>
   );

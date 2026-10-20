@@ -27,24 +27,33 @@ describe("Preloader Animation Component", () => {
   it("renders the animated preloader on first session visit", () => {
     render(<Preloader />);
     expect(screen.getByRole("status")).toBeInTheDocument();
-    expect(screen.getByText(/cust-post/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /skip/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /cust-post/i })).toBeInTheDocument();
+    expect(screen.getByText(/space-aware composting/i)).toBeInTheDocument();
   });
 
-  it("allows dismissing via Skip button and persists to sessionStorage", () => {
-    render(<Preloader />);
-    const skipButton = screen.getByRole("button", { name: /skip/i });
-    fireEvent.click(skipButton);
-
-    expect(sessionStorage.getItem("cust_post_preloader_seen")).toBe("true");
-  });
-
-  it("completes animation sequence over time and finishes", () => {
+  it("completes animation sequence and smoothly transitions to login interface", () => {
     render(<Preloader durationMs={1000} />);
     expect(screen.getByRole("status")).toBeInTheDocument();
 
     act(() => {
       vi.advanceTimersByTime(1200);
+    });
+
+    expect(screen.getByText(/sign in or sync account/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /continue as guest/i })).toBeInTheDocument();
+  });
+
+  it("allows proceeding as guest and persists to sessionStorage", () => {
+    render(<Preloader durationMs={1000} />);
+    act(() => {
+      vi.advanceTimersByTime(1200);
+    });
+
+    const guestButton = screen.getByRole("button", { name: /continue as guest/i });
+    fireEvent.click(guestButton);
+
+    act(() => {
+      vi.advanceTimersByTime(600);
     });
 
     expect(sessionStorage.getItem("cust_post_preloader_seen")).toBe("true");

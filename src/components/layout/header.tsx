@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Sprout, Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AuthModal } from "@/components/auth/auth-modal";
 
 const NAV_LINKS = [
   { href: "/setup", label: "Plan setup" },
@@ -17,6 +18,7 @@ const NAV_LINKS = [
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const pathname = usePathname();
 
   return (
@@ -54,6 +56,13 @@ export function Header() {
 
         {/* CTA Button Desktop */}
         <div className="hidden md:flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setIsAuthModalOpen(true)}
+            className="text-sm font-medium text-muted hover:text-ink transition-colors px-2 py-1"
+          >
+            Sign in
+          </button>
           <Button asChild size="sm">
             <Link href="/setup">
               Start a setup
@@ -93,7 +102,18 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <div className="pt-2 border-t border-border">
+          <div className="pt-2 border-t border-border space-y-2">
+            <button
+              type="button"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setIsAuthModalOpen(true);
+              }}
+              className="flex items-center justify-between w-full min-h-[44px] px-3 rounded-control text-base font-medium text-ink hover:bg-canvas"
+            >
+              <span>Sign in / Sync</span>
+              <ArrowRight className="h-4 w-4 text-action" />
+            </button>
             <Button asChild className="w-full">
               <Link href="/setup" onClick={() => setIsMobileMenuOpen(false)}>
                 Start a setup
@@ -103,6 +123,12 @@ export function Header() {
           </div>
         </div>
       )}
+
+      {/* Auth Modal */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+      />
     </header>
   );
 }
