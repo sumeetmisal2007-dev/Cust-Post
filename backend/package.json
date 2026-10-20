@@ -1,0 +1,17 @@
+{
+  "name": "@cust-post/backend",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@better-auth/infra": "^0.4.20",
+    "@supabase/supabase-js": "^2.49.1",
+    "better-auth": "^1.7.10",
+    "zod": "^4.6.7"
+  }
+}
