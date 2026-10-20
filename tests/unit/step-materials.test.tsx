@@ -1,10 +1,14 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import React from "react";
 import { StepMaterials } from "@/components/setup/step-materials";
 import { useSetupWizardStore } from "@/lib/stores/setup-wizard.store";
 
 describe("Setup Wizard Step 3: Waste Materials Inventory (Task 18)", () => {
+  beforeEach(() => {
+    useSetupWizardStore.getState().resetWizard();
+  });
+
   it("renders categorized materials and allows selecting items", async () => {
     render(<StepMaterials onNext={vi.fn()} onBack={vi.fn()} />);
 
@@ -20,6 +24,63 @@ describe("Setup Wizard Step 3: Waste Materials Inventory (Task 18)", () => {
     expect(
       screen.getByText(/dry leaves & garden clippings/i)
     ).toBeInTheDocument();
+  });
+
+  it("displays estimate labels for default quantities", () => {
+    render(<StepMaterials onNext={vi.fn()} onBack={vi.fn()} />);
+
+    // Default selected cards should show Est. Default badge
+    expect(screen.getAllByText(/est\. default/i).length).toBeGreaterThanOrEqual(1);
+
+    // Unselected card should display default estimate hint
+    expect(screen.getByText(/default estimate: ~0\.8 kg\/week/i)).toBeInTheDocument();
+  });
+
+  it("allows user to customize weekly quantity and unit", async () => {
+    const handleNext = vi.fn();
+    render(<StepMaterials onNext={handleNext} onBack={vi.fn()} />);
+
+    // Find the quantity input for Vegetable Scraps
+    const vegInput = screen.getByLabelText(/vegetable scraps & fruit peels quantity in kg/i);
+    expect(vegInput).toHaveValue(2.5);
+
+    // Change vegetable scraps quantity to 4.2 kg
+    fireEvent.change(vegInput, { target: { value: "4.2" } });
+    expect(vegInput).toHaveValue(4.2);
+
+    // Change unit to litres
+    const unitSelect = screen.getByLabelText(/vegetable scraps & fruit peels unit/i);
+    fireEvent.change(unitSelect, { target: { value: "litres" } });
+
+    // Submit and verify store receives custom quantity and unit
+    const continueBtn = screen.getByRole("button", { name: /continue to preferences/i });
+    fireEvent.click(continueBtn);
+
+    await waitFor(() => {
+      expect(handleNext).toHaveBeenCalled();
+    });
+
+    const items = useSetupWizardStore.getState().wasteItems;
+    const vegItem = items.find((i) => i.name === "vegetable_peels");
+    expect(vegItem?.quantityWeekly).toBe(4.2);
+    expect(vegItem?.unit).toBe("litres");
+  });
+
+  it("dynamically recalculates live mixture balance when user changes quantities", async () => {
+    render(<StepMaterials onNext={vi.fn()} onBack={vi.fn()} />);
+
+    // Initially balanced with defaults (2.5kg veg + 1.5kg leaves)
+    expect(screen.getByText(/balanced ratio/i)).toBeInTheDocument();
+
+    // Increase vegetable scraps to 20kg (huge excess greens)
+    const vegInput = screen.getByLabelText(/vegetable scraps & fruit peels quantity in kg/i);
+    fireEvent.change(vegInput, { target: { value: "20" } });
+
+    // Live feedback updates to adjustment advised
+    await waitFor(() => {
+      expect(screen.getByText(/adjustment advised/i)).toBeInTheDocument();
+      expect(screen.getByText(/excess nitrogen and moisture detected/i)).toBeInTheDocument();
+    });
   });
 
   it("warns user if excluded materials like meat or plastic are selected", async () => {
