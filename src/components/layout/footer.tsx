@@ -72,7 +72,6 @@ export function Footer() {
 
       <div className="max-w-content mx-auto mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between text-xs text-muted/70 gap-4">
         <p>&copy; {new Date().getFullYear()} Cust-Post. Concept PRD v0.1 • Nirman Lab student project.</p>
-        <p>Zero black-box AI claims. Verified, deterministic rule guidance.</p>
       </div>
     </footer>
   );
