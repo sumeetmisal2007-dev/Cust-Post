@@ -49,10 +49,23 @@ describe("Task 23: Batch Observation Logger & Timeline", () => {
       expect(screen.getByText(/1\.2\s*kg/i)).toBeInTheDocument();
       expect(screen.getByText(/turned thoroughly, warm steam noticed/i)).toBeInTheDocument();
     });
+
+    it("renders photo journal image when attached to observation", () => {
+      const obsWithPhoto: BatchObservation = {
+        ...mockObservations[0],
+        id: "obs-photo",
+        imageUrl: "data:image/jpeg;base64,samplepilephoto",
+      };
+      render(<BatchTimeline observations={[obsWithPhoto]} onLogFirst={vi.fn()} />);
+
+      const img = screen.getByRole("img", { name: /compost pile on/i });
+      expect(img).toBeInTheDocument();
+      expect(screen.getByText(/photo journal/i)).toBeInTheDocument();
+    });
   });
 
   describe("LogObservationModal", () => {
-    it("renders modal form with moisture, odour, turning, and note inputs", () => {
+    it("renders modal form with moisture, odour, turning, photo journal, and note inputs", () => {
       render(
         <LogObservationModal
           isOpen={true}
@@ -66,6 +79,7 @@ describe("Task 23: Batch Observation Logger & Timeline", () => {
       expect(screen.getByText(/moisture level/i)).toBeInTheDocument();
       expect(screen.getByText(/odour check/i)).toBeInTheDocument();
       expect(screen.getByText(/turned \/ mixed pile today/i)).toBeInTheDocument();
+      expect(screen.getByText(/pile photo journal/i)).toBeInTheDocument();
     });
 
     it("saves observation and calls onSaved callback", async () => {

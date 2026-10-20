@@ -27,6 +27,7 @@ export const batchObservationSchema = z.object({
   wasteAddedKg: z.number().nonnegative().optional(),
   wasteAdditionStatus: dataStatusEnum.optional(),
   notes: z.string().max(1000).optional(),
+  imageUrl: z.string().optional(),
 });
 
 export const physicalMaturityChecklistSchema = z.object({

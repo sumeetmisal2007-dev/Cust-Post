@@ -10,6 +10,7 @@ import {
   Thermometer,
   FileText,
   AlertTriangle,
+  Camera,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StatusChip } from "@/components/ui/status-chip";
@@ -139,6 +140,25 @@ export function BatchTimeline({ observations, onLogFirst }: BatchTimelineProps) 
                   </span>
                 )}
               </div>
+
+              {/* Photo Journal Entry */}
+              {obs.imageUrl && (
+                <div className="pt-2">
+                  <div className="relative group max-w-xs sm:max-w-sm overflow-hidden rounded-[16px] border border-border/80 bg-surface shadow-xs hover:shadow-md transition-shadow">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={obs.imageUrl}
+                      alt={`Compost pile on ${dateStr}`}
+                      className="w-full h-44 sm:h-52 object-cover group-hover:scale-102 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-2.5 left-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-ink/75 backdrop-blur-md text-white text-[10px] font-mono shadow-xs">
+                      <Camera className="h-3 w-3 text-emerald-300" />
+                      <span>Photo Journal</span>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Observation Notes */}
               {obs.notes && (

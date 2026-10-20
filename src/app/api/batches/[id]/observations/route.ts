@@ -21,6 +21,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
       temperatureC: body.temperatureC != null ? Number(body.temperatureC) : null,
       temperatureStatus: body.temperatureStatus || "unknown",
       pests: body.pests || "none",
+      imageUrl: body.imageUrl || undefined,
       notes: body.notes || undefined,
     });
 

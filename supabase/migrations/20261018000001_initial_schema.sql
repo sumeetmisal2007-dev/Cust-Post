@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS public.compost_batches (
     readiness_window_end DATE,
     completed_at TIMESTAMPTZ,
     notes TEXT,
+    image_url TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now()),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now())
 );
@@ -69,6 +70,7 @@ CREATE TABLE IF NOT EXISTS public.batch_observations (
     waste_added_kg NUMERIC(6, 2),
     waste_addition_status TEXT CHECK (waste_addition_status IN ('measured', 'estimated', 'user_reported', 'unknown')),
     notes TEXT,
+    image_url TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now())
 );
 

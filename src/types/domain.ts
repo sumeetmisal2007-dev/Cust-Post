@@ -131,5 +131,6 @@ export interface BatchObservation {
   turned: boolean;
   notes?: string;
   pests?: PestType;
+  imageUrl?: string;
   createdAt: string;
 }
