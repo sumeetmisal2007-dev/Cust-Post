@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -81,7 +82,7 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </div>
       </div>
 
-      {/* Hero Display Section - AMC Natural Editorial Hierarchy with Botanical Emblem */}
+      {/* Hero Display Section - AMC Natural Editorial Hierarchy with Botanical Photo & Emblem */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-2">
         <div className="space-y-4 max-w-2xl">
           <div className="space-y-2">
@@ -108,10 +109,26 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
           </p>
         </div>
 
-        {/* Hero Minimalist Botanical Silhouette Art */}
-        <div className="relative p-7 rounded-[32px] bg-gradient-to-br from-mint/40 via-surface to-amber-50/40 border border-border/80 shadow-md flex items-center justify-center shrink-0 self-start md:self-center">
-          <div className="absolute inset-0 rounded-[32px] bg-radial from-brand/10 to-transparent blur-xl pointer-events-none" />
-          <BotanicalArt slug={plant.slug} className="h-20 w-20 sm:h-24 sm:w-24 text-action" size={96} />
+        {/* Hero Curated Botanical Photography Card */}
+        <div className="relative w-full md:w-80 h-64 sm:h-72 rounded-[28px] overflow-hidden border border-border/80 shadow-lg shrink-0 self-start md:self-center group">
+          <Image
+            src={plant.imageUrl}
+            alt={plant.name}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 320px"
+            className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white drop-shadow-sm">
+            <div className="flex items-center gap-2 bg-ink/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-[11px] font-mono">
+              <BotanicalArt slug={plant.slug} className="h-3.5 w-3.5 text-emerald-300" size={14} />
+              <span>{plant.botanicalName}</span>
+            </div>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-200 bg-emerald-950/60 backdrop-blur-md px-2 py-0.5 rounded-full border border-emerald-500/30">
+              Verified
+            </span>
+          </div>
         </div>
       </div>
 

@@ -24,6 +24,12 @@ describe("Task 26: Plant Guide & Safe Compost Application Hub", () => {
       render(<PlantCard plant={tulsi} />);
       expect(screen.getAllByText(/herb/i).length).toBeGreaterThanOrEqual(1);
     });
+
+    it("renders botanical photograph with accessible alt text", () => {
+      render(<PlantCard plant={tulsi} />);
+      const image = screen.getByAltText(tulsi.name);
+      expect(image).toBeInTheDocument();
+    });
   });
 
   describe("Curated Plant Collection", () => {

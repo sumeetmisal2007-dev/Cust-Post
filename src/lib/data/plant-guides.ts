@@ -16,6 +16,7 @@ export interface PlantGuide {
   compostSafetyWarnings: string[];
   seasonNotes: string;
   harvestNotes: string;
+  imageUrl: string;
 }
 
 export const PLANT_GUIDES: PlantGuide[] = [
@@ -42,98 +43,151 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Grows year-round in coastal climates; protect from heavy monsoon downpours.",
     harvestNotes: "Pinch top leaf clusters regularly to encourage bushy branching and prevent premature flowering.",
+    imageUrl: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "mint",
     name: "Mint (Pudina)",
     botanicalName: "Mentha spicata",
     category: "herb",
-    tagline: "Fast-growing aromatic herb ideal for shallow balcony planters.",
+    tagline: "Vigorous, fast-spreading herb ideal for isolated balcony planters.",
     description:
-      "Spearmint is a resilient, vigorous spreader with lush green leaves. Best grown in its own dedicated shallow pot to prevent invasive root spread.",
+      "Spearmint is a resilient, moisture-loving perennial. Keep in an isolated container to prevent invasive rhizomes from overtaking other plants.",
     containerMinLitres: 8,
-    sunlightHoursMin: 3,
-    harvestDays: "25–35 Days",
+    sunlightHoursMin: 4,
+    harvestDays: "30–45 Days",
     wateringGuidance:
-      "Prefers consistently damp but not waterlogged soil. Water daily during hot summer weather.",
+      "Keep soil consistently moist but never waterlogged. Thrives with regular shallow watering.",
     sowingGuidance:
-      "Easiest grown from stem cuttings rooted in water, or sown lightly on surface and covered with 0.3 cm fine soil.",
-    compostBlendRatioMaxPercent: 25,
+      "Best grown from stem cuttings or nursery runners. Bury stems horizontally 2 cm deep in moist soil.",
+    compostBlendRatioMaxPercent: 20,
     compostSafetyWarnings: [
-      "Do not substitute 100% pure compost for potting soil; blend 25% mature compost with 75% red soil or coco peat.",
-      "Immature compost can scorch delicate shallow mint stolons.",
+      "Do not use 100% pure compost; pure compost can harbour pathogens that cause leaf rust.",
+      "Blend 20% compost into regular garden soil or coco peat.",
     ],
-    seasonNotes: "Thrives in partial shade during peak summer; loves bright indirect morning light.",
-    harvestNotes: "Harvest stems frequently by snipping top thirds; regular pruning promotes vigorous regrowth.",
+    seasonNotes: "Thrives year-round in warm balconies; appreciates light afternoon shade during peak summer.",
+    harvestNotes: "Harvest sprigs from the top. Regular harvesting stimulates fresh, tender leaf production.",
+    imageUrl: "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "coriander",
     name: "Coriander (Dhania)",
     botanicalName: "Coriandrum sativum",
     category: "herb",
-    tagline: "Essential everyday culinary herb flourishing in shallow troughs.",
+    tagline: "Fragrant, fast-growing kitchen essential for shallow balcony containers.",
     description:
-      "Fresh cilantro/dhania grows quickly from split seeds. A shallow balcony trough with light, airy soil produces continuous fragrant harvests.",
-    containerMinLitres: 8,
+      "Coriander produces tender leaves and flavorful seeds. It has shallow roots and thrives in wide, shallow pots with rich organic matter.",
+    containerMinLitres: 7,
     sunlightHoursMin: 4,
-    harvestDays: "30–40 Days",
+    harvestDays: "35–45 Days",
     wateringGuidance:
-      "Mist gently to prevent flattening young stalks; keep soil evenly moist without standing water.",
+      "Keep substrate consistently moist. Dry soil triggers premature bolting (flowering).",
     sowingGuidance:
-      "Gently crush coriander whole seeds into halves; sow 1 cm deep in rows spaced 5 cm apart.",
+      "Gently split coriander seeds into halves. Sow 1 cm deep in rows spaced 8 cm apart.",
     compostBlendRatioMaxPercent: 20,
     compostSafetyWarnings: [
-      "Never sow coriander in 100% pure compost; tender taproots easily suffer ammonium burn and rot.",
-      "Incorporate only crumbly, neutral-smelling vermicompost or aerated compost.",
+      "Never plant coriander in 100% pure compost; pure compost causes stem rot and rapid bolting.",
+      "Blend 20% mature compost into light potting mix with coco peat.",
     ],
-    seasonNotes: "Grows best in mild autumn and winter months; bolts to seed in extreme heat.",
-    harvestNotes: "Cut outer stems 2 cm above soil level when leaves reach 12 cm high, leaving the center intact.",
+    seasonNotes: "Grows best in mild weather and cool winter mornings; provide afternoon shade in summer.",
+    harvestNotes: "Cut outer leaves at the base, leaving central crown intact for continuous regrowth.",
+    imageUrl: "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "sweet-basil",
     name: "Sweet Basil",
     botanicalName: "Ocimum basilicum",
     category: "herb",
-    tagline: "Lush Italian culinary herb bursting with fragrant essential oils.",
+    tagline: "Aromatic Italian culinary herb with lush emerald leaves.",
     description:
-      "Sweet Genovese basil is an Italian kitchen essential. It loves sunny balconies, warm temperatures, and nutrient-balanced potting soil.",
-    containerMinLitres: 10,
+      "Sweet Basil is famous for pesto and salads. It produces fragrant, tender leaves and thrives on sunny windowsills with aerated organic soil.",
+    containerMinLitres: 8,
     sunlightHoursMin: 5,
-    harvestDays: "45–55 Days",
+    harvestDays: "45–60 Days",
     wateringGuidance:
-      "Water at the base early in the morning so foliage stays dry, preventing fungal spotting.",
+      "Water at the base of the plant early in the morning when the topsoil feels dry to the touch.",
     sowingGuidance:
-      "Scatter seeds lightly on surface and cover with 0.5 cm fine compost-soil blend. Germinates in 5–8 days.",
+      "Sow seeds 0.5 cm deep; keep warm and moist. Seeds sprout in 5–10 days.",
     compostBlendRatioMaxPercent: 25,
     compostSafetyWarnings: [
-      "Never plant basil in 100% pure compost; excessive nutrient density and water retention cause root dieback.",
-      "Blend 20–25% screened compost into porous coco peat and perlite.",
+      "Never grow Sweet Basil in 100% pure compost; pure compost suffocates tender feeder roots.",
+      "Ensure proper drainage and blend max 25% compost into 75% potting soil.",
     ],
-    seasonNotes: "Loves warm summer sun; shield from sudden cold drafts or heavy water drops.",
-    harvestNotes: "Pinch central stems right above leaf nodes to stimulate double-branching.",
+    seasonNotes: "Loves warm weather and bright light; protect from frost or cold drafts.",
+    harvestNotes: "Pinch off flower buds immediately to keep foliage sweet and prevent bitterness.",
+    imageUrl: "https://images.unsplash.com/photo-1608686207856-001b95cf60ca?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "rosemary",
     name: "Rosemary",
     botanicalName: "Salvia rosmarinus",
     category: "herb",
-    tagline: "Hardy woody perennial with piney aromas and drought tolerance.",
+    tagline: "Resilient Mediterranean perennial with needle-like aromatic foliage.",
     description:
-      "Rosemary is an evergreen Mediterranean shrub that thrives in dry, sunny balcony corners. It prefers gritty, free-draining soil over heavy feeding.",
+      "Rosemary is an evergreen shrub with intense woody fragrance. Excellent for well-drained terracotta pots on sunny balconies.",
     containerMinLitres: 12,
     sunlightHoursMin: 6,
-    harvestDays: "70–90 Days",
+    harvestDays: "80–90 Days",
     wateringGuidance:
-      "Allow soil to dry out almost completely between waterings. Sensitive to over-watering.",
+      "Allow soil to dry out between waterings. Rosemary hates 'wet feet' and overwatering.",
     sowingGuidance:
-      "Propagate from semi-hardwood tip cuttings dipped in water or rooting medium for highest success.",
+      "Propagate from semi-hardwood stem cuttings for faster, reliable results compared to seeds.",
     compostBlendRatioMaxPercent: 20,
     compostSafetyWarnings: [
-      "Never place rosemary in 100% pure compost; high moisture holding will immediately cause root fungus.",
-      "Add coarse sand or perlite alongside a modest 15–20% compost proportion.",
+      "Never pot rosemary in 100% pure compost; heavy wet compost causes rapid root asphyxiation.",
+      "Combine 20% compost with 80% coarse sand, perlite, and garden soil.",
     ],
-    seasonNotes: "Tough perennial that handles intense afternoon balcony heat with ease.",
-    harvestNotes: "Snip 5–8 cm stem sprigs as needed for roasting and herbal infusions.",
+    seasonNotes: "Drought-tolerant and loves high heat; thrives year-round in bright sun.",
+    harvestNotes: "Snip sprigs from fresh green stems, leaving the older woody base intact.",
+    imageUrl: "https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    slug: "curry-leaves",
+    name: "Curry Leaves (Kadi Patta)",
+    botanicalName: "Murraya koenigii",
+    category: "herb",
+    tagline: "Essential Indian culinary aromatic thriving in sunny balcony containers.",
+    description:
+      "The heart of Indian tempering (tadka). Kadi Patta produces clusters of intensely aromatic glossy pinnate leaves that flourish in deep pots under warm sunshine.",
+    containerMinLitres: 15,
+    sunlightHoursMin: 5,
+    harvestDays: "60–90 Days",
+    wateringGuidance:
+      "Water when the top 3 cm dries. Prefers slightly acidic, well-draining soil; never allow water to stand in the saucer.",
+    sowingGuidance:
+      "Propagate from semi-hardwood stem cuttings or fresh seeds in warm weather. Protect saplings from harsh noon winds.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Never plant Curry Leaves in 100% pure compost; excessive organic density promotes fungal root rot and iron chlorosis.",
+      "Blend 25% mature compost with 75% red soil and coco peat for optimal drainage.",
+    ],
+    seasonNotes: "Grows vigorously in tropical heat and monsoon; slows down during cold winter months.",
+    harvestNotes: "Harvest whole leaflets from the top to stimulate bushier lateral branching.",
+    imageUrl: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    slug: "ajwain-leaves",
+    name: "Ajwain Leaves (Karpuravalli)",
+    botanicalName: "Plectranthus amboinicus",
+    category: "herb",
+    tagline: "Succulent medicinal powerhouse famed for pakoras and home remedies.",
+    description:
+      "Known as Indian Borage or Karpuravalli, this thick-leaved succulent herb emits a pungent thyme-and-oregano aroma. Indestructible on warm sunny apartment windowsills.",
+    containerMinLitres: 8,
+    sunlightHoursMin: 4,
+    harvestDays: "30–45 Days",
+    wateringGuidance:
+      "Drought-tolerant succulent nature; water sparingly only when soil is completely dry.",
+    sowingGuidance:
+      "Roots effortlessly from single 10 cm stem cuttings in soil or water within 5–7 days.",
+    compostBlendRatioMaxPercent: 20,
+    compostSafetyWarnings: [
+      "Never grow in 100% pure compost; succulent stems will rot instantly in water-retentive pure compost.",
+      "Mix 20% well-cured compost into 80% sandy loam or perlite-rich potting mix.",
+    ],
+    seasonNotes: "Thrives year-round across Indian climates; loves partial morning or full balcony sun.",
+    harvestNotes: "Snip thick tender leaves fresh as needed for soothing teas or savory fritters.",
+    imageUrl: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80",
   },
 
   // --- VEGETABLES ---
@@ -142,115 +196,240 @@ export const PLANT_GUIDES: PlantGuide[] = [
     name: "Cherry Tomato",
     botanicalName: "Solanum lycopersicum var. cerasiforme",
     category: "vegetable",
-    tagline: "Prolific balcony fruiter rewarding patient feeding and bright sun.",
+    tagline: "Prolific balcony fruiter delivering sweet clusters all season long.",
     description:
-      "Compact cherry tomatoes yield sweet bite-sized fruits in sunny balconies or terraces when given sturdy staking.",
-    containerMinLitres: 20,
+      "Indeterminate and dwarf determinate cherry tomato varieties adapt well to large pots. They produce sweet, bite-sized fruit continuously with adequate sun and staking.",
+    containerMinLitres: 15,
     sunlightHoursMin: 6,
-    harvestDays: "65–75 Days",
+    harvestDays: "60–75 Days",
     wateringGuidance:
-      "Deep, consistent watering at the soil base. Inconsistent watering causes fruit splitting and blossom end rot.",
+      "Water deeply and regularly. Inconsistent moisture causes fruit splitting and blossom end rot.",
     sowingGuidance:
-      "Start seeds in seed trays; transplant into 20L+ container once seedlings have 4 true leaves.",
-    compostBlendRatioMaxPercent: 30,
+      "Sow seeds indoors 0.5 cm deep; transplant to final 15L pot when seedlings have 4–6 true leaves.",
+    compostBlendRatioMaxPercent: 25,
     compostSafetyWarnings: [
-      "Never plant tomato seedlings in 100% pure compost; blend maximum 30% mature compost into 70% garden soil or coco peat.",
-      "Never apply immature or unverified compost to edible fruiting vegetables.",
+      "Never plant tomato seedlings in 100% pure compost; nitrogen toxicity causes excessive leaf growth with no flowers.",
+      "Blend 25% compost with 75% red soil or potting soil and ensure drainage holes are unobstructed.",
     ],
-    seasonNotes: "Best planted post-monsoon (September–November) for bountiful winter fruiting in urban India.",
-    harvestNotes: "Pick fruits when fully colored and slightly yielding to gentle pressure.",
+    seasonNotes: "Loves warm weather and maximum balcony sunlight; shelter during torrential monsoon weeks.",
+    harvestNotes: "Harvest when fruits turn fully bright red and yield slightly to gentle thumb pressure.",
+    imageUrl: "https://images.unsplash.com/photo-1592841200221-a6898f307baa?auto=format&fit=crop&w=800&q=80",
   },
   {
-    slug: "chili-pepper",
+    slug: "chili",
     name: "Green Chili (Mirchi)",
     botanicalName: "Capsicum annuum",
     category: "vegetable",
-    tagline: "Zesty, high-yield container favorite for sunny window and balcony boxes.",
+    tagline: "Fiery, compact container vegetable that loves sunny urban balconies.",
     description:
-      "Urban balcony staple producing vibrant hot chilies year-round with minimal fuss. Compact growth habit fits standard 12L terracotta pots.",
+      "Green chili is a staple hot pepper adapted to warm climates. It thrives in medium-to-large balcony pots with well-draining soil and plenty of sunshine.",
     containerMinLitres: 12,
     sunlightHoursMin: 5,
-    harvestDays: "60–75 Days",
+    harvestDays: "65–75 Days",
     wateringGuidance:
-      "Water thoroughly when top soil dries. Moderate drought stress between flowering increases pepper pungency.",
+      "Allow the top 2 cm of soil to dry out between waterings. Overwatering causes flower drop.",
     sowingGuidance:
-      "Sow seeds 0.5 cm deep in seed starter. Transplant when seedlings reach 10 cm height.",
+      "Sow seeds 0.5 cm deep in warm seed starter. Transplant when seedlings reach 8–10 cm in height.",
     compostBlendRatioMaxPercent: 25,
     compostSafetyWarnings: [
-      "Avoid 100% pure compost which causes excessive nitrogen leaf growth and zero flower set.",
-      "Compost must be fully cured to prevent bacterial wilt and fungal damping-off.",
+      "Never pot chilies in 100% pure compost; excessive moisture and salts cause leaf curling and root stress.",
+      "Blend 25% compost with garden soil and perlite or coco peat.",
     ],
-    seasonNotes: "Thrives in warm, sunny weather; produces continuously for 12–18 months with pruning.",
-    harvestNotes: "Cut mature green chilies with kitchen shears leaving a short stem stub.",
+    seasonNotes: "Thrives during warm summer and post-monsoon months; protect from heavy frost or prolonged cold.",
+    harvestNotes: "Snip mature green chilies with kitchen scissors to prevent branch snapping.",
+    imageUrl: "https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "spinach",
     name: "Spinach (Palak)",
     botanicalName: "Spinacia oleracea",
     category: "vegetable",
-    tagline: "Nutrient-packed quick leafy green thriving in wide, shallow balcony boxes.",
+    tagline: "Nutrient-packed leafy green with rapid turnaround in wide balcony planters.",
     description:
-      "Palak is one of the fastest, most productive container crops. Its shallow fibrous root system loves wide rectangular planters and compost-rich soil.",
+      "Spinach is a nutrient-dense cool-season green. It has a compact root system that flourishes in shallow, wide balcony planter boxes with moisture-retentive soil.",
     containerMinLitres: 8,
-    sunlightHoursMin: 3,
-    harvestDays: "30–40 Days",
+    sunlightHoursMin: 4,
+    harvestDays: "35–45 Days",
     wateringGuidance:
-      "Keep soil continuously cool and moist. Dry soil triggers premature flowering and bitter leaves.",
+      "Keep soil evenly moist. Dry periods cause early bolting and bitter, tough foliage.",
     sowingGuidance:
-      "Soak seeds overnight; sow 1 cm deep in rows spaced 10 cm apart. Germinates in 4–7 days.",
-    compostBlendRatioMaxPercent: 25,
+      "Sow seeds directly 1 cm deep and 5 cm apart in wide shallow troughs or crates.",
+    compostBlendRatioMaxPercent: 20,
     compostSafetyWarnings: [
-      "Never cultivate greens in 100% pure compost; high nitrate accumulation can occur in pure organic waste beds.",
-      "Mix 25% finished compost into loose coco peat and red soil.",
+      "Never plant in 100% pure compost; pure compost causes nitrate imbalance and seedling damping-off.",
+      "Blend 20% mature compost into 80% garden soil and coco peat.",
     ],
-    seasonNotes: "Loves cool autumn and winter mornings; tolerates partial balcony shade.",
-    harvestNotes: "Cut-and-come-again: snip outer mature leaves, allowing the inner rosette to keep growing.",
+    seasonNotes: "Grows fastest during mild winter months; provide afternoon shade in warm tropical climates.",
+    harvestNotes: "Harvest outer leaves continuously, allowing inner leaves to keep expanding.",
+    imageUrl: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=800&q=80",
   },
   {
-    slug: "bush-beans",
+    slug: "french-beans",
     name: "Bush French Beans",
     botanicalName: "Phaseolus vulgaris",
     category: "vegetable",
-    tagline: "Compact nitrogen-fixing crop delivering tender pods without trellises.",
+    tagline: "Compact, nitrogen-fixing legume producing crisp pods without towering trellises.",
     description:
-      "Bush beans stay under 50 cm tall and don't need tall trellising. Their roots fix atmospheric nitrogen, naturally enriching your potting mix.",
+      "Bush varieties do not require tall trellises, making them ideal for balcony pots. They produce high yields of tender pods in a relatively small soil footprint.",
     containerMinLitres: 12,
     sunlightHoursMin: 5,
     harvestDays: "50–60 Days",
     wateringGuidance:
-      "Water deeply during flowering and pod development; avoid soaking leaves to ward off fungal rust.",
+      "Water evenly, especially during flowering and pod development. Do not let soil dry completely.",
     sowingGuidance:
-      "Sow seeds directly 2.5 cm deep into the final container; beans dislike root disturbance.",
+      "Sow seeds directly 2.5 cm deep into the final container. Avoid disturbing legume roots by transplanting.",
     compostBlendRatioMaxPercent: 20,
     compostSafetyWarnings: [
-      "Never sow beans in 100% pure compost; legumes manufacture their own nitrogen and excess nitrogen stunts pod formation.",
-      "Use well-aerated soil amended with 20% mature compost.",
+      "Never plant beans in 100% pure compost; legumes fix their own nitrogen and excess compost produces excessive leaves with few pods.",
+      "Blend 20% compost into 80% loamy soil.",
     ],
-    seasonNotes: "Ideal for mild spring or post-monsoon planting; sensitive to extreme winter frosts.",
-    harvestNotes: "Harvest crisp young pods every 2–3 days when as thick as a pencil.",
+    seasonNotes: "Performs best in moderate temperatures (18°C–28°C); avoid peak heatwaves.",
+    harvestNotes: "Harvest pods when firm and pencil-thin before seeds bulge conspicuously.",
+    imageUrl: "https://images.unsplash.com/photo-1567375698348-5d9d5ae99de0?auto=format&fit=crop&w=800&q=80",
   },
   {
-    slug: "fenugreek",
+    slug: "methi",
     name: "Fenugreek (Methi)",
     botanicalName: "Trigonella foenum-graecum",
     category: "vegetable",
-    tagline: "Ultra-fast micro/macro green ready to harvest in three weeks.",
+    tagline: "Micro-green and cooking green champion ready to harvest in 21 days.",
     description:
-      "Methi is the ultimate balcony vegetable for beginners. Any 6–8L shallow tray on a windowsill or balcony ledge produces tender green leaves in 20 days.",
+      "Methi is one of the easiest, fastest crops for balcony gardeners. Wide, shallow containers produce multiple flushes of fragrant greens in under a month.",
     containerMinLitres: 6,
-    sunlightHoursMin: 3,
-    harvestDays: "20–25 Days",
+    sunlightHoursMin: 4,
+    harvestDays: "21–30 Days",
     wateringGuidance:
-      "Light daily spray misting keeps the shallow root zone moist without disturbing delicate seedlings.",
+      "Lightly sprinkle water daily to keep top layer moist without disturbing tiny seedlings.",
     sowingGuidance:
-      "Broadcast whole kitchen fenugreek seeds over damp soil; lightly dust with 0.5 cm soil layer.",
+      "Broadcast kitchen fenugreek seeds across soil surface and cover with 0.5 cm of compost-soil blend.",
     compostBlendRatioMaxPercent: 20,
     compostSafetyWarnings: [
-      "Never sow fenugreek seeds in 100% pure compost; high salt index kills delicate germination shoots.",
+      "Never plant fenugreek in 100% pure compost; tender sprouts are prone to fungal collapse in unmixed compost.",
       "Incorporate 20% compost into 80% light potting media for rapid root establishment.",
     ],
     seasonNotes: "Excellent year-round balcony green; especially rapid during mild weather.",
     harvestNotes: "Snip entire stems at ground level at 21 days for tender culinary greens.",
+    imageUrl: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    slug: "okra-bhindi",
+    name: "Okra (Bhindi / Lady's Finger)",
+    botanicalName: "Abelmoschus esculentus",
+    category: "vegetable",
+    tagline: "High-yielding sun-worshipper with hibiscus-like blooms and tender pods.",
+    description:
+      "A quintessential Indian household favorite. Compact and dwarf okra cultivars produce striking cream flowers followed by crisp green pods within 50 days.",
+    containerMinLitres: 15,
+    sunlightHoursMin: 6,
+    harvestDays: "50–65 Days",
+    wateringGuidance:
+      "Consistent, deep watering during flowering and pod development; avoid splashing water on leaves.",
+    sowingGuidance:
+      "Soak seeds overnight and sow 1.5 cm deep directly in the final container. Germinates in 4–6 days.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Never start Okra in 100% pure compost; heavy nitrogen excess causes leafy gigantism with zero pods.",
+      "Blend 25% compost with garden soil and coarse sand for aeration.",
+    ],
+    seasonNotes: "Loves intense summer and warm monsoon weather (25°C–38°C).",
+    harvestNotes: "Harvest tender 3–4 inch pods every 2 days with pruning shears to stimulate continuous yield.",
+    imageUrl: "https://images.unsplash.com/photo-1425543103986-22abb7d7e8d2?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    slug: "brinjal-baingan",
+    name: "Brinjal (Baingan / Eggplant)",
+    botanicalName: "Solanum melongena",
+    category: "vegetable",
+    tagline: "Sturdy tropical producer with glossy purple fruit and purple blooms.",
+    description:
+      "From small round bhatia eggplants to slender purple brinjals, this hardy nightshade flourishes in balcony containers with upright staking and rich aeration.",
+    containerMinLitres: 18,
+    sunlightHoursMin: 6,
+    harvestDays: "65–80 Days",
+    wateringGuidance:
+      "Keep substrate evenly moist. Heavy feeder and drinker while fruits swell; never let soil dry to cracking.",
+    sowingGuidance:
+      "Sow seeds in small seedling cups; transplant the healthiest shoot into the 18L pot at 4 weeks.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Never transplant into 100% pure compost; young brinjal roots suffer severe salt stress and damping-off.",
+      "Blend 25% balanced compost with garden soil and add crushed eggshells or lime for calcium.",
+    ],
+    seasonNotes: "Performs best in warm, sunny weather; protect from chilly winter draughts.",
+    harvestNotes: "Cut fruit when glossy, firm, and fully colored before seeds turn hard and skin dulls.",
+    imageUrl: "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    slug: "red-amaranth",
+    name: "Red Amaranth (Lal Saag / Chaulai)",
+    botanicalName: "Amaranthus tricolor",
+    category: "vegetable",
+    tagline: "Vibrant crimson nutritional powerhouse ready for harvest in just 25 days.",
+    description:
+      "Prized across Indian regional cuisines (Lal Saag, Tambdi Bhaji, Thotakura), red amaranth thrives in shallow balcony troughs, delivering iron-rich tender leaves at record speed.",
+    containerMinLitres: 8,
+    sunlightHoursMin: 4,
+    harvestDays: "25–35 Days",
+    wateringGuidance:
+      "Gentle misting or rose-can watering daily. Keep soil surface evenly moist without dislodging tiny roots.",
+    sowingGuidance:
+      "Scatter fine seeds thinly over moist soil surface, cover with 2 mm of coco peat. Emerges in 48 hours.",
+    compostBlendRatioMaxPercent: 20,
+    compostSafetyWarnings: [
+      "Never sow tiny amaranth seeds in 100% pure compost; excessive moisture crusting drowns delicate germinating sprouts.",
+      "Incorporate 20% compost into 80% light coco-soil mixture.",
+    ],
+    seasonNotes: "Extreme heat tolerance; thrives effortlessly through hot Indian summers and monsoons.",
+    harvestNotes: "Harvest baby greens at 20 days or cut stems 5 cm above base for multi-cut regrowth.",
+    imageUrl: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    slug: "bitter-gourd",
+    name: "Bitter Gourd (Karela)",
+    botanicalName: "Momordica charantia",
+    category: "vegetable",
+    tagline: "Vigorous balcony vine delivering prized medicinal ridged green gourds.",
+    description:
+      "A climbing vine adorned with yellow fragrant blossoms and deeply lobed leaves. Trained along a balcony grill or netting, Karela yields abundant therapeutic bitter gourds.",
+    containerMinLitres: 15,
+    sunlightHoursMin: 6,
+    harvestDays: "55–70 Days",
+    wateringGuidance:
+      "Water regularly to maintain moist soil during flowering. Mulch pot surface to retain moisture in summer.",
+    sowingGuidance:
+      "Nick seed coat gently, soak in water for 12 hours, sow 2 cm deep. Provide a trellis or string support.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Never plant bitter gourd in 100% pure compost; unamended compost leads to root rot and blossom drop.",
+      "Mix 25% compost with 75% loamy garden soil.",
+    ],
+    seasonNotes: "Warm season crop; thrives from February to October across the subcontinent.",
+    harvestNotes: "Harvest while fruits are dark green, firm, and tender before they turn orange and split open.",
+    imageUrl: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    slug: "capsicum",
+    name: "Capsicum (Shimla Mirch)",
+    botanicalName: "Capsicum annuum",
+    category: "vegetable",
+    tagline: "Crisp, sweet, blocky bell peppers thriving in structured balcony planters.",
+    description:
+      "A staple in Indian stir-fries and curries, Shimla Mirch produces compact bushy plants that yield thick-walled crunchy green peppers in moderate balcony pots.",
+    containerMinLitres: 12,
+    sunlightHoursMin: 5,
+    harvestDays: "60–75 Days",
+    wateringGuidance:
+      "Consistent, moderate watering. Moisture fluctuations cause blossom end rot and flower drop.",
+    sowingGuidance:
+      "Start seeds indoors in small plugs; transplant single vigorous seedling into a 12L pot after 4 true leaves appear.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Do not pot in 100% pure compost; pure compost impedes calcium uptake and causes blossom-end rot.",
+      "Combine 25% compost with 75% aerated potting loam and perlite.",
+    ],
+    seasonNotes: "Grows best in moderate temperatures (20°C–30°C); provide light afternoon shade in peak summer.",
+    harvestNotes: "Snip when firm and glossy green, or leave on vine to ripen to sweet yellow or red.",
+    imageUrl: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=800&q=80",
   },
 
   // --- FRUITS ---
@@ -276,6 +455,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Produces heavily during crisp sunny winter and spring months.",
     harvestNotes: "Harvest when fruits turn completely crimson red with green calyx curling back.",
+    imageUrl: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "dwarf-lemon",
@@ -299,167 +479,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Loves maximum sunlight; protect from strong dry winds during flowering.",
     harvestNotes: "Pick fruit when bright golden-orange with a gentle twist and snip.",
-  },
-  {
-    slug: "curry-leaves",
-    name: "Curry Leaves (Kadi Patta)",
-    botanicalName: "Murraya koenigii",
-    category: "herb",
-    tagline: "Essential Indian culinary aromatic thriving in sunny balcony containers.",
-    description:
-      "The heart of Indian tempering (tadka). Kadi Patta produces clusters of intensely aromatic glossy pinnate leaves that flourish in deep pots under warm sunshine.",
-    containerMinLitres: 15,
-    sunlightHoursMin: 5,
-    harvestDays: "60–90 Days",
-    wateringGuidance:
-      "Water when the top 3 cm dries. Prefers slightly acidic, well-draining soil; never allow water to stand in the saucer.",
-    sowingGuidance:
-      "Propagate from semi-hardwood stem cuttings or fresh seeds in warm weather. Protect saplings from harsh noon winds.",
-    compostBlendRatioMaxPercent: 25,
-    compostSafetyWarnings: [
-      "Never plant Curry Leaves in 100% pure compost; excessive organic density promotes fungal root rot and iron chlorosis.",
-      "Blend 25% mature compost with 75% red soil and coco peat for optimal drainage.",
-    ],
-    seasonNotes: "Grows vigorously in tropical heat and monsoon; slows down during cold winter months.",
-    harvestNotes: "Harvest whole leaflets from the top to stimulate bushier lateral branching.",
-  },
-  {
-    slug: "ajwain-leaves",
-    name: "Ajwain Leaves (Karpuravalli)",
-    botanicalName: "Plectranthus amboinicus",
-    category: "herb",
-    tagline: "Succulent medicinal powerhouse famed for pakoras and home remedies.",
-    description:
-      "Known as Indian Borage or Karpuravalli, this thick-leaved succulent herb emits a pungent thyme-and-oregano aroma. Indestructible on warm sunny apartment windowsills.",
-    containerMinLitres: 8,
-    sunlightHoursMin: 4,
-    harvestDays: "30–45 Days",
-    wateringGuidance:
-      "Drought-tolerant succulent nature; water sparingly only when soil is completely dry.",
-    sowingGuidance:
-      "Roots effortlessly from single 10 cm stem cuttings in soil or water within 5–7 days.",
-    compostBlendRatioMaxPercent: 20,
-    compostSafetyWarnings: [
-      "Never grow in 100% pure compost; succulent stems will rot instantly in water-retentive pure compost.",
-      "Mix 20% well-cured compost into 80% sandy loam or perlite-rich potting mix.",
-    ],
-    seasonNotes: "Thrives year-round across Indian climates; loves partial morning or full balcony sun.",
-    harvestNotes: "Snip thick tender leaves fresh as needed for soothing teas or savory fritters.",
-  },
-  {
-    slug: "okra-bhindi",
-    name: "Okra (Bhindi / Lady's Finger)",
-    botanicalName: "Abelmoschus esculentus",
-    category: "vegetable",
-    tagline: "High-yielding sun-worshipper with hibiscus-like blooms and tender pods.",
-    description:
-      "A quintessential Indian household favorite. Compact and dwarf okra cultivars produce striking cream flowers followed by crisp green pods within 50 days.",
-    containerMinLitres: 15,
-    sunlightHoursMin: 6,
-    harvestDays: "50–65 Days",
-    wateringGuidance:
-      "Consistent, deep watering during flowering and pod development; avoid splashing water on leaves.",
-    sowingGuidance:
-      "Soak seeds overnight and sow 1.5 cm deep directly in the final container. Germinates in 4–6 days.",
-    compostBlendRatioMaxPercent: 25,
-    compostSafetyWarnings: [
-      "Never start Okra in 100% pure compost; heavy nitrogen excess causes leafy gigantism with zero pods.",
-      "Blend 25% compost with garden soil and coarse sand for aeration.",
-    ],
-    seasonNotes: "Loves intense summer and warm monsoon weather (25°C–38°C).",
-    harvestNotes: "Harvest tender 3–4 inch pods every 2 days with pruning shears to stimulate continuous yield.",
-  },
-  {
-    slug: "brinjal-baingan",
-    name: "Brinjal (Baingan / Eggplant)",
-    botanicalName: "Solanum melongena",
-    category: "vegetable",
-    tagline: "Sturdy tropical producer with glossy purple fruit and purple blooms.",
-    description:
-      "From small round bhatia eggplants to slender purple brinjals, this hardy nightshade flourishes in balcony containers with upright staking and rich aeration.",
-    containerMinLitres: 18,
-    sunlightHoursMin: 6,
-    harvestDays: "65–80 Days",
-    wateringGuidance:
-      "Keep substrate evenly moist. Heavy feeder and drinker while fruits swell; never let soil dry to cracking.",
-    sowingGuidance:
-      "Sow seeds in small seedling cups; transplant the healthiest shoot into the 18L pot at 4 weeks.",
-    compostBlendRatioMaxPercent: 25,
-    compostSafetyWarnings: [
-      "Never transplant into 100% pure compost; young brinjal roots suffer severe salt stress and damping-off.",
-      "Blend 25% balanced compost with garden soil and add crushed eggshells or lime for calcium.",
-    ],
-    seasonNotes: "Performs best in warm, sunny weather; protect from chilly winter draughts.",
-    harvestNotes: "Cut fruit when glossy, firm, and fully colored before seeds turn hard and skin dulls.",
-  },
-  {
-    slug: "red-amaranth",
-    name: "Red Amaranth (Lal Saag / Chaulai)",
-    botanicalName: "Amaranthus tricolor",
-    category: "vegetable",
-    tagline: "Vibrant crimson nutritional powerhouse ready for harvest in just 25 days.",
-    description:
-      "Prized across Indian regional cuisines (Lal Saag, Tambdi Bhaji, Thotakura), red amaranth thrives in shallow balcony troughs, delivering iron-rich tender leaves at record speed.",
-    containerMinLitres: 8,
-    sunlightHoursMin: 4,
-    harvestDays: "25–35 Days",
-    wateringGuidance:
-      "Gentle misting or rose-can watering daily. Keep soil surface evenly moist without dislodging tiny roots.",
-    sowingGuidance:
-      "Scatter fine seeds thinly over moist soil surface, cover with 2 mm of coco peat. Emerges in 48 hours.",
-    compostBlendRatioMaxPercent: 20,
-    compostSafetyWarnings: [
-      "Never sow tiny amaranth seeds in 100% pure compost; excessive moisture crusting drowns delicate germinating sprouts.",
-      "Incorporate 20% compost into 80% light coco-soil mixture.",
-    ],
-    seasonNotes: "Extreme heat tolerance; thrives effortlessly through hot Indian summers and monsoons.",
-    harvestNotes: "Harvest baby greens at 20 days or cut stems 5 cm above base for multi-cut regrowth.",
-  },
-  {
-    slug: "bitter-gourd",
-    name: "Bitter Gourd (Karela)",
-    botanicalName: "Momordica charantia",
-    category: "vegetable",
-    tagline: "Vigorous balcony vine delivering prized medicinal ridged green gourds.",
-    description:
-      "A climbing vine adorned with yellow fragrant blossoms and deeply lobed leaves. Trained along a balcony grill or netting, Karela yields abundant therapeutic bitter gourds.",
-    containerMinLitres: 15,
-    sunlightHoursMin: 6,
-    harvestDays: "55–70 Days",
-    wateringGuidance:
-      "Water regularly to maintain moist soil during flowering. Mulch pot surface to retain moisture in summer.",
-    sowingGuidance:
-      "Nick seed coat gently, soak in water for 12 hours, sow 2 cm deep. Provide a trellis or string support.",
-    compostBlendRatioMaxPercent: 25,
-    compostSafetyWarnings: [
-      "Never plant bitter gourd in 100% pure compost; unamended compost leads to root rot and blossom drop.",
-      "Mix 25% compost with 75% loamy garden soil.",
-    ],
-    seasonNotes: "Warm season crop; thrives from February to October across the subcontinent.",
-    harvestNotes: "Harvest while fruits are dark green, firm, and tender before they turn orange and split open.",
-  },
-  {
-    slug: "capsicum",
-    name: "Capsicum (Shimla Mirch)",
-    botanicalName: "Capsicum annuum",
-    category: "vegetable",
-    tagline: "Crisp, sweet, blocky bell peppers thriving in structured balcony planters.",
-    description:
-      "A staple in Indian stir-fries and curries, Shimla Mirch produces compact bushy plants that yield thick-walled crunchy green peppers in moderate balcony pots.",
-    containerMinLitres: 12,
-    sunlightHoursMin: 5,
-    harvestDays: "60–75 Days",
-    wateringGuidance:
-      "Consistent, moderate watering. Moisture fluctuations cause blossom end rot and flower drop.",
-    sowingGuidance:
-      "Start seeds indoors in small plugs; transplant single vigorous seedling into a 12L pot after 4 true leaves appear.",
-    compostBlendRatioMaxPercent: 25,
-    compostSafetyWarnings: [
-      "Do not pot in 100% pure compost; pure compost impedes calcium uptake and causes blossom-end rot.",
-      "Combine 25% compost with 75% aerated potting loam and perlite.",
-    ],
-    seasonNotes: "Grows best in moderate temperatures (20°C–30°C); provide light afternoon shade in peak summer.",
-    harvestNotes: "Snip when firm and glossy green, or leave on vine to ripen to sweet yellow or red.",
+    imageUrl: "https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "dwarf-guava",
@@ -483,5 +503,6 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Extremely hardy in Indian heat; prune annually after harvest to maintain compact 4-foot height.",
     harvestNotes: "Harvest when fruit changes from deep green to light yellow-green with a rich fragrance.",
+    imageUrl: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=800&q=80",
   },
 ];
