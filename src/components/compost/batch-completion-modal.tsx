@@ -61,6 +61,21 @@ export function BatchCompletionModal({
               Always mix 20–30% mature compost into 70–80% garden soil or coco peat. Never plant seeds directly in 100% pure compost.
             </p>
           </div>
+
+          <div className="p-3.5 rounded-card bg-mint/40 border border-border/80 text-xs text-ink space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-action flex items-center gap-1.5">
+                <Sparkles className="h-3.5 w-3.5 text-action" />
+                <span>Have Surplus Compost?</span>
+              </span>
+              <a href="/community" target="_blank" rel="noopener noreferrer" className="font-semibold text-action hover:underline">
+                Share on Exchange →
+              </a>
+            </div>
+            <p className="text-[11px] text-muted leading-relaxed">
+              Share 5L bags of cured compost with nearby urban gardeners on the Soil & Seed Circle.
+            </p>
+          </div>
         </div>
 
         {/* Action buttons */}

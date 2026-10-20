@@ -1,5 +1,6 @@
 import React from "react";
-import { ShieldCheck, ClipboardList, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { ShieldCheck, Camera, Sprout, Users, ArrowRight } from "lucide-react";
 import { StatusChip } from "@/components/ui/status-chip";
 
 export function FeatureCards() {
@@ -15,7 +16,7 @@ export function FeatureCards() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Card 1 */}
           <div className="rounded-card border border-border bg-surface text-text shadow-sm p-6 flex flex-col justify-between space-y-4 hover:border-action/40 transition-colors">
             <div className="space-y-2">
@@ -38,13 +39,13 @@ export function FeatureCards() {
           <div className="rounded-card border border-border bg-surface text-text shadow-sm p-6 flex flex-col justify-between space-y-4 hover:border-action/40 transition-colors">
             <div className="space-y-2">
               <div className="h-12 w-12 rounded-control bg-mint flex items-center justify-center text-action mb-3">
-                <ClipboardList className="h-6 w-6" aria-hidden="true" />
+                <Camera className="h-6 w-6" aria-hidden="true" />
               </div>
               <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-ink">
-                Track Real Batches
+                Photo Journals & Logs
               </h3>
               <p className="text-sm text-muted">
-                Log weekly scrap additions, moisture checks, temperature readings, and turning actions with an honest chronological timeline.
+                Snap pile photos directly from your phone camera, log moisture and temperatures, and receive automated turn reminders.
               </p>
             </div>
             <div>
@@ -56,17 +57,38 @@ export function FeatureCards() {
           <div className="rounded-card border border-border bg-surface text-text shadow-sm p-6 flex flex-col justify-between space-y-4 hover:border-action/40 transition-colors">
             <div className="space-y-2">
               <div className="h-12 w-12 rounded-control bg-mint flex items-center justify-center text-action mb-3">
-                <Sparkles className="h-6 w-6" aria-hidden="true" />
+                <Sprout className="h-6 w-6" aria-hidden="true" />
               </div>
               <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-ink">
-                Evidence-First Advice
+                20 Plant Guides Hub
               </h3>
               <p className="text-sm text-muted">
-                Diagnose odor, excess moisture, or fruit flies with step-by-step conditional troubleshooting cited to EPA and MCGM handbooks.
+                Container requirements, sunlight hours, and safe 20–30% compost blending ratios for popular Indian herbs, vegetables, and fruits.
               </p>
             </div>
             <div>
-              <StatusChip status="user_reported" label="Cites EPA & MCGM guides" />
+              <StatusChip status="user_reported" label="20–30% safe blending rules" />
+            </div>
+          </div>
+
+          {/* Card 4 */}
+          <div className="rounded-card border border-border bg-surface text-text shadow-sm p-6 flex flex-col justify-between space-y-4 hover:border-action/40 transition-colors">
+            <div className="space-y-2">
+              <div className="h-12 w-12 rounded-control bg-mint flex items-center justify-center text-action mb-3">
+                <Users className="h-6 w-6" aria-hidden="true" />
+              </div>
+              <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-ink">
+                Soil & Seed Circle
+              </h3>
+              <p className="text-sm text-muted">
+                Share surplus cured compost, swap heirloom seed cuttings, source dry carbon browns, and rehome spare containers locally.
+              </p>
+            </div>
+            <div>
+              <Link href="/community" className="text-xs font-semibold text-action hover:underline inline-flex items-center gap-1">
+                <span>Explore Exchange</span>
+                <ArrowRight className="h-3 w-3" />
+              </Link>
             </div>
           </div>
         </div>

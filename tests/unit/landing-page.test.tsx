@@ -13,11 +13,12 @@ describe("Landing Page (Task 15)", () => {
     expect(ctas.length).toBeGreaterThan(0);
   });
 
-  it("renders all three core feature tiles with transparent status chips", () => {
+  it("renders all core feature tiles with transparent status chips", () => {
     render(<HomePage />);
     expect(screen.getByRole("heading", { level: 3, name: /screen your container/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 3, name: /track real batches/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 3, name: /evidence-first advice/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: /photo journals & logs/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: /20 plant guides hub/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: /soil & seed circle/i })).toBeInTheDocument();
   });
 
   it("includes SDG 12 Target 12.5 commitment", () => {

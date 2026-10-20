@@ -292,6 +292,28 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </div>
       </div>
 
+      {/* Soil & Seed Circle Community Exchange Callout */}
+      <div className="p-6 rounded-[24px] border border-emerald-200/80 bg-gradient-to-r from-mint/40 via-surface to-amber-50/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+        <div className="space-y-1 max-w-xl">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-action font-semibold">
+            <Sprout className="h-3.5 w-3.5" />
+            <span>Soil & Seed Circle</span>
+          </div>
+          <h3 className="font-display text-lg font-bold text-ink">
+            Need seeds, cuttings, or cured compost for {plant.name}?
+          </h3>
+          <p className="text-xs text-muted leading-relaxed">
+            Connect with nearby urban gardeners sharing heirloom seed packets, root cuttings, and cured compost in your locality.
+          </p>
+        </div>
+        <Link href="/community" className="shrink-0">
+          <span className="inline-flex items-center justify-center px-4 py-2 rounded-control text-xs font-semibold bg-ink text-surface hover:bg-action transition-colors shadow-2xs">
+            <span>Explore Community Exchange</span>
+            <ArrowRight className="ml-2 h-3.5 w-3.5" />
+          </span>
+        </Link>
+      </div>
+
       {/* Adjacent Plants Navigation */}
       <div className="pt-6 border-t border-border/80 flex items-center justify-between gap-4">
         <Link
