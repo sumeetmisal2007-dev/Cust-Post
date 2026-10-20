@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
       "Plan and manage small-scale household composting suited to your real balcony, terrace, and waste constraints.",
     start_url: "/",
     display: "standalone",
-    background_color: "#fbf8f2",
+    background_color: "#F8F3E9",
     theme_color: "#224734",
     orientation: "portrait",
     categories: ["utilities", "lifestyle", "education"],

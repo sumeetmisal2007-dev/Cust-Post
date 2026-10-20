@@ -28,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased min-h-screen flex flex-col bg-canvas text-text">
+      <body className="antialiased min-h-screen flex flex-col text-text">
         <Preloader />
         <Header />
         <div className="flex-1 flex flex-col">{children}</div>
