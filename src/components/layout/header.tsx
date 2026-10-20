@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: "/setup", label: "Plan setup" },
   { href: "/batches", label: "My batch" },
   { href: "/plants", label: "Learn" },
+  { href: "/community", label: "Exchange" },
   { href: "/sources", label: "Sources" },
 ];
 

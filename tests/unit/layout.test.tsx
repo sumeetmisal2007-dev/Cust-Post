@@ -15,6 +15,7 @@ describe("Layout Components (Task 14)", () => {
       expect(screen.getByRole("link", { name: /plan setup/i })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: /my batch/i })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: /learn/i })).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: /exchange/i })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: /sources/i })).toBeInTheDocument();
     });
 
