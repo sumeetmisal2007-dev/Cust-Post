@@ -35,8 +35,8 @@ describe("Rule Sources & Curated Plant Registry (Task 10)", () => {
   });
 
   describe("PLANT_GUIDES", () => {
-    it("contains exactly 3 reviewed plants for the MVP release", () => {
-      expect(PLANT_GUIDES.length).toBe(3);
+    it("contains 12 reviewed plants across herbs, vegetables, and fruits", () => {
+      expect(PLANT_GUIDES.length).toBe(12);
       const slugs = PLANT_GUIDES.map((p) => p.slug);
       expect(slugs).toContain("tulsi");
       expect(slugs).toContain("mint");

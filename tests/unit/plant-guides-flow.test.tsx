@@ -19,6 +19,24 @@ describe("Task 26: Plant Guide & Safe Compost Application Hub", () => {
       const link = screen.getByRole("link", { name: /view plant guide/i });
       expect(link).toHaveAttribute("href", "/plants/tulsi");
     });
+
+    it("renders category badge on card", () => {
+      render(<PlantCard plant={tulsi} />);
+      expect(screen.getAllByText(/herb/i).length).toBeGreaterThanOrEqual(1);
+    });
+  });
+
+  describe("Curated Plant Collection", () => {
+    it("contains at least 12 beginner-friendly container plants", () => {
+      expect(PLANT_GUIDES.length).toBeGreaterThanOrEqual(12);
+    });
+
+    it("includes herbs, vegetables, and fruits", () => {
+      const categories = new Set(PLANT_GUIDES.map((p) => p.category));
+      expect(categories.has("herb")).toBe(true);
+      expect(categories.has("vegetable")).toBe(true);
+      expect(categories.has("fruit")).toBe(true);
+    });
   });
 
   describe("Compost Safety Guardrails", () => {
