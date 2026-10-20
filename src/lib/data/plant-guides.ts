@@ -43,7 +43,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Grows year-round in coastal climates; protect from heavy monsoon downpours.",
     harvestNotes: "Pinch top leaf clusters regularly to encourage bushy branching and prevent premature flowering.",
-    imageUrl: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/tulsi.png",
   },
   {
     slug: "mint",
@@ -91,7 +91,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Grows best in mild weather and cool winter mornings; provide afternoon shade in summer.",
     harvestNotes: "Cut outer leaves at the base, leaving central crown intact for continuous regrowth.",
-    imageUrl: "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/coriander.png",
   },
   {
     slug: "sweet-basil",
@@ -115,7 +115,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Loves warm weather and bright light; protect from frost or cold drafts.",
     harvestNotes: "Pinch off flower buds immediately to keep foliage sweet and prevent bitterness.",
-    imageUrl: "https://images.unsplash.com/photo-1608686207856-001b95cf60ca?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/sweet-basil.jpg",
   },
   {
     slug: "rosemary",
@@ -163,7 +163,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Grows vigorously in tropical heat and monsoon; slows down during cold winter months.",
     harvestNotes: "Harvest whole leaflets from the top to stimulate bushier lateral branching.",
-    imageUrl: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/curry-leaves.jpg",
   },
   {
     slug: "ajwain-leaves",
@@ -187,7 +187,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Thrives year-round across Indian climates; loves partial morning or full balcony sun.",
     harvestNotes: "Snip thick tender leaves fresh as needed for soothing teas or savory fritters.",
-    imageUrl: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/ajwain-leaves.png",
   },
 
   // --- VEGETABLES ---
@@ -237,7 +237,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Thrives during warm summer and post-monsoon months; protect from heavy frost or prolonged cold.",
     harvestNotes: "Snip mature green chilies with kitchen scissors to prevent branch snapping.",
-    imageUrl: "https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/green-chili.png",
   },
   {
     slug: "spinach",
@@ -309,7 +309,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Excellent year-round balcony green; especially rapid during mild weather.",
     harvestNotes: "Snip entire stems at ground level at 21 days for tender culinary greens.",
-    imageUrl: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/methi.png",
   },
   {
     slug: "okra-bhindi",
@@ -357,7 +357,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Performs best in warm, sunny weather; protect from chilly winter draughts.",
     harvestNotes: "Cut fruit when glossy, firm, and fully colored before seeds turn hard and skin dulls.",
-    imageUrl: "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/brinjal.png",
   },
   {
     slug: "red-amaranth",
@@ -381,7 +381,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Extreme heat tolerance; thrives effortlessly through hot Indian summers and monsoons.",
     harvestNotes: "Harvest baby greens at 20 days or cut stems 5 cm above base for multi-cut regrowth.",
-    imageUrl: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/red-amaranth.png",
   },
   {
     slug: "bitter-gourd",
@@ -405,7 +405,7 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Warm season crop; thrives from February to October across the subcontinent.",
     harvestNotes: "Harvest while fruits are dark green, firm, and tender before they turn orange and split open.",
-    imageUrl: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/bitter-gourd.png",
   },
   {
     slug: "capsicum",
@@ -503,6 +503,6 @@ export const PLANT_GUIDES: PlantGuide[] = [
     ],
     seasonNotes: "Extremely hardy in Indian heat; prune annually after harvest to maintain compact 4-foot height.",
     harvestNotes: "Harvest when fruit changes from deep green to light yellow-green with a rich fragrance.",
-    imageUrl: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/plants/dwarf-guava.png",
   },
 ];

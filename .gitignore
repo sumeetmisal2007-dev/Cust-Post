@@ -33,9 +33,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# superpowers / scratch
+# superpowers / scratch / agents
 .superpowers/sdd/*/briefs/
 .superpowers/sdd/*/packages/
+.agents/
 
 # playwright
 /test-results/
