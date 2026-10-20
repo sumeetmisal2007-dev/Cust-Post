@@ -300,4 +300,188 @@ export const PLANT_GUIDES: PlantGuide[] = [
     seasonNotes: "Loves maximum sunlight; protect from strong dry winds during flowering.",
     harvestNotes: "Pick fruit when bright golden-orange with a gentle twist and snip.",
   },
+  {
+    slug: "curry-leaves",
+    name: "Curry Leaves (Kadi Patta)",
+    botanicalName: "Murraya koenigii",
+    category: "herb",
+    tagline: "Essential Indian culinary aromatic thriving in sunny balcony containers.",
+    description:
+      "The heart of Indian tempering (tadka). Kadi Patta produces clusters of intensely aromatic glossy pinnate leaves that flourish in deep pots under warm sunshine.",
+    containerMinLitres: 15,
+    sunlightHoursMin: 5,
+    harvestDays: "60–90 Days",
+    wateringGuidance:
+      "Water when the top 3 cm dries. Prefers slightly acidic, well-draining soil; never allow water to stand in the saucer.",
+    sowingGuidance:
+      "Propagate from semi-hardwood stem cuttings or fresh seeds in warm weather. Protect saplings from harsh noon winds.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Never plant Curry Leaves in 100% pure compost; excessive organic density promotes fungal root rot and iron chlorosis.",
+      "Blend 25% mature compost with 75% red soil and coco peat for optimal drainage.",
+    ],
+    seasonNotes: "Grows vigorously in tropical heat and monsoon; slows down during cold winter months.",
+    harvestNotes: "Harvest whole leaflets from the top to stimulate bushier lateral branching.",
+  },
+  {
+    slug: "ajwain-leaves",
+    name: "Ajwain Leaves (Karpuravalli)",
+    botanicalName: "Plectranthus amboinicus",
+    category: "herb",
+    tagline: "Succulent medicinal powerhouse famed for pakoras and home remedies.",
+    description:
+      "Known as Indian Borage or Karpuravalli, this thick-leaved succulent herb emits a pungent thyme-and-oregano aroma. Indestructible on warm sunny apartment windowsills.",
+    containerMinLitres: 8,
+    sunlightHoursMin: 4,
+    harvestDays: "30–45 Days",
+    wateringGuidance:
+      "Drought-tolerant succulent nature; water sparingly only when soil is completely dry.",
+    sowingGuidance:
+      "Roots effortlessly from single 10 cm stem cuttings in soil or water within 5–7 days.",
+    compostBlendRatioMaxPercent: 20,
+    compostSafetyWarnings: [
+      "Never grow in 100% pure compost; succulent stems will rot instantly in water-retentive pure compost.",
+      "Mix 20% well-cured compost into 80% sandy loam or perlite-rich potting mix.",
+    ],
+    seasonNotes: "Thrives year-round across Indian climates; loves partial morning or full balcony sun.",
+    harvestNotes: "Snip thick tender leaves fresh as needed for soothing teas or savory fritters.",
+  },
+  {
+    slug: "okra-bhindi",
+    name: "Okra (Bhindi / Lady's Finger)",
+    botanicalName: "Abelmoschus esculentus",
+    category: "vegetable",
+    tagline: "High-yielding sun-worshipper with hibiscus-like blooms and tender pods.",
+    description:
+      "A quintessential Indian household favorite. Compact and dwarf okra cultivars produce striking cream flowers followed by crisp green pods within 50 days.",
+    containerMinLitres: 15,
+    sunlightHoursMin: 6,
+    harvestDays: "50–65 Days",
+    wateringGuidance:
+      "Consistent, deep watering during flowering and pod development; avoid splashing water on leaves.",
+    sowingGuidance:
+      "Soak seeds overnight and sow 1.5 cm deep directly in the final container. Germinates in 4–6 days.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Never start Okra in 100% pure compost; heavy nitrogen excess causes leafy gigantism with zero pods.",
+      "Blend 25% compost with garden soil and coarse sand for aeration.",
+    ],
+    seasonNotes: "Loves intense summer and warm monsoon weather (25°C–38°C).",
+    harvestNotes: "Harvest tender 3–4 inch pods every 2 days with pruning shears to stimulate continuous yield.",
+  },
+  {
+    slug: "brinjal-baingan",
+    name: "Brinjal (Baingan / Eggplant)",
+    botanicalName: "Solanum melongena",
+    category: "vegetable",
+    tagline: "Sturdy tropical producer with glossy purple fruit and purple blooms.",
+    description:
+      "From small round bhatia eggplants to slender purple brinjals, this hardy nightshade flourishes in balcony containers with upright staking and rich aeration.",
+    containerMinLitres: 18,
+    sunlightHoursMin: 6,
+    harvestDays: "65–80 Days",
+    wateringGuidance:
+      "Keep substrate evenly moist. Heavy feeder and drinker while fruits swell; never let soil dry to cracking.",
+    sowingGuidance:
+      "Sow seeds in small seedling cups; transplant the healthiest shoot into the 18L pot at 4 weeks.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Never transplant into 100% pure compost; young brinjal roots suffer severe salt stress and damping-off.",
+      "Blend 25% balanced compost with garden soil and add crushed eggshells or lime for calcium.",
+    ],
+    seasonNotes: "Performs best in warm, sunny weather; protect from chilly winter draughts.",
+    harvestNotes: "Cut fruit when glossy, firm, and fully colored before seeds turn hard and skin dulls.",
+  },
+  {
+    slug: "red-amaranth",
+    name: "Red Amaranth (Lal Saag / Chaulai)",
+    botanicalName: "Amaranthus tricolor",
+    category: "vegetable",
+    tagline: "Vibrant crimson nutritional powerhouse ready for harvest in just 25 days.",
+    description:
+      "Prized across Indian regional cuisines (Lal Saag, Tambdi Bhaji, Thotakura), red amaranth thrives in shallow balcony troughs, delivering iron-rich tender leaves at record speed.",
+    containerMinLitres: 8,
+    sunlightHoursMin: 4,
+    harvestDays: "25–35 Days",
+    wateringGuidance:
+      "Gentle misting or rose-can watering daily. Keep soil surface evenly moist without dislodging tiny roots.",
+    sowingGuidance:
+      "Scatter fine seeds thinly over moist soil surface, cover with 2 mm of coco peat. Emerges in 48 hours.",
+    compostBlendRatioMaxPercent: 20,
+    compostSafetyWarnings: [
+      "Never sow tiny amaranth seeds in 100% pure compost; excessive moisture crusting drowns delicate germinating sprouts.",
+      "Incorporate 20% compost into 80% light coco-soil mixture.",
+    ],
+    seasonNotes: "Extreme heat tolerance; thrives effortlessly through hot Indian summers and monsoons.",
+    harvestNotes: "Harvest baby greens at 20 days or cut stems 5 cm above base for multi-cut regrowth.",
+  },
+  {
+    slug: "bitter-gourd",
+    name: "Bitter Gourd (Karela)",
+    botanicalName: "Momordica charantia",
+    category: "vegetable",
+    tagline: "Vigorous balcony vine delivering prized medicinal ridged green gourds.",
+    description:
+      "A climbing vine adorned with yellow fragrant blossoms and deeply lobed leaves. Trained along a balcony grill or netting, Karela yields abundant therapeutic bitter gourds.",
+    containerMinLitres: 15,
+    sunlightHoursMin: 6,
+    harvestDays: "55–70 Days",
+    wateringGuidance:
+      "Water regularly to maintain moist soil during flowering. Mulch pot surface to retain moisture in summer.",
+    sowingGuidance:
+      "Nick seed coat gently, soak in water for 12 hours, sow 2 cm deep. Provide a trellis or string support.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Never plant bitter gourd in 100% pure compost; unamended compost leads to root rot and blossom drop.",
+      "Mix 25% compost with 75% loamy garden soil.",
+    ],
+    seasonNotes: "Warm season crop; thrives from February to October across the subcontinent.",
+    harvestNotes: "Harvest while fruits are dark green, firm, and tender before they turn orange and split open.",
+  },
+  {
+    slug: "capsicum",
+    name: "Capsicum (Shimla Mirch)",
+    botanicalName: "Capsicum annuum",
+    category: "vegetable",
+    tagline: "Crisp, sweet, blocky bell peppers thriving in structured balcony planters.",
+    description:
+      "A staple in Indian stir-fries and curries, Shimla Mirch produces compact bushy plants that yield thick-walled crunchy green peppers in moderate balcony pots.",
+    containerMinLitres: 12,
+    sunlightHoursMin: 5,
+    harvestDays: "60–75 Days",
+    wateringGuidance:
+      "Consistent, moderate watering. Moisture fluctuations cause blossom end rot and flower drop.",
+    sowingGuidance:
+      "Start seeds indoors in small plugs; transplant single vigorous seedling into a 12L pot after 4 true leaves appear.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Do not pot in 100% pure compost; pure compost impedes calcium uptake and causes blossom-end rot.",
+      "Combine 25% compost with 75% aerated potting loam and perlite.",
+    ],
+    seasonNotes: "Grows best in moderate temperatures (20°C–30°C); provide light afternoon shade in peak summer.",
+    harvestNotes: "Snip when firm and glossy green, or leave on vine to ripen to sweet yellow or red.",
+  },
+  {
+    slug: "dwarf-guava",
+    name: "Dwarf Guava (Amrood / Peru)",
+    botanicalName: "Psidium guajava",
+    category: "fruit",
+    tagline: "Prolific Indian balcony fruit tree with fragrant white blooms and sweet fruit.",
+    description:
+      "Grafted dwarf Thai and Lucknow guava varieties thrive in large balcony containers, producing smooth attractive bark, fragrant pollinators' blooms, and crisp sweet fruit.",
+    containerMinLitres: 25,
+    sunlightHoursMin: 6,
+    harvestDays: "120–180 Days",
+    wateringGuidance:
+      "Deep, thorough watering once or twice a week. Allow top 4 cm to dry between waterings.",
+    sowingGuidance:
+      "Always plant grafted dwarf or air-layered saplings in a sturdy 25L+ terracotta or fabric growbag.",
+    compostBlendRatioMaxPercent: 25,
+    compostSafetyWarnings: [
+      "Never plant fruit saplings directly in 100% pure compost; root suffocation and nutrient lockout will occur.",
+      "Top-dress with 25% compost mix twice a year before flowering and fruiting cycles.",
+    ],
+    seasonNotes: "Extremely hardy in Indian heat; prune annually after harvest to maintain compact 4-foot height.",
+    harvestNotes: "Harvest when fruit changes from deep green to light yellow-green with a rich fragrance.",
+  },
 ];

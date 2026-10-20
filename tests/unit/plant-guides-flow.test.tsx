@@ -27,8 +27,8 @@ describe("Task 26: Plant Guide & Safe Compost Application Hub", () => {
   });
 
   describe("Curated Plant Collection", () => {
-    it("contains at least 12 beginner-friendly container plants", () => {
-      expect(PLANT_GUIDES.length).toBeGreaterThanOrEqual(12);
+    it("contains at least 20 beginner-friendly container plants", () => {
+      expect(PLANT_GUIDES.length).toBeGreaterThanOrEqual(20);
     });
 
     it("includes herbs, vegetables, and fruits", () => {

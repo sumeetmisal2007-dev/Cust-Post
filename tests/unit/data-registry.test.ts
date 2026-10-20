@@ -35,12 +35,15 @@ describe("Rule Sources & Curated Plant Registry (Task 10)", () => {
   });
 
   describe("PLANT_GUIDES", () => {
-    it("contains 12 reviewed plants across herbs, vegetables, and fruits", () => {
-      expect(PLANT_GUIDES.length).toBe(12);
+    it("contains 20 reviewed plants across herbs, vegetables, and fruits", () => {
+      expect(PLANT_GUIDES.length).toBe(20);
       const slugs = PLANT_GUIDES.map((p) => p.slug);
       expect(slugs).toContain("tulsi");
       expect(slugs).toContain("mint");
       expect(slugs).toContain("cherry-tomato");
+      expect(slugs).toContain("curry-leaves");
+      expect(slugs).toContain("okra-bhindi");
+      expect(slugs).toContain("brinjal-baingan");
     });
 
     it("restricts compost application to maximum 20–30% in all plant guides", () => {
