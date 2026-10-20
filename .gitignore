@@ -5,6 +5,9 @@
 
 # testing
 /coverage
+tests/
+backend/tests/
+frontend/tests/
 
 # next.js
 .next/
