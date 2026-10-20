@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { auth } from "@/lib/auth";
+import { auth } from "../src/auth/auth";
 
 describe("Better Auth & @better-auth/infra dash plugin integration", () => {
   it("initializes auth instance with handler and api endpoints", () => {

@@ -2,11 +2,11 @@ import { describe, it, expect } from "vitest";
 import {
   recommendCompostingMethod,
   MethodRecommendationInputs,
-} from "@/lib/compost-rules/method-recommender";
+} from "../src/compost-rules/method-recommender";
 import {
   evaluateStartingMixture,
-} from "@/lib/compost-rules/mixture-evaluator";
-import { WasteInputItem } from "@/types/domain";
+} from "../src/compost-rules/mixture-evaluator";
+import { WasteInputItem } from "../src/types/domain";
 
 describe("Method & Mixture Recommendation Engine (Task 07)", () => {
   describe("recommendCompostingMethod", () => {

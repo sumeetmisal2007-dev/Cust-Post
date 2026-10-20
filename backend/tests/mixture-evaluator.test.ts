@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import {
   evaluateStartingMixture,
   MATERIAL_DENSITIES,
-} from "@/lib/compost-rules/mixture-evaluator";
-import { WasteInputItem } from "@/types/domain";
+} from "../src/compost-rules/mixture-evaluator";
+import { WasteInputItem } from "../src/types/domain";
 
 describe("Mixture Evaluator: Consistent Units, Quantities, and Ratios", () => {
   it("calculates both weight (kg) and volume (litres) using material bulk densities", () => {

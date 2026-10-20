@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { evaluateContainer } from "@/lib/compost-rules/container-evaluator";
-import { ContainerCheckInputs } from "@/types/domain";
+import { evaluateContainer } from "../src/compost-rules/container-evaluator";
+import { ContainerCheckInputs } from "../src/types/domain";
 
 describe("ContainerCheck Suitability Engine (Task 06)", () => {
   it("rejects containers previously used for hazardous chemicals/paint (Safety Guardrail 1)", () => {

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "../src/supabase/client";
 
 describe("Supabase Client Helpers (Task 13)", () => {
   it("initializes browser client with default fallback or configured env values", () => {

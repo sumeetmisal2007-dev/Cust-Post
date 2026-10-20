@@ -5,11 +5,11 @@ import path from "path";
 describe("Database Migrations & RLS Policies (Tasks 11 & 12)", () => {
   const schemaSqlPath = path.resolve(
     __dirname,
-    "../../supabase/migrations/20261018000001_initial_schema.sql"
+    "../supabase/migrations/20261018000001_initial_schema.sql"
   );
   const rlsSqlPath = path.resolve(
     __dirname,
-    "../../supabase/migrations/20261018000002_rls_policies.sql"
+    "../supabase/migrations/20261018000002_rls_policies.sql"
   );
 
   const schemaSql = fs.readFileSync(schemaSqlPath, "utf-8");

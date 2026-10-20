@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import {
   calculateGeometricVolume,
   validateSpaceFit,
-} from "@/lib/compost-rules/volume-calculator";
-import { ContainerDimensions, SpaceDimensions } from "@/types/domain";
+} from "../src/compost-rules/volume-calculator";
+import { ContainerDimensions, SpaceDimensions } from "../src/types/domain";
 
 describe("Volume Calculator & Space Fitting Engine (Task 05)", () => {
   describe("calculateGeometricVolume", () => {

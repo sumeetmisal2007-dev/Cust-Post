@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   troubleshootCompost,
   TroubleshootingInputs,
-} from "@/lib/compost-rules/troubleshooter";
+} from "../src/compost-rules/troubleshooter";
 
 describe("Symptom-Based Troubleshooting Engine (Task 08)", () => {
   it("resolves foul rotten/ammonia odor with aeration and dry brown additions", () => {

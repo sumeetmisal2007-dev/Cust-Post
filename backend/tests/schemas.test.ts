@@ -2,15 +2,15 @@ import { describe, it, expect } from "vitest";
 import {
   spaceProfileSchema,
   containerCheckSchema,
-} from "@/lib/validation/space-container.schema";
+} from "../src/validation/space-container.schema";
 import {
   wasteInputItemSchema,
   wasteInventorySchema,
-} from "@/lib/validation/waste-materials.schema";
+} from "../src/validation/waste-materials.schema";
 import {
   batchObservationSchema,
   physicalMaturityChecklistSchema,
-} from "@/lib/validation/batch-observation.schema";
+} from "../src/validation/batch-observation.schema";
 
 describe("Domain Validation Schemas (Task 04)", () => {
   describe("Space Profile Schema", () => {

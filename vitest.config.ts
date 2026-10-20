@@ -11,11 +11,14 @@ export default defineConfig({
     include: [
       "tests/unit/**/*.{test,spec}.{ts,tsx}",
       "tests/integration/**/*.{test,spec}.{ts,tsx}",
+      "backend/tests/**/*.{test,spec}.{ts,tsx}",
+      "frontend/tests/**/*.{test,spec}.{ts,tsx}",
     ],
     exclude: ["tests/e2e/**", "node_modules/**"],
   },
   resolve: {
     alias: {
+      "@cust-post/backend": path.resolve(__dirname, "./backend/src/index.ts"),
       "@": path.resolve(__dirname, "./src"),
     },
   },

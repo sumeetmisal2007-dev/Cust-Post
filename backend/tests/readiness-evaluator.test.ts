@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import {
   estimateReadinessWindow,
   evaluateMaturityChecklist,
-} from "@/lib/compost-rules/readiness-evaluator";
-import { PhysicalMaturityChecks } from "@/types/domain";
+} from "../src/compost-rules/readiness-evaluator";
+import { PhysicalMaturityChecks } from "../src/types/domain";
 
 describe("Readiness Window & Physical Maturity Checklist Engine (Task 09)", () => {
   describe("estimateReadinessWindow", () => {

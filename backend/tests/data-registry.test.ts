@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { SOURCES_REGISTRY } from "@/lib/data/sources-registry";
-import { PLANT_GUIDES } from "@/lib/data/plant-guides";
+import { SOURCES_REGISTRY } from "../src/data/sources-registry";
+import { PLANT_GUIDES } from "../src/data/plant-guides";
 
 describe("Rule Sources & Curated Plant Registry (Task 10)", () => {
   describe("SOURCES_REGISTRY", () => {
