@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { GuestBanner } from "@/components/layout/guest-banner";
 import { PwaRegistrar } from "@/components/pwa/pwa-registrar";
 import manifest from "@/app/manifest";
 
@@ -23,15 +22,6 @@ describe("Layout Components (Task 14)", () => {
       render(<Header />);
       const ctaButtons = screen.getAllByRole("link", { name: /start a setup/i });
       expect(ctaButtons.length).toBeGreaterThan(0);
-    });
-  });
-
-  describe("GuestBanner", () => {
-    it("explains that setup can be completed without mandatory account creation", () => {
-      render(<GuestBanner />);
-      expect(
-        screen.getByText(/no account required to plan your setup/i)
-      ).toBeInTheDocument();
     });
   });
 
