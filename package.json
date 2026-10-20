@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@better-auth/infra": "^0.4.20",
-    "@hookform/resolvers": "^3.10.0",
+    "@hookform/resolvers": "^6.0.0",
     "@radix-ui/react-slot": "^1.1.2",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.49.1",
@@ -25,13 +25,8 @@
     "react-dom": "19.0.0",
     "react-hook-form": "^7.54.2",
     "tailwind-merge": "^3.0.2",
-    "zod": "^3.24.2",
+    "zod": "^4.6.7",
     "zustand": "^5.0.3"
-  },
-  "overrides": {
-    "@better-auth/infra": {
-      "zod": "4.6.7"
-    }
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",

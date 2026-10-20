@@ -32,13 +32,13 @@ export const foodGradeStatusEnum = z.enum(["food_grade", "non_food_grade", "unkn
 export const spaceProfileSchema = z.object({
   locationType: locationTypeEnum,
   lengthCm: z
-    .number({ invalid_type_error: "Length must be a number" })
+    .number({ message: "Length must be a number" })
     .positive("Length must be greater than 0"),
   widthCm: z
-    .number({ invalid_type_error: "Width must be a number" })
+    .number({ message: "Width must be a number" })
     .positive("Width must be greater than 0"),
   maxHeightCm: z
-    .number({ invalid_type_error: "Height must be a number" })
+    .number({ message: "Height must be a number" })
     .positive("Height must be greater than 0"),
 });
 
@@ -85,4 +85,4 @@ export const containerCheckSchema = z
   });
 
 export type SpaceProfileFormValues = z.infer<typeof spaceProfileSchema>;
-export type ContainerCheckFormValues = z.infer<typeof containerCheckSchema>;
+export type ContainerCheckFormValues = z.input<typeof containerCheckSchema>;
