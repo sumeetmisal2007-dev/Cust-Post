@@ -10,16 +10,16 @@ import {
   AlertTriangle,
   Calendar,
   Scissors,
-  CheckCircle2,
   Sparkles,
   ShieldCheck,
   ArrowRight,
   Clock,
   Layers,
   Leaf,
-  Info,
 } from "lucide-react";
-import { PLANT_GUIDES, PlantGuide } from "@/lib/data/plant-guides";
+import { PLANT_GUIDES } from "@/lib/data/plant-guides";
+import { BotanicalArt } from "@/components/plants/botanical-art";
+import { PotCalculator } from "@/components/plants/pot-calculator";
 
 interface PlantDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -81,30 +81,38 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </div>
       </div>
 
-      {/* Hero Display Section - AMC Natural Editorial Hierarchy */}
-      <div className="space-y-6">
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold inline-flex items-center gap-1.5">
-              <Sparkles className="h-3 w-3 text-emerald-600" />
-              Max {plant.compostBlendRatioMaxPercent}% Compost Ratio
-            </span>
-            <span className="text-sm font-serif italic text-muted">
-              {plant.botanicalName}
-            </span>
+      {/* Hero Display Section - AMC Natural Editorial Hierarchy with Botanical Emblem */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-2">
+        <div className="space-y-4 max-w-2xl">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold inline-flex items-center gap-1.5">
+                <Sparkles className="h-3 w-3 text-emerald-600" />
+                Max {plant.compostBlendRatioMaxPercent}% Compost Ratio
+              </span>
+              <span className="text-sm font-serif italic text-muted">
+                {plant.botanicalName}
+              </span>
+            </div>
+
+            <h1 className="font-display text-4xl sm:text-6xl font-extrabold text-ink tracking-tight leading-tight">
+              {plant.name}
+            </h1>
+            <p className="text-lg sm:text-xl text-ink/80 font-medium leading-relaxed">
+              {plant.tagline}
+            </p>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl font-extrabold text-ink tracking-tight leading-tight">
-            {plant.name}
-          </h1>
-          <p className="text-lg sm:text-xl text-ink/80 font-medium max-w-3xl leading-relaxed">
-            {plant.tagline}
+          <p className="text-sm sm:text-base text-text leading-relaxed">
+            {plant.description}
           </p>
         </div>
 
-        <p className="text-sm sm:text-base text-text leading-relaxed max-w-3xl">
-          {plant.description}
-        </p>
+        {/* Hero Minimalist Botanical Silhouette Art */}
+        <div className="relative p-7 rounded-[32px] bg-gradient-to-br from-mint/40 via-surface to-amber-50/40 border border-border/80 shadow-md flex items-center justify-center shrink-0 self-start md:self-center">
+          <div className="absolute inset-0 rounded-[32px] bg-radial from-brand/10 to-transparent blur-xl pointer-events-none" />
+          <BotanicalArt slug={plant.slug} className="h-20 w-20 sm:h-24 sm:w-24 text-action" size={96} />
+        </div>
       </div>
 
       {/* Floating AMC Natural Radial Gradient Stat Orb Card */}
@@ -191,7 +199,7 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
       </div>
 
       {/* Two-Column Editorial Care & Formulation Breakdown */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Left Column: Environmental & Growth Protocols */}
         <div className="space-y-6">
           <h2 className="font-display text-2xl font-bold text-ink flex items-center gap-2 pb-2 border-b border-border">
@@ -251,53 +259,8 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
             <span>Compost Formulation</span>
           </h2>
 
-          {/* Safe Soil Recipe Card */}
-          <div className="p-6 rounded-[24px] border border-emerald-300 bg-gradient-to-br from-emerald-50/90 to-surface/90 space-y-4 shadow-sm">
-            <div className="flex items-center gap-2 text-emerald-950 font-bold text-base">
-              <CheckCircle2 className="h-5 w-5 text-emerald-700" />
-              <span>Optimal Balcony Soil Recipe</span>
-            </div>
-
-            <div className="p-4 rounded-xl bg-white/80 border border-emerald-200 text-xs font-mono space-y-2">
-              <div className="flex justify-between items-center text-ink font-bold">
-                <span>Mature Finished Compost:</span>
-                <span className="text-action">{plant.compostBlendRatioMaxPercent}%</span>
-              </div>
-              <div className="flex justify-between items-center text-ink font-bold">
-                <span>Potting Earth / Coco Peat:</span>
-                <span className="text-muted">{100 - plant.compostBlendRatioMaxPercent}%</span>
-              </div>
-              <div className="w-full bg-border/50 h-2 rounded-full overflow-hidden flex">
-                <div style={{ width: `${plant.compostBlendRatioMaxPercent}%` }} className="bg-action" />
-                <div style={{ width: `${100 - plant.compostBlendRatioMaxPercent}%` }} className="bg-amber-200" />
-              </div>
-            </div>
-
-            <div className="space-y-2 text-xs text-emerald-950">
-              <span className="font-semibold block uppercase tracking-wider text-[11px] text-emerald-900">
-                Safety & Blending Rules:
-              </span>
-              <ul className="space-y-2 pl-1">
-                {plant.compostSafetyWarnings.map((warning, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-emerald-900 leading-relaxed">
-                    <span className="text-emerald-700 font-bold shrink-0 mt-0.5">•</span>
-                    <span>{warning}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Universal Agronomic Caution Banner */}
-          <div className="p-5 rounded-[20px] border border-amber-300 bg-amber-50/80 space-y-2 shadow-xs">
-            <div className="flex items-center gap-2 text-amber-950 font-bold text-xs uppercase tracking-wide">
-              <AlertTriangle className="h-4 w-4 text-amber-700 shrink-0" />
-              <span>Universal Warning: No 100% Compost</span>
-            </div>
-            <p className="text-xs text-amber-900 leading-relaxed">
-              Compost is an organic soil conditioner with concentrated nutrients and biological activity. Planting directly in 100% pure compost will starve seedling roots of oxygen through pore collapse and induce salt stress. Always dilute with garden soil or perlite.
-            </p>
-          </div>
+          {/* Interactive AMC Pot Formulator Component */}
+          <PotCalculator plant={plant} />
 
           {/* Root Zone & Container Requirements */}
           <div className="p-5 rounded-[20px] border border-border/80 bg-surface/80 space-y-3 shadow-xs">

@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Sun, Box, ArrowRight, Clock, Sparkles } from "lucide-react";
 import { PlantGuide } from "@/lib/data/plant-guides";
+import { BotanicalArt } from "@/components/plants/botanical-art";
 
 interface PlantCardProps {
   plant: PlantGuide;
@@ -39,14 +40,19 @@ export function PlantCard({ plant }: PlantCardProps) {
           </span>
         </div>
 
-        {/* Title & Tagline */}
-        <div className="space-y-1.5">
-          <h3 className="font-display text-2xl font-bold text-ink tracking-tight group-hover:text-action transition-colors">
-            {plant.name}
-          </h3>
-          <p className="text-xs text-muted leading-relaxed line-clamp-2">
-            {plant.tagline}
-          </p>
+        {/* Title, Tagline & Botanical Artwork Emblem */}
+        <div className="flex items-start justify-between gap-3">
+          <div className="space-y-1.5 flex-1">
+            <h3 className="font-display text-2xl font-bold text-ink tracking-tight group-hover:text-action transition-colors">
+              {plant.name}
+            </h3>
+            <p className="text-xs text-muted leading-relaxed line-clamp-2">
+              {plant.tagline}
+            </p>
+          </div>
+          <div className="p-2 rounded-2xl bg-mint/50 border border-border/60 shrink-0 group-hover:bg-mint/80 transition-colors shadow-2xs">
+            <BotanicalArt slug={plant.slug} className="h-7 w-7 text-action group-hover:scale-105 transition-transform" size={28} />
+          </div>
         </div>
 
         {/* Quick Specs Pill Grid */}
