@@ -45,7 +45,7 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
       hasLid: containerInputs?.hasLid ?? true,
       hasVentilationHoles: containerInputs?.hasVentilationHoles ?? false,
       hasDrainageHoles: containerInputs?.hasDrainageHoles ?? false,
-      isFoodGrade: containerInputs?.isFoodGrade || "unknown",
+      isFoodGrade: containerInputs?.isFoodGrade || "food_grade",
     },
   });
 
@@ -221,6 +221,24 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
             </select>
             <p className="text-xs text-muted mt-1">
               Safety rule: Unknown containers are never assumed to be clean.
+            </p>
+          </div>
+
+          <div className="space-y-1.5 text-left sm:col-span-2">
+            <label htmlFor="container-food-grade" className="block text-sm font-semibold text-ink">
+              Food-Grade Certification Status
+            </label>
+            <select
+              id="container-food-grade"
+              {...register("isFoodGrade")}
+              className="flex min-h-[48px] w-full rounded-control border border-border bg-surface px-4 py-2.5 text-base text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action shadow-xs"
+            >
+              <option value="food_grade">Food-Grade Certified (e.g. #2 HDPE / #5 PP, Food-Safe Resin)</option>
+              <option value="unknown">Unknown / Unverified Resin Grade (Caution)</option>
+              <option value="non_food_grade">Non-Food-Grade (Industrial / Utility Plastic)</option>
+            </select>
+            <p className="text-xs text-muted mt-1">
+              Safety rule: Non-food-grade containers risk leaching toxic chemical plasticizers.
             </p>
           </div>
         </div>

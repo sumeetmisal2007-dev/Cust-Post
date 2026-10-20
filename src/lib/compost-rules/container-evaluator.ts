@@ -20,7 +20,7 @@ const DEFAULT_SOURCE: RuleSource = {
   title: "Container Safety and Aeration Guidelines",
   organization: "US EPA / MCGM Citizen's Handbook",
   sourceUrl: "https://www.epa.gov/recycle/composting-home",
-  reviewer: "Nirman Lab Composting Advisory Panel",
+  reviewer: "Composting Advisory Panel",
   reviewDate: "2026-10-18",
 };
 
@@ -45,7 +45,7 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
     };
   }
 
-  // Severely damaged or contaminated condition
+  // Guardrail 2: Severely damaged or contaminated condition
   if (inputs.condition === "cracked_damaged" || inputs.condition === "uncleanable_residue") {
     return {
       verdict: "unsuitable",
@@ -62,7 +62,29 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
     };
   }
 
-  // Guardrail 2: Unknown history must NEVER default to safe
+  // Guardrail 3: Explicitly non-food-grade containers are strictly Unsuitable
+  if (inputs.isFoodGrade === "non_food_grade") {
+    return {
+      verdict: "unsuitable",
+      reasons: [
+        inputs.material === "plastic_bucket" || inputs.material === "other"
+          ? "Non-food-grade plastic containers can leach plasticizers (phthalates, BPA), chemical stabilizers, or heavy metal pigments into the decomposing mass."
+          : `Non-food-grade ${inputs.material.replace("_", " ")} containers pose chemical leaching and contamination risks for biological compost.`,
+        "Compost produced in non-food-grade containers is unsafe for application on edible herbs, vegetables, or garden soil.",
+      ],
+      requiredModifications: [],
+      unresolvedChecks: [],
+      ruleId: "RULE-CONT-NON-FOOD-GRADE",
+      ruleVersion: "1.0",
+      sourceReference: {
+        ...DEFAULT_SOURCE,
+        ruleId: "RULE-CONT-NON-FOOD-GRADE",
+        title: "Prohibition of Non-Food-Grade Vessels in Biological Recovery",
+      },
+    };
+  }
+
+  // Guardrail 4: Unknown previous use must NEVER default to safe
   if (inputs.previousUse === "unknown") {
     return {
       verdict: "more_info_needed",
@@ -82,6 +104,33 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
         ...DEFAULT_SOURCE,
         ruleId: "RULE-CONT-UNKNOWN-HISTORY",
         title: "Precautionary Principle for Unknown Vessel Provenance",
+      },
+    };
+  }
+
+  // Guardrail 5: Unverified / unknown food-grade status for plastic / synthetic containers
+  if (
+    inputs.isFoodGrade === "unknown" &&
+    (inputs.material === "plastic_bucket" || inputs.material === "other")
+  ) {
+    return {
+      verdict: "more_info_needed",
+      reasons: [
+        "The food-grade certification of this plastic container is unverified.",
+        "Under the precautionary principle, unverified plastics cannot be cleared because non-food-grade polymers risk leaching chemical additives during microbial decomposition.",
+      ],
+      requiredModifications: [],
+      unresolvedChecks: [
+        "Inspect the underside of the vessel for resin identification stamps (HDPE #2 or PP #5).",
+        "Check for a food-safe fork-and-cup symbol or manufacturer certification confirming food-contact safety.",
+        "If food-grade provenance cannot be verified, substitute with a certified food-grade bucket, terracotta pot, or wooden crate.",
+      ],
+      ruleId: "RULE-CONT-UNKNOWN-FOOD-GRADE",
+      ruleVersion: "1.0",
+      sourceReference: {
+        ...DEFAULT_SOURCE,
+        ruleId: "RULE-CONT-UNKNOWN-FOOD-GRADE",
+        title: "Precautionary Principle for Unverified Plastic Food-Grade Status",
       },
     };
   }
@@ -126,6 +175,9 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
     verdict: "suitable",
     reasons: [
       `Container material (${inputs.material.replace("_", " ")}) is well-suited for small-scale household composting.`,
+      inputs.material === "plastic_bucket"
+        ? "Confirmed food-grade plastic material (safe, non-leaching resin)."
+        : "Non-toxic material safe for soil biology.",
       "Adequate ventilation, drainage, and structural integrity confirmed.",
       "No hazardous chemical exposure history detected.",
     ],

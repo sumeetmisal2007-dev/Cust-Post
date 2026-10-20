@@ -105,4 +105,73 @@ describe("ContainerCheck Suitability Engine (Task 06)", () => {
     expect(evalResult.reasons.length).toBeGreaterThan(0);
     expect(evalResult.sourceReference.organization).toBeDefined();
   });
+
+  it("marks non-food-grade plastic containers as 'unsuitable' (Food Grade Safety Check)", () => {
+    const nonFoodGradePlastic: ContainerCheckInputs = {
+      shape: "rectangular",
+      internalLengthCm: 45,
+      internalWidthCm: 35,
+      internalHeightCm: 40,
+      material: "plastic_bucket",
+      previousUse: "food",
+      condition: "good",
+      hasLid: true,
+      hasVentilationHoles: true,
+      hasDrainageHoles: true,
+      isFoodGrade: "non_food_grade",
+    };
+
+    const evalResult = evaluateContainer(nonFoodGradePlastic);
+    expect(evalResult.verdict).toBe("unsuitable");
+    expect(evalResult.ruleId).toBe("RULE-CONT-NON-FOOD-GRADE");
+    expect(
+      evalResult.reasons.some((r) => r.toLowerCase().includes("non-food-grade"))
+    ).toBe(true);
+  });
+
+  it("returns 'more_info_needed' when plastic container food-grade status is unknown", () => {
+    const unknownPlastic: ContainerCheckInputs = {
+      shape: "cylindrical",
+      diameterCm: 40,
+      internalHeightCm: 45,
+      material: "plastic_bucket",
+      previousUse: "food",
+      condition: "good",
+      hasLid: true,
+      hasVentilationHoles: true,
+      hasDrainageHoles: true,
+      isFoodGrade: "unknown",
+    };
+
+    const evalResult = evaluateContainer(unknownPlastic);
+    expect(evalResult.verdict).toBe("more_info_needed");
+    expect(evalResult.ruleId).toBe("RULE-CONT-UNKNOWN-FOOD-GRADE");
+    expect(evalResult.unresolvedChecks.length).toBeGreaterThan(0);
+    expect(
+      evalResult.unresolvedChecks.some((c) => c.toLowerCase().includes("hdpe"))
+    ).toBe(true);
+  });
+
+  it("clears a confirmed food-grade plastic container with proper aeration and drainage", () => {
+    const verifiedFoodGradePlastic: ContainerCheckInputs = {
+      shape: "rectangular",
+      internalLengthCm: 50,
+      internalWidthCm: 40,
+      internalHeightCm: 45,
+      material: "plastic_bucket",
+      previousUse: "food",
+      condition: "good",
+      hasLid: true,
+      hasVentilationHoles: true,
+      hasDrainageHoles: true,
+      isFoodGrade: "food_grade",
+    };
+
+    const evalResult = evaluateContainer(verifiedFoodGradePlastic);
+    expect(evalResult.verdict).toBe("suitable");
+    expect(evalResult.ruleId).toBe("RULE-CONT-SUITABLE");
+    expect(
+      evalResult.reasons.some((r) => r.toLowerCase().includes("food-grade"))
+    ).toBe(true);
+  });
 });
