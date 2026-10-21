@@ -52,7 +52,7 @@ export function calculateGeometricVolume(dim: ContainerDimensions): GeometricVol
         "Irregular container dimensions missing (footprint length, width, or height required)"
       );
     }
-    // Irregular shape approximation using actual footprint measurements (85% bounding box factor)
+
     volumeCm3 = l * w * h * 0.85;
     isApproximate = true;
   } else {
@@ -72,35 +72,55 @@ export function validateSpaceFit(
   space: SpaceDimensions,
   container: ContainerDimensions
 ): SpaceFitResult {
-  // Use external dimensions if provided (ensuring realistic space fit including rim, lid, and handles);
-  // fallback to internal dimensions if external dimensions were not collected.
+  const warnings: string[] = [];
+
+  const sLength = cleanDim(space?.lengthCm);
+  const sWidth = cleanDim(space?.widthCm);
+  const sHeight = cleanDim(space?.maxHeightCm);
+
+  if (!space || sLength === undefined || sWidth === undefined || sHeight === undefined) {
+    return {
+      fits: false,
+      clearanceCm: {
+        length: 0,
+        width: 0,
+        height: 0,
+      },
+      warnings: ["Space dimensions must be positive numbers."],
+    };
+  }
+
   const extHeight = cleanDim(container.externalHeightCm);
   const intHeight = cleanDim(container.internalHeightCm);
   const containerHeight: number = extHeight ?? intHeight ?? 0;
 
   let containerLength: number;
   let containerWidth: number;
+  let hasExternalFootprint = false;
 
   if (container.shape === "cylindrical") {
-    const d = cleanDim(container.externalDiameterCm) ?? cleanDim(container.diameterCm) ?? 0;
+    const extD = cleanDim(container.externalDiameterCm);
+    const intD = cleanDim(container.diameterCm);
+    hasExternalFootprint = extD !== undefined;
+    const d = extD ?? intD ?? 0;
     containerLength = d;
     containerWidth = d;
   } else {
-    containerLength =
-      cleanDim(container.externalLengthCm) ??
-      cleanDim(container.internalLengthCm) ??
-      cleanDim(container.diameterCm) ??
-      0;
-    containerWidth =
-      cleanDim(container.externalWidthCm) ??
-      cleanDim(container.internalWidthCm) ??
-      cleanDim(container.diameterCm) ??
-      0;
+    const extL = cleanDim(container.externalLengthCm);
+    const extW = cleanDim(container.externalWidthCm);
+    const intL = cleanDim(container.internalLengthCm) ?? cleanDim(container.diameterCm);
+    const intW = cleanDim(container.internalWidthCm) ?? cleanDim(container.diameterCm);
+    hasExternalFootprint = extL !== undefined && extW !== undefined;
+    containerLength = extL ?? intL ?? 0;
+    containerWidth = extW ?? intW ?? 0;
   }
 
-  const warnings: string[] = [];
+  if (!hasExternalFootprint) {
+    warnings.push(
+      "External footprint was not provided; space clearance was calculated using internal dimensions. True footprint may be larger due to wall thickness, rims, and handles."
+    );
+  }
 
-  // Edge case check: Irregular containers must have actual footprint measurements
   if (
     container.shape === "irregular" &&
     (containerLength <= 0 || containerWidth <= 0)
@@ -113,13 +133,17 @@ export function validateSpaceFit(
   const hasValidDimensions =
     containerLength > 0 && containerWidth > 0 && containerHeight > 0;
 
-  const clearanceLength = space.lengthCm - containerLength;
-  const clearanceWidth = space.widthCm - containerWidth;
-  const clearanceHeight = space.maxHeightCm - containerHeight;
+  const clearanceLength = sLength - containerLength;
+  const clearanceWidth = sWidth - containerWidth;
+  const clearanceHeight = sHeight - containerHeight;
 
   if (hasValidDimensions) {
     if (clearanceLength < 0) {
       warnings.push(`Container exceeds available Length by ${Math.abs(clearanceLength)} cm.`);
+    } else if (clearanceLength === 0) {
+      warnings.push(
+        "Zero clearance for Length; container fits flush against walls with no margin for airflow or handling."
+      );
     } else if (clearanceLength < 10) {
       warnings.push(
         `Tight clearance for Length (${clearanceLength} cm remaining); may hinder airflow or access.`
@@ -128,6 +152,10 @@ export function validateSpaceFit(
 
     if (clearanceWidth < 0) {
       warnings.push(`Container exceeds available Width by ${Math.abs(clearanceWidth)} cm.`);
+    } else if (clearanceWidth === 0) {
+      warnings.push(
+        "Zero clearance for Width; container fits flush against walls with no margin for airflow or handling."
+      );
     } else if (clearanceWidth < 10) {
       warnings.push(
         `Tight clearance for Width (${clearanceWidth} cm remaining); may hinder airflow or access.`
@@ -136,6 +164,10 @@ export function validateSpaceFit(
 
     if (clearanceHeight < 0) {
       warnings.push(`Container exceeds available Height by ${Math.abs(clearanceHeight)} cm.`);
+    } else if (clearanceHeight === 0) {
+      warnings.push(
+        "Zero clearance for Height; container touches maximum ceiling/railing height, restricting lid access."
+      );
     } else if (clearanceHeight < 10) {
       warnings.push(
         `Tight clearance for Height (${clearanceHeight} cm remaining); check lid opening clearance.`

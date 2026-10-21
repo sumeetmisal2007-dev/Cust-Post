@@ -105,7 +105,7 @@ export default function TroubleshootPage() {
 
   return (
     <div className="py-8 sm:py-12 max-w-3xl mx-auto px-4 space-y-8">
-      {/* Navigation header */}
+
       <div className="flex items-center justify-between amc-stagger-1">
         <Link
           href={`/batches/${batch.id}`}
@@ -127,7 +127,6 @@ export default function TroubleshootPage() {
         </p>
       </div>
 
-      {/* Symptom Selection */}
       <div className="amc-stagger-2">
         <SymptomSelector
           selectedSymptom={selectedInputs?.symptom || null}
@@ -135,7 +134,6 @@ export default function TroubleshootPage() {
         />
       </div>
 
-      {/* Resolution Details */}
       {resolution && (
         <div className="amc-stagger-3">
           <ResolutionView

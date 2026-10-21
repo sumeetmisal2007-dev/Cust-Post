@@ -66,7 +66,6 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
   const cleanNum = (val: unknown): number | undefined =>
     typeof val === "number" && !isNaN(val) && val > 0 ? val : undefined;
 
-  // Calculate live geometric volume strictly based on internal capacity
   const volumeResult = useMemo(() => {
     try {
       const cleanH = cleanNum(watchedHeight);
@@ -91,7 +90,6 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
     }
   }, [watchedShape, watchedLength, watchedWidth, watchedHeight, watchedDiameter]);
 
-  // Calculate space fit using external dimensions (fallback to internal if external is blank)
   const spaceFitResult = useMemo(() => {
     const cleanH = cleanNum(watchedHeight);
     if (!spaceProfile || !cleanH) return null;
@@ -146,7 +144,6 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
         </p>
       </div>
 
-      {/* Shape and Dimensions */}
       <div className="space-y-4">
         <div>
           <label htmlFor="container-shape" className="block text-sm font-semibold text-ink">
@@ -211,7 +208,6 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
           </div>
         )}
 
-        {/* External Outer Dimensions for Space Fit Check */}
         <div className="pt-2 space-y-2.5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-left">
             <span className="text-xs font-semibold text-ink uppercase tracking-wider">
@@ -286,11 +282,9 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
           )}
         </div>
 
-        {/* Live Volume and Space Fit Display */}
         <VolumeDisplay volumeResult={volumeResult} spaceFitResult={spaceFitResult} />
       </div>
 
-      {/* Material & History */}
       <div className="space-y-5 pt-6 border-t border-border">
         <div>
           <h3 className="font-display text-lg font-semibold text-ink">
@@ -359,7 +353,6 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
           </div>
         </div>
 
-        {/* Physical Features Checkboxes */}
         <div className="space-y-3 pt-2">
           <label className="block text-sm font-semibold text-ink">
             Current Physical Features
@@ -402,7 +395,6 @@ export function StepContainer({ onNext, onBack }: StepContainerProps) {
         </div>
       </div>
 
-      {/* Navigation Buttons */}
       <div className="pt-4 flex items-center justify-between gap-4 border-t border-border">
         <Button type="button" variant="secondary" onClick={onBack}>
           <ArrowLeft className="mr-2 h-4 w-4" />

@@ -95,10 +95,6 @@ export const SAMPLE_BALCONY_SETUP = {
   },
 };
 
-/**
- * Safe client-side storage accessor ensuring guest-mode privacy (100% on-device).
- * Gracefully degrades to a dummy memory store in SSR or restricted privacy modes.
- */
 export const getSafeLocalStorage = () => {
   if (typeof window === "undefined") {
     return {
@@ -121,10 +117,6 @@ export const getSafeLocalStorage = () => {
   }
 };
 
-/**
- * Validates and sanitizes persisted wizard state on startup/rehydration.
- * Corrupted or outdated keys are filtered safely without crashing the engine.
- */
 export function validateWizardState(persisted: unknown): {
   currentStep: number;
   spaceProfile: SpaceDimensions | null;
@@ -146,7 +138,6 @@ export function validateWizardState(persisted: unknown): {
 
   const p = persisted as Record<string, unknown>;
 
-  // 1. Validate Space Profile
   if (p.spaceProfile) {
     const spaceParsed = spaceProfileSchema.safeParse(p.spaceProfile);
     if (spaceParsed.success) {
@@ -154,7 +145,6 @@ export function validateWizardState(persisted: unknown): {
     }
   }
 
-  // 2. Validate Container Inputs
   if (p.containerInputs) {
     const contParsed = containerCheckSchema.safeParse(p.containerInputs);
     if (contParsed.success) {
@@ -162,7 +152,6 @@ export function validateWizardState(persisted: unknown): {
     }
   }
 
-  // 3. Validate Waste Materials
   if (Array.isArray(p.wasteItems)) {
     const validItems: WasteInputItem[] = [];
     for (const item of p.wasteItems) {
@@ -174,7 +163,6 @@ export function validateWizardState(persisted: unknown): {
     result.wasteItems = validItems;
   }
 
-  // 4. Validate Preferences
   if (p.preferences && typeof p.preferences === "object") {
     const prefObj = p.preferences as Record<string, unknown>;
     const validCapacities: MaintenanceCapacity[] = [
@@ -202,7 +190,6 @@ export function validateWizardState(persisted: unknown): {
     };
   }
 
-  // 5. Validate Step Progression & Prerequisite Guardrails
   if (typeof p.currentStep === "number" && Number.isInteger(p.currentStep)) {
     let step = Math.max(1, Math.min(5, p.currentStep));
     if (step > 1 && !result.spaceProfile) {
@@ -251,7 +238,7 @@ export const useSetupWizardStore = create<SetupWizardState>()(
         try {
           getSafeLocalStorage().removeItem(STORAGE_KEY);
         } catch {
-          // Ignore removal errors
+
         }
       },
     }),
@@ -282,10 +269,6 @@ export const useSetupWizardStore = create<SetupWizardState>()(
   )
 );
 
-/**
- * Hook to safely check whether Zustand setup wizard state has hydrated from localStorage.
- * Prevents SSR hydration mismatches and UI flashing in Next.js client components.
- */
 export function useSetupWizardHydrated(): boolean {
   const isHydratedInStore = useSetupWizardStore((state) => state.isHydrated);
   const [hydrated, setHydrated] = useState(false);

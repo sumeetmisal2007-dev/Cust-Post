@@ -22,7 +22,7 @@ export function PlantCard({ plant }: PlantCardProps) {
 
   return (
     <div className="group relative rounded-[22px] border border-stone-800 bg-stone-900 overflow-hidden shadow-md hover:shadow-2xl amc-card-smooth min-h-[390px] sm:min-h-[420px] flex flex-col justify-between">
-      {/* Background Photography / Botanical Art Fallback */}
+
       <div className="absolute inset-0 z-0 overflow-hidden">
         {!imageError ? (
           <Image
@@ -40,20 +40,17 @@ export function PlantCard({ plant }: PlantCardProps) {
           </div>
         )}
 
-        {/* Multi-Stop High-Contrast Gradient Scrim */}
         <div
           className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/75 to-stone-950/35 group-hover:via-stone-950/70 transition-colors duration-300"
           aria-hidden="true"
         />
 
-        {/* Ambient Top Glow */}
         <div
           className="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-emerald-500/20 blur-2xl group-hover:bg-emerald-400/30 transition-all duration-500"
           aria-hidden="true"
         />
       </div>
 
-      {/* Top Floating Glass Chips (Category & Max Compost Limit) */}
       <div className="relative z-10 p-5 sm:p-6 flex items-center justify-between gap-2">
         <span
           className={`text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full border backdrop-blur-md font-semibold shadow-xs ${categoryStyles}`}
@@ -65,9 +62,8 @@ export function PlantCard({ plant }: PlantCardProps) {
         </span>
       </div>
 
-      {/* Bottom Information Layer: Title, Tagline, Flexible Specs & Link */}
       <div className="relative z-10 p-5 sm:p-6 pt-0 space-y-3.5">
-        {/* Title, Botanical Name & Botanical Artwork Emblem */}
+
         <div className="flex items-start justify-between gap-3">
           <div className="space-y-1 flex-1 min-w-0">
             <h3 className="font-display text-2xl font-bold text-white tracking-tight group-hover:text-emerald-300 transition-colors drop-shadow-xs">
@@ -85,7 +81,6 @@ export function PlantCard({ plant }: PlantCardProps) {
           </div>
         </div>
 
-        {/* Quick Specs Pills - Flexible Flex Wrap (Never clips or squashes on narrow viewports) */}
         <div className="flex flex-wrap gap-1.5 text-[11px] text-stone-100 font-medium pt-1">
           <div className="flex items-center gap-1.5 bg-black/45 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/15">
             <Box className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
@@ -101,7 +96,6 @@ export function PlantCard({ plant }: PlantCardProps) {
           </div>
         </div>
 
-        {/* Bottom CTA Link */}
         <div className="pt-3 border-t border-white/15 flex items-center justify-between">
           <Link
             href={`/plants/${plant.slug}`}

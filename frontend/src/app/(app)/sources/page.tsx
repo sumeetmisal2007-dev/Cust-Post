@@ -21,7 +21,7 @@ export default function SourcesPage() {
 
   return (
     <div className="py-8 sm:py-12 max-w-4xl mx-auto px-4 space-y-8 text-left">
-      {/* Top Breadcrumb */}
+
       <div className="flex items-center justify-between">
         <Link
           href="/"
@@ -33,7 +33,6 @@ export default function SourcesPage() {
         <span className="text-xs font-mono text-muted uppercase">Rule Provenance v1.0</span>
       </div>
 
-      {/* Hero Header */}
       <div className="space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-action/10 text-action border border-action/30">
           <ShieldCheck className="h-4 w-4" />
@@ -47,7 +46,6 @@ export default function SourcesPage() {
         </p>
       </div>
 
-      {/* SDG Trust Strip */}
       <div className="p-4 rounded-card border border-emerald-300 bg-emerald-50/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 amc-stagger-1 amc-card-smooth">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-full bg-white shadow-xs text-action animate-amc-float">
@@ -75,7 +73,6 @@ export default function SourcesPage() {
         </Button>
       </div>
 
-      {/* Sources Grid */}
       <div className="space-y-4 amc-stagger-2">
         <h2 className="font-display text-xl font-bold text-ink flex items-center gap-2">
           <BookOpen className="h-5 w-5 text-action" />
@@ -133,7 +130,6 @@ export default function SourcesPage() {
         </div>
       </div>
 
-      {/* Feedback Modal */}
       <FeedbackModal
         isOpen={isFeedbackOpen}
         onClose={() => setIsFeedbackOpen(false)}

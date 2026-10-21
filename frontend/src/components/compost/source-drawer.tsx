@@ -30,7 +30,7 @@ export function SourceDrawer({ isOpen, onClose, sources }: SourceDrawerProps) {
       aria-labelledby="source-drawer-title"
       className="fixed inset-0 z-50 flex justify-end bg-ink/40 backdrop-blur-xs transition-opacity"
     >
-      {/* Backdrop click to close */}
+
       <div className="fixed inset-0 -z-10" onClick={onClose} aria-hidden="true" />
 
       <div className="relative w-full max-w-md bg-canvas border-l border-border h-full shadow-2xl flex flex-col p-6 overflow-y-auto">

@@ -20,7 +20,7 @@ export interface PlantGuide {
 }
 
 export const PLANT_GUIDES: PlantGuide[] = [
-  // --- HERBS ---
+
   {
     slug: "tulsi",
     name: "Tulsi (Holy Basil)",
@@ -190,7 +190,6 @@ export const PLANT_GUIDES: PlantGuide[] = [
     imageUrl: "/images/plants/ajwain-leaves.png",
   },
 
-  // --- VEGETABLES ---
   {
     slug: "cherry-tomato",
     name: "Cherry Tomato",
@@ -432,7 +431,6 @@ export const PLANT_GUIDES: PlantGuide[] = [
     imageUrl: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=800&q=80",
   },
 
-  // --- FRUITS ---
   {
     slug: "strawberry",
     name: "Balcony Strawberry",

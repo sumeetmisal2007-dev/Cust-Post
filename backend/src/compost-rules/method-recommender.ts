@@ -36,7 +36,6 @@ export function recommendCompostingMethod(
     (m) => m.name.toLowerCase().includes("cooked") || m.category === "caution"
   );
 
-  // Vermicomposting Rule: user wants worms or compact indoor/balcony setup with weekly maintenance
   if (
     inputs.interestedInWorms &&
     (inputs.locationType === "balcony" || inputs.locationType === "indoor") &&
@@ -47,7 +46,7 @@ export function recommendCompostingMethod(
       methodName: "Vermicomposting (Red Wriggler Composting)",
       rationale: [
         "Worms accelerate organic breakdown in compact, shaded balcony or indoor spaces.",
-        "Produces pathogen-free, high-grade vermicastings with near-zero foul odors when maintained properly.",
+        "Produces nutrient-rich, bio-diverse vermicastings with near-zero foul odors when maintained properly.",
       ],
       limitations: [
         "Sensitive to temperature extremes (>35°C or direct sunlight will kill earthworms).",
@@ -75,7 +74,6 @@ export function recommendCompostingMethod(
     };
   }
 
-  // Bokashi Fermentation Rule: indoor location, high smell sensitivity, or cooked scrap inclusion
   if (
     inputs.locationType === "indoor" ||
     (hasCookedFood && inputs.smellSensitivity === "high") ||
@@ -114,7 +112,6 @@ export function recommendCompostingMethod(
     };
   }
 
-  // Aerobic Small-Batch Bin Composting (Default for balcony, terrace, garden)
   return {
     chosenMethod: "aerobic_bin",
     methodName: "Aerobic Small-Batch Bin Composting",

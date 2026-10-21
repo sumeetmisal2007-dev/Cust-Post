@@ -20,7 +20,7 @@ export function FeatureCards() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Card 1 */}
+
           <div className="rounded-card border border-border bg-surface text-text shadow-soft p-6 flex flex-col justify-between space-y-4 hover:border-action/50 transition-all shadow-lift">
             <div className="space-y-3">
               <div className="h-12 w-12 rounded-control bg-mint flex items-center justify-center text-action mb-1">
@@ -38,7 +38,6 @@ export function FeatureCards() {
             </div>
           </div>
 
-          {/* Card 2 */}
           <div className="rounded-card border border-border bg-surface text-text shadow-soft p-6 flex flex-col justify-between space-y-4 hover:border-action/50 transition-all shadow-lift">
             <div className="space-y-3">
               <div className="h-12 w-12 rounded-control bg-earth-subtle flex items-center justify-center text-earth mb-1">
@@ -56,7 +55,6 @@ export function FeatureCards() {
             </div>
           </div>
 
-          {/* Card 3 */}
           <div className="rounded-card border border-border bg-surface text-text shadow-soft p-6 flex flex-col justify-between space-y-4 hover:border-action/50 transition-all shadow-lift">
             <div className="space-y-3">
               <div className="h-12 w-12 rounded-control bg-mint flex items-center justify-center text-action mb-1">
@@ -74,23 +72,25 @@ export function FeatureCards() {
             </div>
           </div>
 
-          {/* Card 4 */}
           <div className="rounded-card border border-border bg-surface text-text shadow-soft p-6 flex flex-col justify-between space-y-4 hover:border-action/50 transition-all shadow-lift">
             <div className="space-y-3">
               <div className="h-12 w-12 rounded-control bg-accent/20 flex items-center justify-center text-accent mb-1">
                 <Users className="h-6 w-6" aria-hidden="true" />
               </div>
               <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-ink">
-                Soil & Seed Circle
+                Soil & Seed Circle & Marketplace
               </h3>
               <p className="text-xs sm:text-sm text-muted leading-relaxed">
-                Share surplus cured compost, swap heirloom seed cuttings, source dry carbon browns, and rehome spare containers locally.
+                Source cured vermicompost, list your extra kitchen humus, or browse curated seed cultivars from verified Indian online gardening stores.
               </p>
             </div>
-            <div className="pt-2 border-t border-border/60">
-              <Link href="/community" className="text-xs font-semibold text-action hover:underline inline-flex items-center gap-1">
-                <span>Explore Exchange</span>
+            <div className="pt-2 border-t border-border/60 flex items-center justify-between text-xs font-semibold">
+              <Link href="/marketplace" className="text-action hover:underline inline-flex items-center gap-1">
+                <span>Visit Marketplace</span>
                 <ArrowRight className="h-3 w-3" />
+              </Link>
+              <Link href="/community" className="text-muted hover:text-ink">
+                Exchange
               </Link>
             </div>
           </div>

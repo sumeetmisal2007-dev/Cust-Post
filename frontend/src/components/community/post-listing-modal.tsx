@@ -67,7 +67,7 @@ export function PostListingModal({ isOpen, onClose, onSuccess }: PostListingModa
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/50 backdrop-blur-xs overflow-y-auto"
     >
       <div className="relative w-full max-w-lg bg-canvas border border-border rounded-card p-6 shadow-2xl space-y-6 text-left my-8 max-h-[90vh] overflow-y-auto">
-        {/* Header */}
+
         <div className="flex items-center justify-between pb-3 border-b border-border">
           <div className="flex items-center gap-2">
             <Sprout className="h-5 w-5 text-action" />
@@ -92,7 +92,7 @@ export function PostListingModal({ isOpen, onClose, onSuccess }: PostListingModa
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Category Selector */}
+
           <div>
             <label className="block text-xs font-semibold text-ink mb-1">What are you offering?</label>
             <div className="grid grid-cols-2 gap-2">
@@ -118,7 +118,6 @@ export function PostListingModal({ isOpen, onClose, onSuccess }: PostListingModa
             </div>
           </div>
 
-          {/* Title */}
           <div>
             <label className="block text-xs font-semibold text-ink mb-1">Listing Headline *</label>
             <Input
@@ -130,7 +129,6 @@ export function PostListingModal({ isOpen, onClose, onSuccess }: PostListingModa
             />
           </div>
 
-          {/* Neighborhood & City */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div>
               <label className="block text-xs font-semibold text-ink mb-1">Neighborhood / Locality *</label>
@@ -154,7 +152,6 @@ export function PostListingModal({ isOpen, onClose, onSuccess }: PostListingModa
             </div>
           </div>
 
-          {/* Optional: Related Plant Guide */}
           {category === "seeds_cuttings" && (
             <div>
               <label className="block text-xs font-semibold text-ink mb-1">
@@ -175,7 +172,6 @@ export function PostListingModal({ isOpen, onClose, onSuccess }: PostListingModa
             </div>
           )}
 
-          {/* Description */}
           <div>
             <label className="block text-xs font-semibold text-ink mb-1">Details & Pickup Info</label>
             <textarea
@@ -187,7 +183,6 @@ export function PostListingModal({ isOpen, onClose, onSuccess }: PostListingModa
             />
           </div>
 
-          {/* Contact Details */}
           <div className="pt-2 border-t border-border space-y-2">
             <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
               <MessageSquare className="h-3.5 w-3.5 text-action" />
@@ -220,7 +215,6 @@ export function PostListingModal({ isOpen, onClose, onSuccess }: PostListingModa
             </div>
           </div>
 
-          {/* Submit Action */}
           <div className="pt-4 flex items-center justify-end gap-3 border-t border-border">
             <Button type="button" variant="secondary" onClick={onClose} disabled={isSubmitting}>
               Cancel

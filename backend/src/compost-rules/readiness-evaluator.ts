@@ -32,7 +32,7 @@ export function estimateReadinessWindow(
     minWeeks = 6;
     maxWeeks = 8;
   } else {
-    // Aerobic bin
+
     if (totalInputsKg > 30) {
       minWeeks = 10;
       maxWeeks = 16;

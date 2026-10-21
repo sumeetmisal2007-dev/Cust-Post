@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-12 pb-14 md:pt-16 md:pb-20">
-      {/* Background soft botanical gradient bloom */}
+
       <div
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-gradient-to-b from-mint/50 via-earth-subtle/30 to-transparent blur-3xl -z-10"
         aria-hidden="true"
@@ -42,7 +42,6 @@ export function Hero() {
           </Button>
         </div>
 
-        {/* Apartment Beginner Trust Strip */}
         <div className="pt-6 max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
           <div className="flex items-center gap-2.5 p-3 rounded-control bg-surface/80 border border-border/80 shadow-soft">
             <Home className="h-4 w-4 text-earth shrink-0" aria-hidden="true" />

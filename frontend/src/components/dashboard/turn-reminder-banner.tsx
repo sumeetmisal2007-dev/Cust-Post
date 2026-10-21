@@ -36,10 +36,8 @@ export function TurnReminderBanner({
     }
   }, []);
 
-  // Determine method-specific turning intervals (in days)
   const maxDaysWithoutTurn = batch.method === "vermicomposting" ? 7 : batch.method === "bokashi" ? 5 : 4;
 
-  // Calculate days since last turn
   const lastTurnedObs = observations.find((o) => o.turned);
   const referenceDateStr = lastTurnedObs ? lastTurnedObs.observedAt : batch.startDate;
   const daysSinceTurn = Math.max(
@@ -81,7 +79,7 @@ export function TurnReminderBanner({
         });
       }
     } catch {
-      // Graceful fallback if blocked
+
     }
   };
 
@@ -102,7 +100,7 @@ export function TurnReminderBanner({
       }`}
     >
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        {/* Left: Status & Guidance Message */}
+
         <div className="space-y-1.5 max-w-xl">
           <div className="flex items-center gap-2 flex-wrap">
             {isOverdue ? (
@@ -136,9 +134,8 @@ export function TurnReminderBanner({
           </p>
         </div>
 
-        {/* Right: Quick Actions (1-Tap Turn, Web Push, Calendar Export) */}
         <div className="flex items-center gap-2 flex-wrap shrink-0">
-          {/* Quick Turn Button */}
+
           <button
             type="button"
             onClick={handleQuickTurn}
@@ -162,7 +159,6 @@ export function TurnReminderBanner({
             )}
           </button>
 
-          {/* Web Push Notification Toggle */}
           {notificationPermission !== "unsupported" && notificationPermission !== "granted" ? (
             <button
               type="button"
@@ -180,7 +176,6 @@ export function TurnReminderBanner({
             </span>
           ) : null}
 
-          {/* Calendar Export */}
           <button
             type="button"
             onClick={handleDownloadCalendar}

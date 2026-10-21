@@ -5,9 +5,6 @@
 
 # testing
 /coverage
-tests/
-backend/tests/
-frontend/tests/
 
 # next.js
 .next/
@@ -41,6 +38,9 @@ next-env.d.ts
 .superpowers/sdd/*/briefs/
 .superpowers/sdd/*/packages/
 .agents/
+.agent/
+.gemini/
+.gsd/
 
 # playwright
 /test-results/

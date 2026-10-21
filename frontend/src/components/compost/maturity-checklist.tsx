@@ -81,7 +81,6 @@ export function MaturityChecklist({ batchId, onComplete }: MaturityChecklistProp
         </p>
       </div>
 
-      {/* 4 Checks List */}
       <div className="space-y-3">
         {checklistItems.map((item) => {
           const Icon = item.icon;
@@ -116,7 +115,6 @@ export function MaturityChecklist({ batchId, onComplete }: MaturityChecklistProp
         })}
       </div>
 
-      {/* Dynamic Status Banner */}
       {verdict.isReady ? (
         <div className="p-5 rounded-card border border-emerald-300 bg-emerald-50 space-y-2 shadow-xs">
           <div className="flex items-center gap-2 text-emerald-900 font-bold text-sm">
@@ -139,7 +137,6 @@ export function MaturityChecklist({ batchId, onComplete }: MaturityChecklistProp
         </div>
       )}
 
-      {/* Confirm Button */}
       <div className="pt-4 flex items-center justify-between gap-4 border-t border-border">
         <div className="text-xs text-muted">
           <span>{Object.values(checks).filter(Boolean).length} of 4 criteria confirmed</span>

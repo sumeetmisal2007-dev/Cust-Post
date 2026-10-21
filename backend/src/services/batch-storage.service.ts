@@ -5,7 +5,6 @@ import { estimateReadinessWindow } from "../compost-rules/readiness-evaluator";
 const BATCHES_KEY = "cust_post_batches";
 const OBSERVATIONS_KEY = "cust_post_observations";
 
-// Fallback in-memory store for SSR and tests
 const inMemoryBatches = new Map<string, CompostBatch>();
 const inMemoryObservations = new Map<string, BatchObservation[]>();
 
@@ -59,11 +58,19 @@ function saveLocalStorageObservations(batchId: string, obs: BatchObservation[]):
 
 export class BatchStorageService {
   async createBatch(input: CreateBatchInput, ownerId?: string): Promise<CompostBatch> {
+    if (input.containerVerdict === "unsuitable") {
+      throw new Error("Cannot create batch: Container is evaluated as unsuitable for composting.");
+    }
+    if (input.containerVerdict === "more_info_needed") {
+      throw new Error(
+        "Cannot create batch: Container safety evaluation requires additional information before starting."
+      );
+    }
+
     const id = crypto.randomUUID();
     const nowIso = new Date().toISOString();
     const startDateObj = new Date(input.startDate);
 
-    // Calculate initial estimated readiness window
     const estimate = estimateReadinessWindow(startDateObj, input.method, 0);
 
     const newBatch: CompostBatch = {
@@ -133,11 +140,10 @@ export class BatchStorageService {
     };
 
     const observations = getLocalStorageObservations(observationInput.batchId);
-    // Sort reverse chronological
+
     observations.unshift(newObs);
     saveLocalStorageObservations(observationInput.batchId, observations);
 
-    // Update batch metrics if waste was added
     if (observationInput.wasteAddedKg && observationInput.wasteAddedKg > 0) {
       const batch = await this.getBatchById(observationInput.batchId);
       if (batch) {
@@ -160,7 +166,6 @@ export class BatchStorageService {
     return getLocalStorageObservations(batchId);
   }
 
-  // Clear memory stores (useful for tests)
   clearMemory(): void {
     inMemoryBatches.clear();
     inMemoryObservations.clear();

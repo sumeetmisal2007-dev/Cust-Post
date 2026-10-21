@@ -26,7 +26,7 @@ export function ResolutionView({
 }: ResolutionViewProps) {
   return (
     <div className="space-y-6 text-left border-t border-border pt-6">
-      {/* Header */}
+
       <div className="space-y-2">
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-action/10 text-action border border-action/30">
           <Wrench className="h-3 w-3" />
@@ -37,7 +37,6 @@ export function ResolutionView({
         </h2>
       </div>
 
-      {/* Likely Causes */}
       <div className="p-4 rounded-card border border-border bg-surface space-y-2 shadow-xs">
         <h4 className="text-xs font-bold uppercase tracking-wider text-muted">
           Underlying Causes
@@ -52,7 +51,6 @@ export function ResolutionView({
         </ul>
       </div>
 
-      {/* What to Inspect */}
       <div className="p-5 rounded-card border border-border bg-surface space-y-3 shadow-xs">
         <h3 className="font-display text-base font-bold text-ink flex items-center gap-2">
           <Search className="h-4 w-4 text-action" />
@@ -68,7 +66,6 @@ export function ResolutionView({
         </ul>
       </div>
 
-      {/* What to Do Immediately */}
       <div className="p-5 rounded-card border border-emerald-300 bg-emerald-50/60 space-y-3 shadow-xs">
         <h3 className="font-display text-base font-bold text-emerald-950 flex items-center gap-2">
           <CheckCircle className="h-4 w-4 text-emerald-700" />
@@ -87,7 +84,6 @@ export function ResolutionView({
         </ul>
       </div>
 
-      {/* Source Citation */}
       <div className="p-4 rounded-card border border-border bg-canvas text-xs space-y-2">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1.5 font-semibold text-ink">
@@ -112,7 +108,6 @@ export function ResolutionView({
         </div>
       </div>
 
-      {/* Apply & Record Action */}
       <div className="p-4 rounded-card border border-action/30 bg-action-soft flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="space-y-0.5 text-left">
           <div className="text-xs font-bold text-action flex items-center gap-1.5">

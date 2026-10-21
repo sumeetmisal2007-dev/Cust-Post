@@ -28,7 +28,7 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
 
   return (
     <div className="py-8 sm:py-12 max-w-6xl mx-auto px-4 sm:px-6 space-y-10 text-left">
-      {/* Top Breadcrumb */}
+
       <div className="flex items-center justify-between border-b border-border/60 pb-4">
         <Link
           href="/"
@@ -39,7 +39,6 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
         </Link>
       </div>
 
-      {/* Hero Header */}
       <div className="space-y-4 max-w-3xl">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border text-xs font-mono text-muted">
           <span>SDG 12.5 • Urban Bio-Circular Registry</span>
@@ -52,7 +51,6 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
         </p>
       </div>
 
-      {/* Safety Guardrail Callout */}
       <div className="relative overflow-hidden p-6 rounded-[22px] border border-amber-300/90 bg-gradient-to-br from-amber-50/90 via-amber-50/60 to-surface/90 shadow-sm backdrop-blur-xs amc-card-smooth amc-stagger-1">
         <div className="flex items-start gap-3.5">
           <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-300/80 text-amber-800 shrink-0 mt-0.5 animate-amc-float">
@@ -69,7 +67,6 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
         </div>
       </div>
 
-      {/* Category Filter Tabs */}
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-4">
           <div className="flex items-center gap-2">
@@ -126,7 +123,6 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
           </div>
         </div>
 
-        {/* Plant Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 amc-stagger-2">
           {filteredPlants.map((plant) => (
             <PlantCard key={plant.slug} plant={plant} />
@@ -134,7 +130,6 @@ export function PlantsCatalogueView({ plants }: PlantsCatalogueViewProps) {
         </div>
       </div>
 
-      {/* AMC Natural Inspired Bottom Infinite Marquee Ribbon */}
       <div className="pt-8 overflow-hidden">
         <div className="rounded-[20px] bg-surface/70 border border-border/80 py-4 px-2 overflow-hidden shadow-xs">
           <div className="animate-marquee whitespace-nowrap text-xs font-mono font-semibold tracking-widest text-ink/75 uppercase flex items-center gap-8">

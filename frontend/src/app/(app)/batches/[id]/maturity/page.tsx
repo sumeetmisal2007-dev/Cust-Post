@@ -79,7 +79,7 @@ export default function MaturityChecklistPage() {
 
   return (
     <div className="py-8 sm:py-12 max-w-3xl mx-auto px-4 space-y-8">
-      {/* Navigation header */}
+
       <div className="flex items-center justify-between amc-stagger-1">
         <Link
           href={`/batches/${batch.id}`}
@@ -91,7 +91,6 @@ export default function MaturityChecklistPage() {
         <span className="text-xs font-mono text-muted uppercase">Harvest Verification</span>
       </div>
 
-      {/* Main checklist */}
       <div className="amc-stagger-2">
         <MaturityChecklist
           batchId={batch.id}
@@ -99,7 +98,6 @@ export default function MaturityChecklistPage() {
         />
       </div>
 
-      {/* Celebratory Completion Modal */}
       <BatchCompletionModal
         isOpen={isModalOpen}
         batchName={batch.batchName}

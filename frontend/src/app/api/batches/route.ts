@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check optional authenticated user session
     let userId: string | undefined = undefined;
     try {
       const supabase = await createClient();
@@ -27,7 +26,7 @@ export async function POST(request: NextRequest) {
         userId = user.id;
       }
     } catch {
-      // Guest or local mode without Supabase connection
+
     }
 
     const batch = await batchStorageService.createBatch(parseResult.data, userId);
@@ -49,7 +48,7 @@ export async function GET() {
         userId = user.id;
       }
     } catch {
-      // Guest mode
+
     }
 
     const batches = await batchStorageService.listBatches(userId);

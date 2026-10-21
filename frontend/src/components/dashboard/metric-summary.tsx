@@ -22,7 +22,7 @@ interface MetricSummaryProps {
 }
 
 export function MetricSummary({ batch, observations, onLogObservation }: MetricSummaryProps) {
-  // Calculate days since last aeration
+
   const lastTurnedObs = observations.find((o) => o.turned);
   let aerationStatusText = "Not yet turned";
   let isOverdue = false;
@@ -39,9 +39,9 @@ export function MetricSummary({ batch, observations, onLogObservation }: MetricS
 
   return (
     <div className="space-y-6 text-left">
-      {/* 3 Metric Cards */}
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Card 1: Organic Inputs */}
+
         <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-3">
           <div className="flex items-center justify-between text-muted text-xs">
             <span className="font-semibold uppercase tracking-wider text-ink flex items-center gap-1.5">
@@ -76,7 +76,6 @@ export function MetricSummary({ batch, observations, onLogObservation }: MetricS
           </div>
         </div>
 
-        {/* Card 2: Readiness Window */}
         <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-3">
           <div className="flex items-center justify-between text-muted text-xs">
             <span className="font-semibold uppercase tracking-wider text-ink flex items-center gap-1.5">
@@ -95,7 +94,6 @@ export function MetricSummary({ batch, observations, onLogObservation }: MetricS
           </div>
         </div>
 
-        {/* Card 3: Aeration & Turning */}
         <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-3">
           <div className="flex items-center justify-between text-muted text-xs">
             <span className="font-semibold uppercase tracking-wider text-ink flex items-center gap-1.5">
@@ -120,7 +118,6 @@ export function MetricSummary({ batch, observations, onLogObservation }: MetricS
         </div>
       </div>
 
-      {/* Quick Action Buttons */}
       <div className="p-4 rounded-card border border-border bg-surface flex flex-wrap items-center justify-between gap-3 shadow-xs">
         <div className="text-xs font-semibold text-ink">Quick Batch Actions:</div>
 

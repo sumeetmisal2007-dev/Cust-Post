@@ -13,7 +13,7 @@ export interface AvailableMaterialDef {
 }
 
 export const PRESET_MATERIALS: AvailableMaterialDef[] = [
-  // Greens
+
   {
     id: "veg_peels",
     name: "vegetable_peels",
@@ -30,7 +30,7 @@ export const PRESET_MATERIALS: AvailableMaterialDef[] = [
     defaultKgWeekly: 0.5,
     description: "Brewed coffee grounds, paper tea bags, loose green/black tea.",
   },
-  // Browns
+
   {
     id: "dry_leaves",
     name: "dry_leaves",
@@ -55,7 +55,7 @@ export const PRESET_MATERIALS: AvailableMaterialDef[] = [
     defaultKgWeekly: 0.8,
     description: "Expanded coconut coir pith for moisture buffering and aeration.",
   },
-  // Caution
+
   {
     id: "cooked_food",
     name: "cooked_food_with_oil",
@@ -64,7 +64,7 @@ export const PRESET_MATERIALS: AvailableMaterialDef[] = [
     defaultKgWeekly: 0.5,
     description: "Rice, dal, cooked curries. High odor risk in standard aerobic bin.",
   },
-  // Excluded
+
   {
     id: "meat_dairy",
     name: "meat_and_dairy",

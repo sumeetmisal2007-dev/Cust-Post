@@ -104,7 +104,7 @@ function saveStoredListings(listings: ExchangeListing[]): void {
   try {
     localStorage.setItem(EXCHANGE_STORAGE_KEY, JSON.stringify(listings));
   } catch {
-    // Ignore storage quota
+
   }
 }
 
@@ -127,7 +127,6 @@ export class CommunityService {
       );
     }
 
-    // Sort newest first
     return [...listings].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 

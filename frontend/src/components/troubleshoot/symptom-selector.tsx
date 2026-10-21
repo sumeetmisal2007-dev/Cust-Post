@@ -162,7 +162,6 @@ export function SymptomSelector({
         })}
       </div>
 
-      {/* Conditional diagnostic questions */}
       {selectedSymptom === "excess_moisture_soggy" && (
         <div className="p-4 rounded-card border border-sky-200 bg-sky-50/60 text-xs">
           <label className="flex items-center gap-2 cursor-pointer font-medium text-sky-950">

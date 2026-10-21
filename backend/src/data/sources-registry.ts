@@ -7,7 +7,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Prohibition of Chemical, Pesticide, and Toxic Residue Vessels",
     organization: "US EPA / MCGM Citizen's Handbook",
     sourceUrl: "https://www.epa.gov/recycle/composting-home",
-    reviewer: "Composting Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-CONT-NON-FOOD-GRADE": {
@@ -16,7 +16,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Prohibition of Non-Food-Grade Vessels in Biological Recovery",
     organization: "US EPA / FDA Food Contact Guidelines",
     sourceUrl: "https://www.epa.gov/recycle/composting-home",
-    reviewer: "Composting Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-CONT-UNKNOWN-FOOD-GRADE": {
@@ -25,7 +25,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Precautionary Principle for Unverified Plastic Food-Grade Status",
     organization: "US EPA Composting Safety Guidelines",
     sourceUrl: "https://www.epa.gov/recycle/composting-home",
-    reviewer: "Composting Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-CONT-UNKNOWN-HISTORY": {
@@ -34,7 +34,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Precautionary Principle for Unknown Vessel Provenance",
     organization: "US EPA Composting Safety Guidelines",
     sourceUrl: "https://www.epa.gov/recycle/composting-home",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-CONT-MOD-NEEDED": {
@@ -43,7 +43,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Container Aeration and Drainage Hole Specifications",
     organization: "MCGM Citizen's Handbook for Home Composting",
     sourceUrl: "https://portal.mcgm.gov.in",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-CONT-SUITABLE": {
@@ -52,7 +52,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Container Material and Volume Suitability Standards",
     organization: "US EPA / MCGM Citizen's Handbook",
     sourceUrl: "https://www.epa.gov/recycle/composting-home",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-METHOD-AEROBIC": {
@@ -61,7 +61,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Aerobic Small-Batch Bin Composting Best Practices",
     organization: "US EPA Composting at Home",
     sourceUrl: "https://www.epa.gov/recycle/composting-home",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-METHOD-VERMI": {
@@ -70,7 +70,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Urban Small-Space Vermicomposting Standards",
     organization: "Agricultural Extension Service / MCGM Greening Mumbai",
     sourceUrl: "https://portal.mcgm.gov.in",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-METHOD-BOKASHI": {
@@ -79,7 +79,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Indoor Anaerobic Bokashi Fermentation Protocol",
     organization: "ADEQ Organic Waste Reduction Guides",
     sourceUrl: "https://azdeq.gov/composting-guide",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-TROUBLE-ODOR": {
@@ -88,7 +88,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Compost Odor Diagnostics and Carbon Balancing",
     organization: "US EPA / ADEQ Compost Troubleshooting",
     sourceUrl: "https://www.epa.gov/recycle/composting-home",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-TROUBLE-MOISTURE": {
@@ -97,7 +97,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Leachate and Saturated Moisture Remediation",
     organization: "ADEQ Compost Guide: Troubleshooting",
     sourceUrl: "https://azdeq.gov/composting-guide",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-TROUBLE-PESTS": {
@@ -106,7 +106,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Vector and Pest Control for Balcony Composting",
     organization: "MCGM Citizen's Handbook for Greening Initiatives",
     sourceUrl: "https://portal.mcgm.gov.in",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-TROUBLE-SLOW": {
@@ -115,7 +115,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Cold Pile and Dormant Decomposition Activation",
     organization: "US EPA Composting at Home",
     sourceUrl: "https://www.epa.gov/recycle/composting-home",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "RULE-TROUBLE-RODENT": {
@@ -124,7 +124,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "Rodent and Vector Exclusion Protocols",
     organization: "ADEQ Vector Control Guidelines",
     sourceUrl: "https://azdeq.gov/composting-guide",
-    reviewer: "Nirman Lab Advisory Panel",
+    reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
     reviewDate: "2026-10-18",
   },
   "SDG-12-TARGET-12-5": {
@@ -133,7 +133,7 @@ export const SOURCES_REGISTRY: Record<string, RuleSource> = {
     title: "UN SDG 12: Responsible Consumption and Production - Target 12.5 Waste Prevention & Recycling",
     organization: "United Nations Department of Economic and Social Affairs",
     sourceUrl: "https://sdgs.un.org/goals/goal12",
-    reviewer: "United Nations DESA",
+    reviewer: "Cust-Post SDG Mapping Team (Curated from UN SDG Goal 12.5 documentation)",
     reviewDate: "2026-10-18",
   },
 };

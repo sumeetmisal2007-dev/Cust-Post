@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { batchStorageService } from "@cust-post/backend";
+import { batchStorageService, marketplaceService } from "@cust-post/backend";
 
 export async function POST(_request: NextRequest) {
   try {
@@ -11,21 +11,21 @@ export async function POST(_request: NextRequest) {
       } = await supabase.auth.getUser();
 
       if (user) {
-        // Cascade delete all user records
+        await supabase.from("marketplace_inquiries").delete().or(`buyer_id.eq.${user.id},seller_id.eq.${user.id}`);
+        await supabase.from("compost_listings").delete().eq("seller_id", user.id);
         await supabase.from("batch_observations").delete().eq("owner_id", user.id);
         await supabase.from("compost_batches").delete().eq("owner_id", user.id);
         await supabase.from("containers").delete().eq("owner_id", user.id);
         await supabase.from("profiles").delete().eq("id", user.id);
 
-        // Sign out session
         await supabase.auth.signOut();
       }
     } catch {
-      // Local or guest mode without Supabase connection
+
     }
 
-    // Clear local / in-memory storage
     batchStorageService.clearMemory();
+    marketplaceService.clearMemory();
 
     return NextResponse.json(
       {

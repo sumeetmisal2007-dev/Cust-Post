@@ -92,7 +92,6 @@ export function StepSpace({ onNext }: StepSpaceProps) {
         </p>
       </div>
 
-      {/* Location Selector Choice Tiles */}
       <div className="space-y-3">
         <label className="block text-sm font-semibold text-ink">
           Select Location Type
@@ -136,7 +135,6 @@ export function StepSpace({ onNext }: StepSpaceProps) {
         </div>
       </div>
 
-      {/* Available Space Dimensions */}
       <div className="space-y-4 pt-2 border-t border-border">
         <div>
           <h3 className="font-display text-lg font-semibold text-ink">
@@ -175,7 +173,6 @@ export function StepSpace({ onNext }: StepSpaceProps) {
         </div>
       </div>
 
-      {/* Navigation CTA */}
       <div className="pt-4 flex justify-end">
         <Button type="submit" size="lg" className="w-full sm:w-auto">
           <span>Continue to Container</span>

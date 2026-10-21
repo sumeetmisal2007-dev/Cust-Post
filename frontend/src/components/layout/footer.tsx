@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-surface py-12 px-4 sm:px-6 text-sm text-muted">
       <div className="max-w-content mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Brand column */}
+
         <div className="space-y-3 md:col-span-1">
           <div className="flex items-center gap-2 font-display text-lg font-bold text-ink">
             <Sprout className="h-5 w-5 text-brand" aria-hidden="true" />
@@ -17,7 +17,6 @@ export function Footer() {
           </p>
         </div>
 
-        {/* SDG 12 column */}
         <div className="space-y-2">
           <h4 className="font-semibold text-ink text-sm">SDG 12 Alignment</h4>
           <p className="text-xs leading-relaxed text-muted">
@@ -25,13 +24,17 @@ export function Footer() {
           </p>
         </div>
 
-        {/* Navigation column */}
         <div className="space-y-2">
           <h4 className="font-semibold text-ink text-sm">Explore</h4>
           <ul className="space-y-1.5 text-xs">
             <li>
               <Link href="/setup" className="hover:text-action">
                 Plan a New Setup
+              </Link>
+            </li>
+            <li>
+              <Link href="/marketplace" className="hover:text-action">
+                Compost & Seed Marketplace
               </Link>
             </li>
             <li>
@@ -47,7 +50,6 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Transparency column */}
         <div className="space-y-2">
           <h4 className="font-semibold text-ink text-sm">Transparency & Care</h4>
           <ul className="space-y-1.5 text-xs">

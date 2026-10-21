@@ -60,7 +60,7 @@ export default function BatchesIndexPage() {
 
   return (
     <div className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 space-y-10 text-left">
-      {/* Top Header */}
+
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-6">
         <div className="space-y-1.5">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint border border-border text-xs font-semibold text-action shadow-xs animate-amc-float">
@@ -85,10 +85,9 @@ export default function BatchesIndexPage() {
         </div>
       </div>
 
-      {/* When Batches Exist: Overview Dashboard */}
       {batches.length > 0 ? (
         <div className="space-y-8">
-          {/* Quick Metrics Bar */}
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 amc-stagger-1">
             <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-1.5 amc-card-smooth">
               <span className="text-xs font-semibold text-muted uppercase tracking-wider">
@@ -134,7 +133,6 @@ export default function BatchesIndexPage() {
             </div>
           </div>
 
-          {/* Batches Grid */}
           <div className="space-y-4 amc-stagger-2">
             <h2 className="font-display text-xl font-bold text-ink">
               Your Batch Registry
@@ -228,7 +226,7 @@ export default function BatchesIndexPage() {
           </div>
         </div>
       ) : (
-        /* Empty State for Apartment Beginners */
+
         <div className="space-y-8 amc-stagger-1">
           <div className="p-8 sm:p-12 rounded-panel border border-border bg-gradient-to-br from-surface via-surface to-mint/20 shadow-soft text-center space-y-6 max-w-2xl mx-auto amc-card-smooth">
             <div className="h-16 w-16 rounded-full bg-mint/80 border border-border text-action flex items-center justify-center mx-auto shadow-sm animate-amc-float">
@@ -254,7 +252,6 @@ export default function BatchesIndexPage() {
             </div>
           </div>
 
-          {/* Beginner Apartment Steps */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 amc-stagger-2">
             <div className="p-5 rounded-card border border-border bg-surface shadow-soft space-y-2.5 amc-card-smooth">
               <div className="h-9 w-9 rounded-control bg-mint text-action font-display font-bold flex items-center justify-center text-sm">
@@ -294,6 +291,30 @@ export default function BatchesIndexPage() {
           </div>
         </div>
       )}
+
+      {/* Marketplace Entry Point */}
+      <div className="p-6 rounded-2xl border border-emerald-200/80 bg-gradient-to-r from-mint/30 via-surface to-amber-50/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+        <div className="space-y-1 max-w-xl">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-action font-semibold">
+            <Sprout className="h-3.5 w-3.5" />
+            <span>Community Compost & Seeds</span>
+          </div>
+          <h3 className="font-display text-lg font-bold text-ink">
+            Need compost or looking for seeds?
+          </h3>
+          <p className="text-xs text-muted leading-relaxed">
+            Need compost? Explore community listings. Have extra cured compost from your bin? List it for sale on the Marketplace. Or browse seeds from verified external stores.
+          </p>
+        </div>
+        <div className="flex items-center gap-2.5 shrink-0">
+          <Button asChild variant="secondary" size="sm">
+            <Link href="/marketplace">
+              <span>Explore Marketplace</span>
+              <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+            </Link>
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

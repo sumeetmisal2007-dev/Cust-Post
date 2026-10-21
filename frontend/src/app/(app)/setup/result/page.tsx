@@ -40,7 +40,6 @@ export default function SetupResultPage() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isStartModalOpen, setIsStartModalOpen] = useState(false);
 
-  // 1. Loading state while restoring client-side local browser storage
   if (!isHydrated) {
     return (
       <div className="py-20 max-w-4xl mx-auto px-4 text-center">
@@ -52,7 +51,6 @@ export default function SetupResultPage() {
     );
   }
 
-  // 2. Clear recovery path when no saved setup exists in storage
   if (!containerInputs || !spaceProfile) {
     return (
       <div className="py-12 sm:py-16 max-w-xl mx-auto px-4 text-center space-y-6">
@@ -71,7 +69,6 @@ export default function SetupResultPage() {
           </p>
         </div>
 
-        {/* Clear Recovery Actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <Button
             size="lg"
@@ -98,7 +95,6 @@ export default function SetupResultPage() {
           </Button>
         </div>
 
-        {/* Informative Guidance & Privacy Guarantee */}
         <div className="pt-6 border-t border-border/80 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-muted">
           <Link
             href="/plants"
@@ -117,14 +113,11 @@ export default function SetupResultPage() {
     );
   }
 
-  // 1. Calculate geometric volume strictly based on internal dimensions
   const volResult = calculateGeometricVolume(containerInputs);
   const volumeLitres = volResult.volumeLitres;
 
-  // 2. Evaluate container suitability
   const containerResult = evaluateContainer(containerInputs);
 
-  // 3. Recommend method if not completely unsuitable
   const methodPlan =
     containerResult.verdict !== "unsuitable"
       ? recommendCompostingMethod({
@@ -138,7 +131,6 @@ export default function SetupResultPage() {
         })
       : null;
 
-  // 4. Gather verified literature sources for the drawer
   const sources: RuleSource[] = [containerResult.sourceReference];
   if (methodPlan?.sourceId) {
     const methodSrc = getSourceByRuleId(methodPlan.sourceId);
@@ -153,7 +145,7 @@ export default function SetupResultPage() {
 
   return (
     <div className="py-8 sm:py-12 max-w-4xl mx-auto px-4 space-y-8">
-      {/* Top Breadcrumb & Nav */}
+
       <div className="flex items-center justify-between amc-stagger-1">
         <Link
           href="/setup"
@@ -165,7 +157,6 @@ export default function SetupResultPage() {
         <span className="text-xs font-mono text-muted uppercase">Rule Engine v1.0 • Citations Active</span>
       </div>
 
-      {/* Main Explainable Recommendation Card */}
       <div className="amc-stagger-2">
         <RecommendationCard
           containerResult={containerResult}
@@ -176,19 +167,18 @@ export default function SetupResultPage() {
         />
       </div>
 
-      {/* Source Provenance Slide-over Drawer */}
       <SourceDrawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
         sources={sources}
       />
 
-      {/* Start Batch Modal */}
       <StartBatchModal
         isOpen={isStartModalOpen}
         onClose={() => setIsStartModalOpen(false)}
         defaultMethod={methodPlan?.chosenMethod}
         containerVolumeLitres={volumeLitres}
+        containerVerdict={containerResult.verdict}
       />
     </div>
   );

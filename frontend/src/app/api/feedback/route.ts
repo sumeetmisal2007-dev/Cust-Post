@@ -24,7 +24,6 @@ export async function POST(request: NextRequest) {
       } = await supabase.auth.getUser();
       if (user) userId = user.id;
 
-      // Try inserting into user_feedback table if Supabase is connected
       const { data, error } = await supabase
         .from("user_feedback")
         .insert({
@@ -40,7 +39,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ success: true, id: data.id }, { status: 201 });
       }
     } catch {
-      // In guest or local mode without active DB
+
     }
 
     const fallbackId = `feedback-${Date.now()}`;

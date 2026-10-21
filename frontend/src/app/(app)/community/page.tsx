@@ -92,7 +92,7 @@ export default function CommunityExchangePage() {
 
   return (
     <div className="py-8 sm:py-14 max-w-5xl mx-auto px-4 sm:px-6 space-y-10 text-left">
-      {/* Hero Header */}
+
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border/80 pb-8 amc-stagger-1">
         <div className="space-y-3 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint/50 border border-border text-xs font-mono uppercase tracking-wider text-action font-semibold shadow-xs animate-amc-float">
@@ -117,9 +117,8 @@ export default function CommunityExchangePage() {
         </div>
       </div>
 
-      {/* Filter Tabs & Search Bar */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-        {/* Category Tabs */}
+
         <div className="flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
           {CATEGORY_TABS.map((tab) => (
             <button
@@ -137,7 +136,6 @@ export default function CommunityExchangePage() {
           ))}
         </div>
 
-        {/* Search by Locality / City */}
         <div className="relative w-full sm:w-64 shrink-0">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted pointer-events-none" />
           <input
@@ -150,7 +148,6 @@ export default function CommunityExchangePage() {
         </div>
       </div>
 
-      {/* Listings Grid */}
       {listings.length === 0 ? (
         <div className="p-12 rounded-[24px] border border-dashed border-border bg-surface text-center space-y-4 amc-stagger-2 amc-card-smooth">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-mint/50 text-action animate-amc-float">
@@ -190,7 +187,7 @@ export default function CommunityExchangePage() {
                 className="group relative rounded-[22px] border border-border/80 bg-surface/90 backdrop-blur-sm p-6 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between amc-card-smooth"
               >
                 <div className="space-y-3.5">
-                  {/* Top Badges: Category & Neighborhood */}
+
                   <div className="flex items-center justify-between gap-2 flex-wrap">
                     <span
                       className={`text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full border font-semibold ${categoryMeta.badge}`}
@@ -206,7 +203,6 @@ export default function CommunityExchangePage() {
                     </span>
                   </div>
 
-                  {/* Title & Description */}
                   <div className="space-y-1.5">
                     <h3 className="font-display text-xl font-bold text-ink tracking-tight group-hover:text-action transition-colors">
                       {item.title}
@@ -216,7 +212,6 @@ export default function CommunityExchangePage() {
                     </p>
                   </div>
 
-                  {/* Related Plant Guide Link (If Seeds or Cuttings) */}
                   {relatedPlant && (
                     <div className="pt-1">
                       <Link
@@ -231,7 +226,6 @@ export default function CommunityExchangePage() {
                   )}
                 </div>
 
-                {/* Bottom Contact CTA */}
                 <div className="pt-4 mt-4 border-t border-border/70 flex items-center justify-between">
                   <span className="text-[11px] font-mono text-muted capitalize">
                     Via {item.contactMethod}
@@ -253,7 +247,6 @@ export default function CommunityExchangePage() {
         </div>
       )}
 
-      {/* Post a Share Listing Modal */}
       <PostListingModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

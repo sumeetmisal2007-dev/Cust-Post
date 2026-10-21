@@ -23,7 +23,6 @@ interface MaterialQuantityState {
 export function StepMaterials({ onNext, onBack }: StepMaterialsProps) {
   const { wasteItems, setWasteItems } = useSetupWizardStore();
 
-  // Initialize selected materials and quantities from store or default presets (veg peels + dry leaves)
   const [selectedIds, setSelectedIds] = useState<string[]>(() => {
     if (wasteItems.length > 0) {
       return PRESET_MATERIALS.filter((m) =>
@@ -131,7 +130,6 @@ export function StepMaterials({ onNext, onBack }: StepMaterialsProps) {
         </p>
       </div>
 
-      {/* Excluded Item Alert Banner */}
       {mixtureBalance.excludedItemsFound.length > 0 && (
         <div className="rounded-card border border-error/30 bg-error-bg p-4 flex items-start gap-3 text-error">
           <AlertTriangle className="h-5 w-5 shrink-0 mt-0.5" aria-hidden="true" />
@@ -147,9 +145,8 @@ export function StepMaterials({ onNext, onBack }: StepMaterialsProps) {
         </div>
       )}
 
-      {/* Materials Picker Grid grouped by category */}
       <div className="space-y-6">
-        {/* Greens Section */}
+
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-brand" aria-hidden="true" />
@@ -177,7 +174,6 @@ export function StepMaterials({ onNext, onBack }: StepMaterialsProps) {
           </div>
         </div>
 
-        {/* Browns Section */}
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#8B5A2B]" aria-hidden="true" />
@@ -205,7 +201,6 @@ export function StepMaterials({ onNext, onBack }: StepMaterialsProps) {
           </div>
         </div>
 
-        {/* Caution & Excluded Section */}
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-warning" aria-hidden="true" />
@@ -236,7 +231,6 @@ export function StepMaterials({ onNext, onBack }: StepMaterialsProps) {
         </div>
       </div>
 
-      {/* Live Mixture Balance Feedback Box */}
       <div className="rounded-card border border-border bg-mint/20 p-5 space-y-3">
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
@@ -261,7 +255,6 @@ export function StepMaterials({ onNext, onBack }: StepMaterialsProps) {
 
         <p className="text-xs text-text leading-relaxed font-medium">{mixtureBalance.advice}</p>
 
-        {/* Detailed Breakdown by Weight and Volume */}
         <div className="pt-2 border-t border-border/60 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
           <div className="p-2.5 rounded bg-surface border border-border/80">
             <span className="text-muted block text-[11px]">Total Greens:</span>
@@ -291,7 +284,6 @@ export function StepMaterials({ onNext, onBack }: StepMaterialsProps) {
         </div>
       </div>
 
-      {/* Navigation Buttons */}
       <div className="pt-4 flex items-center justify-between gap-4 border-t border-border">
         <Button type="button" variant="secondary" onClick={onBack}>
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -361,7 +353,6 @@ function MaterialItemCard({
         </div>
       </div>
 
-      {/* Active Quantity Input Controls */}
       {isSelected && (
         <div
           className="mt-3 pt-2.5 border-t border-border/80 flex flex-wrap items-center justify-between gap-2"

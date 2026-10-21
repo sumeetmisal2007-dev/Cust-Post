@@ -44,7 +44,6 @@ export function StepPreferences({ onNext, onBack }: StepPreferencesProps) {
         </p>
       </div>
 
-      {/* Maintenance Willingness */}
       <div className="space-y-3">
         <label className="flex items-center gap-2 text-sm font-semibold text-ink">
           <Clock className="h-4 w-4 text-action" aria-hidden="true" />
@@ -86,7 +85,6 @@ export function StepPreferences({ onNext, onBack }: StepPreferencesProps) {
         </div>
       </div>
 
-      {/* Smell Sensitivity */}
       <div className="space-y-3 pt-2 border-t border-border">
         <label className="flex items-center gap-2 text-sm font-semibold text-ink">
           <Wind className="h-4 w-4 text-action" aria-hidden="true" />
@@ -116,7 +114,6 @@ export function StepPreferences({ onNext, onBack }: StepPreferencesProps) {
         </div>
       </div>
 
-      {/* Worm Composting Toggle */}
       <div className="pt-2 border-t border-border">
         <label className="flex items-start gap-3 p-4 rounded-card border border-border bg-surface cursor-pointer hover:bg-canvas">
           <input
@@ -137,7 +134,6 @@ export function StepPreferences({ onNext, onBack }: StepPreferencesProps) {
         </label>
       </div>
 
-      {/* Navigation Buttons */}
       <div className="pt-4 flex items-center justify-between gap-4 border-t border-border">
         <Button type="button" variant="secondary" onClick={onBack}>
           <ArrowLeft className="mr-2 h-4 w-4" />

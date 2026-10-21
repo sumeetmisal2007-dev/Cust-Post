@@ -20,12 +20,12 @@ const DEFAULT_SOURCE: RuleSource = {
   title: "Container Safety and Aeration Guidelines",
   organization: "US EPA / MCGM Citizen's Handbook",
   sourceUrl: "https://www.epa.gov/recycle/composting-home",
-  reviewer: "Composting Advisory Panel",
+  reviewer: "Cust-Post Project Literature Review (Self-curated from official literature)",
   reviewDate: "2026-10-18",
 };
 
 export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvaluationResult {
-  // Guardrail 1: Hazardous previous use is strictly Unsuitable
+
   if (inputs.previousUse === "paint_chemicals") {
     return {
       verdict: "unsuitable",
@@ -45,7 +45,6 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
     };
   }
 
-  // Guardrail 2: Severely damaged or contaminated condition
   if (inputs.condition === "cracked_damaged" || inputs.condition === "uncleanable_residue") {
     return {
       verdict: "unsuitable",
@@ -62,14 +61,22 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
     };
   }
 
-  // Guardrail 3: Explicitly non-food-grade containers are strictly Unsuitable
   if (inputs.isFoodGrade === "non_food_grade") {
+    let specificReason = `Non-food-grade ${inputs.material.replace("_", " ")} containers pose chemical leaching and contamination risks for biological compost.`;
+    if (inputs.material === "plastic_bucket" || inputs.material === "other") {
+      specificReason = "Non-food-grade plastic containers can leach plasticizers (phthalates, BPA), chemical stabilizers, or heavy metal pigments into the decomposing mass.";
+    } else if (inputs.material === "metal_drum") {
+      specificReason = "Non-food-grade metal drums often feature toxic anti-corrosion linings, industrial epoxy coats, or heavy metal residues that leach into compost.";
+    } else if (inputs.material === "wooden_crate") {
+      specificReason = "Non-food-grade or treated wood may contain chemical wood preservatives (such as copper chromium arsenate or creosote) that leach persistent toxins into soil biology.";
+    } else if (inputs.material === "terracotta") {
+      specificReason = "Glazed or decorative non-food-grade ceramics may contain lead or cadmium pigments that leach into soil under organic compost acidity.";
+    }
+
     return {
       verdict: "unsuitable",
       reasons: [
-        inputs.material === "plastic_bucket" || inputs.material === "other"
-          ? "Non-food-grade plastic containers can leach plasticizers (phthalates, BPA), chemical stabilizers, or heavy metal pigments into the decomposing mass."
-          : `Non-food-grade ${inputs.material.replace("_", " ")} containers pose chemical leaching and contamination risks for biological compost.`,
+        specificReason,
         "Compost produced in non-food-grade containers is unsafe for application on edible herbs, vegetables, or garden soil.",
       ],
       requiredModifications: [],
@@ -84,7 +91,6 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
     };
   }
 
-  // Guardrail 4: Unknown previous use must NEVER default to safe
   if (inputs.previousUse === "unknown") {
     return {
       verdict: "more_info_needed",
@@ -108,20 +114,23 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
     };
   }
 
-  // Guardrail 5: Unverified / unknown food-grade status for plastic / synthetic containers
   if (
     inputs.isFoodGrade === "unknown" &&
-    (inputs.material === "plastic_bucket" || inputs.material === "other")
+    (inputs.material === "plastic_bucket" || inputs.material === "other" || inputs.material === "metal_drum")
   ) {
     return {
       verdict: "more_info_needed",
       reasons: [
-        "The food-grade certification of this plastic container is unverified.",
-        "Under the precautionary principle, unverified plastics cannot be cleared because non-food-grade polymers risk leaching chemical additives during microbial decomposition.",
+        inputs.material === "metal_drum"
+          ? "The food-grade certification and interior lining of this metal drum are unverified. Industrial metal drums often contain heavy metal rust-inhibitors or toxic chemical residues."
+          : "The food-grade certification of this container is unverified.",
+        "Under the precautionary principle, unverified synthetic or industrial vessels cannot be cleared because non-food-grade polymers or industrial linings risk leaching chemical additives during microbial decomposition.",
       ],
       requiredModifications: [],
       unresolvedChecks: [
-        "Inspect the underside of the vessel for resin identification stamps (HDPE #2 or PP #5).",
+        inputs.material === "metal_drum"
+          ? "Check manufacturer markings or UN packaging codes to verify the drum was lined for food contact rather than chemicals, oils, or solvents."
+          : "Inspect the underside of the vessel for resin identification stamps (HDPE #2 or PP #5).",
         "Check for a food-safe fork-and-cup symbol or manufacturer certification confirming food-contact safety.",
         "If food-grade provenance cannot be verified, substitute with a certified food-grade bucket, terracotta pot, or wooden crate.",
       ],
@@ -130,28 +139,39 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
       sourceReference: {
         ...DEFAULT_SOURCE,
         ruleId: "RULE-CONT-UNKNOWN-FOOD-GRADE",
-        title: "Precautionary Principle for Unverified Plastic Food-Grade Status",
+        title: "Precautionary Principle for Unverified Food-Grade Status",
       },
     };
   }
 
-  // Check required physical modifications (Ventilation, Drainage, Lid)
   const modifications: string[] = [];
-  if (!inputs.hasDrainageHoles && inputs.material !== "wooden_crate") {
-    modifications.push(
-      "Drill 6–8 drainage holes (6–8mm diameter) in the bottom base to allow excess leachate to drain and prevent foul anaerobic pooling."
-    );
+  if (!inputs.hasDrainageHoles) {
+    if (inputs.material === "terracotta") {
+      modifications.push(
+        "Ensure the pot has a bottom drainage hole (or drill carefully with a masonry bit) to prevent stagnant leachate pooling."
+      );
+    } else if (inputs.material !== "wooden_crate") {
+      modifications.push(
+        "Drill 6–8 drainage holes (6–8mm diameter) in the bottom base to allow excess leachate to drain and prevent foul anaerobic pooling."
+      );
+    }
   }
 
   if (!inputs.hasVentilationHoles && inputs.material !== "mesh_wire") {
-    modifications.push(
-      "Drill 8–12 aeration holes (4–6mm diameter) around the top perimeter and sides to ensure aerobic microbial oxygenation."
-    );
+    if (inputs.material === "terracotta") {
+      modifications.push(
+        "Terracotta is naturally porous, but ensure upper tiers or rim areas have aeration openings or loose stacking for aerobic oxygenation."
+      );
+    } else {
+      modifications.push(
+        "Drill 8–12 aeration holes (4–6mm diameter) around the top perimeter and sides to ensure aerobic microbial oxygenation."
+      );
+    }
   }
 
-  if (!inputs.hasLid && inputs.material !== "terracotta") {
+  if (!inputs.hasLid) {
     modifications.push(
-      "Provide a loose-fitting lid, breathable burlap sack, or insect-proof mesh cover to guard against monsoon rain and fruit flies."
+      "Provide a loose-fitting lid, breathable terracotta plate, or insect-proof mesh cover to guard against monsoon rain and fruit flies."
     );
   }
 
@@ -170,7 +190,6 @@ export function evaluateContainer(inputs: ContainerCheckInputs): ContainerEvalua
     };
   }
 
-  // Fully suitable container
   return {
     verdict: "suitable",
     reasons: [

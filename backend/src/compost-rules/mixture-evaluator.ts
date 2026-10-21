@@ -12,10 +12,6 @@ export interface MixtureBalanceResult {
   excludedItemsFound: string[];
 }
 
-/**
- * Standard bulk densities in kg per litre for common household compost items.
- * Kitchen greens are water-dense (~0.7-0.85 kg/L), while dry browns are lightweight and airy (~0.08-0.25 kg/L).
- */
 export const MATERIAL_DENSITIES: Record<string, number> = {
   vegetable_peels: 0.8,
   fruit_veg_scraps: 0.8,
@@ -57,7 +53,7 @@ export function evaluateStartingMixture(materials: WasteInputItem[]): MixtureBal
       itemLitres = item.quantityWeekly;
       itemKg = item.quantityWeekly * density;
     } else {
-      // Default unit: kg
+
       itemKg = item.quantityWeekly;
       itemLitres = density > 0 ? item.quantityWeekly / density : item.quantityWeekly;
     }
@@ -69,13 +65,12 @@ export function evaluateStartingMixture(materials: WasteInputItem[]): MixtureBal
       brownsTotalKg += itemKg;
       brownsTotalLitres += itemLitres;
     } else if (item.category === "caution") {
-      // Caution food leftovers count towards wet greens
+
       greensTotalKg += itemKg;
       greensTotalLitres += itemLitres;
     }
   }
 
-  // Round metrics to 1 decimal place for clean UI presentation
   const roundedGreensKg = Math.round(greensTotalKg * 10) / 10;
   const roundedBrownsKg = Math.round(brownsTotalKg * 10) / 10;
   const roundedGreensLitres = Math.round(greensTotalLitres * 10) / 10;
@@ -95,11 +90,24 @@ export function evaluateStartingMixture(materials: WasteInputItem[]): MixtureBal
       ? 10
       : 0;
 
+  if (roundedGreensLitres === 0 && roundedBrownsLitres === 0) {
+    return {
+      greensTotalKg: 0,
+      brownsTotalKg: 0,
+      greensTotalLitres: 0,
+      brownsTotalLitres: 0,
+      volumeRatioBrownsToGreens: 0,
+      weightRatioBrownsToGreens: 0,
+      status: "balanced",
+      advice:
+        "No compostable materials entered yet. Add kitchen greens and carbon-rich browns (aiming for a 2:1 to 3:1 volume ratio) to begin your batch.",
+      excludedItemsFound,
+    };
+  }
+
   let status: "balanced" | "excess_greens" | "excess_browns" = "balanced";
   let advice = "";
 
-  // In home composting, the golden standard is a 2:1 to 3:1 ratio by volume (browns to greens).
-  // Because dry leaves/cardboard are ~6x lighter than wet scraps, 2:1 volume equals ~0.3-0.5:1 by weight.
   if (volumeRatio < 1.0) {
     status = "excess_greens";
     const recommendedBrownsLitres = Math.round(Math.max(2, roundedGreensLitres * 2) * 10) / 10;
@@ -110,7 +118,7 @@ export function evaluateStartingMixture(materials: WasteInputItem[]): MixtureBal
     advice = `Excess carbon detected. Your current volume ratio is approximately ${volumeRatio}:1 (browns to greens). Decomposition will be slow without adequate nitrogen and moisture. Add moist vegetable scraps or fresh coffee grounds (~${recommendedGreensKg} kg/week) to activate active composting.`;
   } else {
     status = "balanced";
-    advice = `Initial brown-to-green balance is optimal (~${volumeRatio}:1 volume ratio; ${weightRatio}:1 weight ratio). This provides both the structural air pockets and the moisture needed for active aerobic decomposition.`;
+    advice = `Initial brown-to-green balance is within recommended working range for aerobic composting (~${volumeRatio}:1 volume ratio; ${weightRatio}:1 weight ratio). This provides both the structural air pockets and the moisture needed for active aerobic decomposition.`;
   }
 
   return {

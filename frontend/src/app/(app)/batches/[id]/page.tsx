@@ -74,12 +74,11 @@ export default function BatchDashboardPage() {
 
   return (
     <div className="py-8 sm:py-12 max-w-4xl mx-auto px-4 space-y-8">
-      {/* Batch Header */}
+
       <div className="amc-stagger-1">
         <BatchHeader batch={batch} />
       </div>
 
-      {/* Dynamic Aeration & Turn Reminder Banner (Feature 2) */}
       <div className="amc-stagger-2">
         <TurnReminderBanner
           batch={batch}
@@ -88,7 +87,6 @@ export default function BatchDashboardPage() {
         />
       </div>
 
-      {/* Metric Summary & Quick Actions */}
       <div className="amc-stagger-3">
         <MetricSummary
           batch={batch}
@@ -97,7 +95,6 @@ export default function BatchDashboardPage() {
         />
       </div>
 
-      {/* Observation Activity Timeline (Task 23) */}
       <div className="amc-stagger-4">
         <BatchTimeline
           observations={observations}
@@ -105,7 +102,6 @@ export default function BatchDashboardPage() {
         />
       </div>
 
-      {/* Log Observation Modal (Task 23) */}
       <LogObservationModal
         isOpen={isLogModalOpen}
         batchId={batch.id}

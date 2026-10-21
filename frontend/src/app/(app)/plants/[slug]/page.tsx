@@ -50,7 +50,6 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
     notFound();
   }
 
-  // Find adjacent plants for bottom next/prev links
   const currentIndex = PLANT_GUIDES.findIndex((p) => p.slug === slug);
   const nextPlant = PLANT_GUIDES[(currentIndex + 1) % PLANT_GUIDES.length];
   const prevPlant = PLANT_GUIDES[(currentIndex - 1 + PLANT_GUIDES.length) % PLANT_GUIDES.length];
@@ -63,7 +62,7 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
 
   return (
     <div className="py-8 sm:py-14 max-w-5xl mx-auto px-4 sm:px-6 space-y-12 text-left">
-      {/* Top Breadcrumb & Status Ribbon */}
+
       <div className="flex items-center justify-between border-b border-border/70 pb-4 amc-stagger-1">
         <Link
           href="/plants"
@@ -82,7 +81,6 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </div>
       </div>
 
-      {/* Hero Display Section - AMC Natural Editorial Hierarchy with Botanical Photo & Emblem */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-2 amc-stagger-1">
         <div className="space-y-4 max-w-2xl">
           <div className="space-y-2">
@@ -109,7 +107,6 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
           </p>
         </div>
 
-        {/* Hero Curated Botanical Photography Card */}
         <div className="relative w-full md:w-80 h-64 sm:h-72 rounded-[28px] overflow-hidden border border-border/80 shadow-lg shrink-0 self-start md:self-center group amc-card-smooth">
           <Image
             src={plant.imageUrl}
@@ -132,9 +129,8 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </div>
       </div>
 
-      {/* Floating AMC Natural Radial Gradient Stat Orb Card */}
       <div className="relative overflow-hidden rounded-[32px] border border-emerald-200/80 bg-gradient-to-br from-emerald-50/80 via-surface/90 to-amber-50/60 p-6 sm:p-10 shadow-lg backdrop-blur-sm amc-stagger-2 amc-card-smooth">
-        {/* Ambient Glowing Orbs */}
+
         <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-emerald-400/20 blur-3xl" />
         <div className="pointer-events-none absolute -right-16 -bottom-16 h-64 w-64 rounded-full bg-amber-400/20 blur-3xl" />
 
@@ -185,7 +181,6 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </div>
       </div>
 
-      {/* Solid Dark Accreditation Badge Card (AMC Natural Style) */}
       <div className="relative rounded-[28px] bg-ink text-surface p-7 sm:p-9 shadow-md overflow-hidden">
         <div className="pointer-events-none absolute right-0 top-0 w-80 h-80 bg-radial from-brand/20 to-transparent blur-2xl" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -215,16 +210,14 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </div>
       </div>
 
-      {/* Two-Column Editorial Care & Formulation Breakdown */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        {/* Left Column: Environmental & Growth Protocols */}
+
         <div className="space-y-6">
           <h2 className="font-display text-2xl font-bold text-ink flex items-center gap-2 pb-2 border-b border-border">
             <Leaf className="h-5 w-5 text-action" />
             <span>Environmental Protocol</span>
           </h2>
 
-          {/* Sowing Guidance */}
           <div className="p-5 rounded-[20px] border border-border/80 bg-surface/80 space-y-2 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-bold text-ink uppercase tracking-wider">
               <Sprout className="h-4 w-4 text-action" />
@@ -235,7 +228,6 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
             </p>
           </div>
 
-          {/* Watering Strategy */}
           <div className="p-5 rounded-[20px] border border-border/80 bg-surface/80 space-y-2 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-bold text-ink uppercase tracking-wider">
               <Droplets className="h-4 w-4 text-action" />
@@ -246,7 +238,6 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
             </p>
           </div>
 
-          {/* Climate & Seasonality */}
           <div className="p-5 rounded-[20px] border border-border/80 bg-surface/80 space-y-2 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-bold text-ink uppercase tracking-wider">
               <Calendar className="h-4 w-4 text-action" />
@@ -257,7 +248,6 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
             </p>
           </div>
 
-          {/* Harvesting Advice */}
           <div className="p-5 rounded-[20px] border border-border/80 bg-surface/80 space-y-2 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-bold text-ink uppercase tracking-wider">
               <Scissors className="h-4 w-4 text-action" />
@@ -269,17 +259,14 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
           </div>
         </div>
 
-        {/* Right Column: Compost Blending & Agronomic Formulation */}
         <div className="space-y-6">
           <h2 className="font-display text-2xl font-bold text-ink flex items-center gap-2 pb-2 border-b border-border">
             <Sparkles className="h-5 w-5 text-action" />
             <span>Compost Formulation</span>
           </h2>
 
-          {/* Interactive AMC Pot Formulator Component */}
           <PotCalculator plant={plant} />
 
-          {/* Root Zone & Container Requirements */}
           <div className="p-5 rounded-[20px] border border-border/80 bg-surface/80 space-y-3 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-bold text-ink uppercase tracking-wider">
               <Box className="h-4 w-4 text-action" />
@@ -292,29 +279,29 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </div>
       </div>
 
-      {/* Soil & Seed Circle Community Exchange Callout */}
       <div className="p-6 rounded-[24px] border border-emerald-200/80 bg-gradient-to-r from-mint/40 via-surface to-amber-50/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
         <div className="space-y-1 max-w-xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-action font-semibold">
             <Sprout className="h-3.5 w-3.5" />
-            <span>Soil & Seed Circle</span>
+            <span>Seeds & Compost Marketplace</span>
           </div>
           <h3 className="font-display text-lg font-bold text-ink">
-            Need seeds, cuttings, or cured compost for {plant.name}?
+            Looking for seeds or cured compost for {plant.name}?
           </h3>
           <p className="text-xs text-muted leading-relaxed">
-            Connect with nearby urban gardeners sharing heirloom seed packets, root cuttings, and cured compost in your locality.
+            Looking for seeds? Browse external seed stores. Need compost? Explore community listings to formulate the ideal potting blend for your balcony.
           </p>
         </div>
-        <Link href="/community" className="shrink-0">
-          <span className="inline-flex items-center justify-center px-4 py-2 rounded-control text-xs font-semibold bg-ink text-surface hover:bg-action transition-colors shadow-2xs">
-            <span>Explore Community Exchange</span>
-            <ArrowRight className="ml-2 h-3.5 w-3.5" />
-          </span>
-        </Link>
+        <div className="flex items-center gap-2 shrink-0">
+          <Link href="/marketplace" className="shrink-0">
+            <span className="inline-flex items-center justify-center px-4 py-2 rounded-control text-xs font-semibold bg-ink text-surface hover:bg-action transition-colors shadow-2xs">
+              <span>Browse Marketplace & Seeds</span>
+              <ArrowRight className="ml-2 h-3.5 w-3.5" />
+            </span>
+          </Link>
+        </div>
       </div>
 
-      {/* Adjacent Plants Navigation */}
       <div className="pt-6 border-t border-border/80 flex items-center justify-between gap-4">
         <Link
           href={`/plants/${prevPlant.slug}`}
@@ -334,7 +321,6 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
         </Link>
       </div>
 
-      {/* AMC Natural Animated Marquee Ribbon */}
       <div className="overflow-hidden rounded-[20px] bg-surface/70 border border-border/80 py-4 px-2 shadow-xs">
         <div className="animate-marquee whitespace-nowrap text-xs font-mono font-semibold tracking-widest text-ink/75 uppercase flex items-center gap-8">
           <span className="flex items-center gap-2">✦ {plant.name.toUpperCase()}</span>

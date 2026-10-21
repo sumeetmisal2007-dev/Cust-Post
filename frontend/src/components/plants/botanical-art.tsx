@@ -20,19 +20,19 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Central stem */}
+
           <path d="M16 28V6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          {/* Top spire seeds */}
+
           <circle cx="16" cy="4" r="1.5" fill="currentColor" />
           <circle cx="16" cy="8" r="1.5" fill="currentColor" />
-          {/* Left leaves */}
+
           <path
             d="M16 14C11 13 8 16 9 20C12 20 15 17 16 14Z"
             stroke="currentColor"
             strokeWidth="1.8"
             strokeLinejoin="round"
           />
-          {/* Right leaves */}
+
           <path
             d="M16 11C21 10 24 13 23 17C20 17 17 14 16 11Z"
             stroke="currentColor"
@@ -54,7 +54,7 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           aria-hidden="true"
         >
           <path d="M16 28V5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          {/* Serrated mint leaf pairs */}
+
           <path
             d="M16 12C10 10 7 13 8 18C12 18 15 15 16 12Z"
             stroke="currentColor"
@@ -93,9 +93,9 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Vine */}
+
           <path d="M4 10C10 8 18 8 28 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          {/* Calyx & tomato */}
+
           <path d="M16 8V12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
           <path d="M13 11L16 13L19 11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
           <circle cx="16" cy="20" r="7" stroke="currentColor" strokeWidth="2" />
@@ -115,9 +115,9 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           aria-hidden="true"
         >
           <path d="M12 4C14 7 15 8 18 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          {/* Pepper cap */}
+
           <path d="M14 8C17 7 20 8 21 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          {/* Curving chili body */}
+
           <path
             d="M14 9C12 14 13 22 18 26C21 28 23 27 22 25C21 21 21 16 21 10"
             stroke="currentColor"
@@ -162,9 +162,9 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           aria-hidden="true"
         >
           <path d="M16 4V7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          {/* Calyx */}
+
           <path d="M10 8L16 9L22 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          {/* Berry */}
+
           <path
             d="M10 9C7 14 8 20 12 25C14 27 18 27 20 25C24 20 25 14 22 9C18 10 14 10 10 9Z"
             stroke="currentColor"
@@ -189,14 +189,14 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Citrus shape */}
+
           <path
             d="M6 16C6 10 11 6 16 6C22 6 26 10 26 16C26 22 22 26 16 26C11 26 6 22 6 16Z"
             stroke="currentColor"
             strokeWidth="2"
           />
           <path d="M5 16H6M26 16H27" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          {/* Lemon segment arcs */}
+
           <circle cx="16" cy="16" r="2" stroke="currentColor" strokeWidth="1.5" />
           <path d="M16 8V14M16 18V24M8 16H14M18 16H24" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
         </svg>
@@ -213,7 +213,7 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Pinnate compound leaf stem */}
+
           <path d="M16 28V4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
           <path d="M16 7C13 5 11 7 12 9C14 9 15 8 16 7Z" stroke="currentColor" strokeWidth="1.4" />
           <path d="M16 7C19 5 21 7 20 9C18 9 17 8 16 7Z" stroke="currentColor" strokeWidth="1.4" />
@@ -235,7 +235,7 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Thick succulent scalloped leaves */}
+
           <path d="M16 28V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
           <path
             d="M16 6C10 5 7 10 8 16C10 18 13 17 16 15C19 17 22 18 24 16C25 10 22 5 16 6Z"
@@ -259,10 +259,10 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Stem & Calyx */}
+
           <path d="M16 4V7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
           <path d="M11 9L16 7L21 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          {/* Ridged tapering Okra pod */}
+
           <path
             d="M11 9C12 16 13 23 16 29C19 23 20 16 21 9Z"
             stroke="currentColor"
@@ -284,9 +284,9 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Stem */}
+
           <path d="M16 3C15 6 15 7 16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          {/* Calyx cap */}
+
           <path
             d="M10 11L13 12L16 9L19 12L22 11"
             stroke="currentColor"
@@ -294,7 +294,7 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          {/* Tear-drop Eggplant body */}
+
           <path
             d="M11 11C8 16 9 22 13 26C15 28 17 28 19 26C23 22 24 16 21 11"
             stroke="currentColor"
@@ -315,7 +315,7 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Broad pointed amaranth leaves */}
+
           <path d="M16 28V6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
           <path
             d="M16 6C11 8 8 13 9 19C12 20 15 18 16 16C17 18 20 20 23 19C24 13 21 8 16 6Z"
@@ -339,9 +339,9 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Vine tendril */}
+
           <path d="M16 3C18 5 19 7 16 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          {/* Warty ridged Karela fruit */}
+
           <path
             d="M16 8C12 11 11 18 12 23C13 26 15 28 16 29C17 28 19 26 20 23C21 18 20 11 16 8Z"
             stroke="currentColor"
@@ -366,9 +366,9 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Stem */}
+
           <path d="M16 4C15 6 15 7 16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          {/* Lobed bell pepper body */}
+
           <path
             d="M11 9C8 13 8 21 10 25C13 28 15 27 16 26C17 27 19 28 22 25C24 21 24 13 21 9C19 10 17 9 16 9C15 9 13 10 11 9Z"
             stroke="currentColor"
@@ -391,7 +391,7 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
           className={className}
           aria-hidden="true"
         >
-          {/* Twig with oval leaves and round guava */}
+
           <path d="M10 5L16 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
           <path
             d="M10 5C6 7 6 11 9 12C12 12 13 9 10 5Z"
@@ -399,9 +399,9 @@ export function BotanicalArt({ slug, className = "h-8 w-8 text-action", size = 3
             strokeWidth="1.6"
             strokeLinejoin="round"
           />
-          {/* Round guava fruit */}
+
           <circle cx="18" cy="18" r="8" stroke="currentColor" strokeWidth="2" />
-          {/* Guava floral eye / calyx */}
+
           <path d="M16 26L18 24L20 26" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
       );

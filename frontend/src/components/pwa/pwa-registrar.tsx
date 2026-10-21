@@ -16,24 +16,22 @@ export function PwaRegistrar() {
   const [bannerDismissed, setBannerDismissed] = useState(false);
 
   useEffect(() => {
-    // Service Worker Registration
+
     if (typeof window !== "undefined" && "serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/sw.js")
         .then(() => {
-          // SW registered successfully
+
         })
         .catch(() => {
-          // Graceful fallback if SW registration is restricted
+
         });
     }
 
-    // Initial Online State
     if (typeof window !== "undefined") {
       setIsOffline(!navigator.onLine);
     }
 
-    // Online / Offline Listeners
     const handleOnline = () => {
       setIsOffline(false);
       setShowBackOnline(true);
@@ -45,7 +43,6 @@ export function PwaRegistrar() {
       setShowBackOnline(false);
     };
 
-    // Install prompt listener
     const handleBeforeInstall = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
@@ -80,7 +77,7 @@ export function PwaRegistrar() {
 
   return (
     <>
-      {/* 1. Offline Notification Pill */}
+
       {isOffline && (
         <aside
           role="status"
@@ -92,7 +89,6 @@ export function PwaRegistrar() {
         </aside>
       )}
 
-      {/* 2. Back Online Pill */}
       {showBackOnline && !isOffline && (
         <aside
           role="status"
@@ -104,7 +100,6 @@ export function PwaRegistrar() {
         </aside>
       )}
 
-      {/* 3. Install App Prompt (When Browser supports PWA install) */}
       {deferredPrompt && !isInstalled && !bannerDismissed && (
         <aside
           role="region"

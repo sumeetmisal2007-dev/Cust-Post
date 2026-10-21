@@ -151,7 +151,7 @@ export function LogObservationModal({
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/50 backdrop-blur-xs overflow-y-auto"
     >
       <div className="relative w-full max-w-xl bg-canvas border border-border rounded-card p-6 shadow-2xl space-y-6 text-left my-8 max-h-[90vh] overflow-y-auto">
-        {/* Header */}
+
         <div className="flex items-center justify-between pb-3 border-b border-border">
           <div className="flex items-center gap-2">
             <PlusCircle className="h-5 w-5 text-action" aria-hidden="true" />
@@ -176,7 +176,7 @@ export function LogObservationModal({
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Observed At Date-time */}
+
           <div>
             <label className="block text-xs font-semibold text-ink mb-1">Observation Date & Time</label>
             <input
@@ -188,7 +188,6 @@ export function LogObservationModal({
             />
           </div>
 
-          {/* Moisture Check */}
           <div className="pt-2 border-t border-border space-y-2">
             <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
               <Droplets className="h-3.5 w-3.5 text-action" />
@@ -220,7 +219,6 @@ export function LogObservationModal({
             </div>
           </div>
 
-          {/* Odour Check */}
           <div className="pt-2 border-t border-border space-y-2">
             <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
               <Wind className="h-3.5 w-3.5 text-action" />
@@ -252,7 +250,6 @@ export function LogObservationModal({
             </div>
           </div>
 
-          {/* Turning / Aeration */}
           <div className="pt-2 border-t border-border">
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -268,7 +265,6 @@ export function LogObservationModal({
             </label>
           </div>
 
-          {/* Waste Addition */}
           <div className="pt-2 border-t border-border space-y-2">
             <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
               <Scale className="h-3.5 w-3.5 text-action" />
@@ -295,7 +291,6 @@ export function LogObservationModal({
             </div>
           </div>
 
-          {/* Temperature */}
           <div className="pt-2 border-t border-border space-y-2">
             <div className="flex items-center justify-between">
               <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
@@ -324,7 +319,6 @@ export function LogObservationModal({
             )}
           </div>
 
-          {/* Pests */}
           <div className="pt-2 border-t border-border space-y-1.5">
             <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
               <Bug className="h-3.5 w-3.5 text-rose-500" />
@@ -344,7 +338,6 @@ export function LogObservationModal({
             </select>
           </div>
 
-          {/* Photo Journal Attachment */}
           <div className="pt-2 border-t border-border space-y-2">
             <label className="text-xs font-semibold text-ink flex items-center justify-between">
               <span className="flex items-center gap-1.5">
@@ -365,7 +358,7 @@ export function LogObservationModal({
 
             {imageUrl ? (
               <div className="relative rounded-card overflow-hidden border border-border bg-surface p-2.5 flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+
                 <img
                   src={imageUrl}
                   alt="Observation pile preview"
@@ -407,7 +400,6 @@ export function LogObservationModal({
             )}
           </div>
 
-          {/* Notes */}
           <div className="pt-2 border-t border-border space-y-1.5">
             <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
               <FileText className="h-3.5 w-3.5 text-action" />
@@ -422,7 +414,6 @@ export function LogObservationModal({
             />
           </div>
 
-          {/* Submit */}
           <div className="pt-4 flex items-center justify-end gap-3 border-t border-border">
             <Button type="button" variant="secondary" onClick={onClose} disabled={isSubmitting || isCompressing}>
               Cancel

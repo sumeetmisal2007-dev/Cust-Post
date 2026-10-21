@@ -29,7 +29,7 @@ export function BatchCompletionModal({
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/50 backdrop-blur-xs"
     >
       <div className="relative w-full max-w-md bg-canvas border border-border rounded-card p-6 shadow-2xl space-y-6 text-left">
-        {/* Header */}
+
         <div className="flex items-center justify-between pb-3 border-b border-border">
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-action" aria-hidden="true" />
@@ -62,23 +62,22 @@ export function BatchCompletionModal({
             </p>
           </div>
 
-          <div className="p-3.5 rounded-card bg-mint/40 border border-border/80 text-xs text-ink space-y-1">
+          <div className="p-3.5 rounded-card bg-mint/40 border border-border/80 text-xs text-ink space-y-1.5">
             <div className="flex items-center justify-between">
               <span className="font-bold text-action flex items-center gap-1.5">
                 <Sparkles className="h-3.5 w-3.5 text-action" />
-                <span>Have Surplus Compost?</span>
+                <span>Have extra compost? List it for sale.</span>
               </span>
-              <a href="/community" target="_blank" rel="noopener noreferrer" className="font-semibold text-action hover:underline">
-                Share on Exchange →
+              <a href="/marketplace" target="_blank" rel="noopener noreferrer" className="font-semibold text-action hover:underline">
+                Open Marketplace →
               </a>
             </div>
             <p className="text-[11px] text-muted leading-relaxed">
-              Share 5L bags of cured compost with nearby urban gardeners on the Soil & Seed Circle.
+              Have extra cured compost? List it for sale or free community pickup on the Compost Marketplace, or explore community listings.
             </p>
           </div>
         </div>
 
-        {/* Action buttons */}
         <div className="pt-3 flex items-center justify-end gap-3 border-t border-border">
           <Button type="button" variant="secondary" onClick={onClose} disabled={isSubmitting}>
             Cancel

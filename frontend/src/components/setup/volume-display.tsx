@@ -36,7 +36,6 @@ export function VolumeDisplay({ volumeResult, spaceFitResult }: VolumeDisplayPro
         </div>
       </div>
 
-      {/* Apartment suitability indicator */}
       <div className="flex items-center gap-2 text-xs py-1.5 px-3 rounded-control bg-surface border border-border/80">
         <CheckCircle2 className="h-3.5 w-3.5 text-brand shrink-0" />
         <span className="text-muted">
@@ -52,7 +51,6 @@ export function VolumeDisplay({ volumeResult, spaceFitResult }: VolumeDisplayPro
         <strong>Note:</strong> {volumeResult.disclaimer}
       </p>
 
-      {/* Space clearance alerts */}
       {spaceFitResult && spaceFitResult.warnings.length > 0 && (
         <div className="pt-2 border-t border-border/60 space-y-1.5">
           {spaceFitResult.warnings.map((warning, idx) => (

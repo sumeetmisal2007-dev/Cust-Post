@@ -41,10 +41,10 @@ Built in direct alignment with **United Nations Sustainable Development Goal 12 
 
 ```bash
 # Clone the repository
-git clone https://github.com/nirman-lab/cust-post.git
-cd cust-post
+git clone https://github.com/sumeetmisal2007-dev/Cust-Post.git
+cd Cust-Post
 
-# Install dependencies
+# Install monorepo dependencies
 npm install
 
 # Set up environment variables
@@ -61,78 +61,67 @@ Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
 ---
 
-## 🧪 Testing Suite
+## 🧪 Testing & Production Build Suite
 
 ```bash
-# Run unit & integration test suite (Vitest)
-npm run test:unit
+# Run unit & integration test suite (Vitest across workspaces)
+npm test
 
-# Run end-to-end browser tests (Playwright)
-npm run test:e2e
+# Run production build (Next.js 15)
+npm run build
 
 # Run linter
 npm run lint
 
-# Format codebase
-npm run format
+# Run end-to-end browser tests (Playwright)
+npm run test:e2e
 ```
 
 ---
 
-## 📂 Project Structure
+## 📂 Monorepo Structure
 
 ```
 nir/
-├── src/
-│   ├── app/
-│   │   ├── (app)/
-│   │   │   ├── batches/[id]/        # Active batch dashboard, timeline, logger
-│   │   │   │   ├── maturity/        # 4-step physical maturity checklist
-│   │   │   │   └── troubleshoot/    # Guided symptom troubleshooter
-│   │   │   ├── plants/              # Plant care & compost blending hub
-│   │   │   │   └── [slug]/          # Plant detail guide
-│   │   │   ├── profile/             # Privacy summary & 1-click account wipe
-│   │   │   ├── setup/               # 5-step space & container wizard
-│   │   │   │   └── result/          # Explainable recommendation & citations
-│   │   │   └── sources/             # Rule provenance & literature registry
-│   │   ├── api/
-│   │   │   ├── batches/             # Batch persistence endpoints
-│   │   │   ├── feedback/            # Pilot feedback collection
-│   │   │   └── user/delete/         # Hard cascade user data erasure
-│   │   ├── globals.css              # Warm paper design tokens
-│   │   ├── layout.tsx               # App shell & responsive navigation
-│   │   └── page.tsx                 # Public editorial landing page
-│   ├── components/
-│   │   ├── auth/                    # Auth modal (magic link & password)
-│   │   ├── compost/                 # Recommendation cards, source drawer, maturity
-│   │   ├── dashboard/               # Metric summaries, header, observation timeline
-│   │   ├── feedback/                # Pilot feedback reporting modal
-│   │   ├── layout/                  # Responsive header, footer, guest banner
-│   │   ├── marketing/               # Landing page hero, feature cards, SDG strip
-│   │   ├── plants/                  # Plant directory cards
-│   │   ├── setup/                   # Space, container, materials, preferences forms
-│   │   ├── troubleshoot/            # Symptom selector & resolution view
-│   │   └── ui/                      # Button, Input, Card, Stepper, StatusChip
-│   ├── lib/
+├── backend/                         # @cust-post/backend (Core domain package)
+│   ├── src/
 │   │   ├── compost-rules/           # Deterministic rule engines (volume, container, method, readiness, troubleshoot)
-│   │   ├── data/                    # Open sources registry & starter plant guides
+│   │   ├── data/                    # Open sources registry & 20 curated plant guides
 │   │   ├── services/                # Dual storage adapter (localStorage + Supabase)
 │   │   ├── supabase/                # SSR client, server, and middleware helpers
-│   │   └── validation/              # Zod schemas
-│   └── types/                       # Core domain types
-├── supabase/
-│   └── migrations/                  # PostgreSQL schema, RLS policies & constraints
+│   │   ├── validation/              # Zod schemas (space, container, batch, materials)
+│   │   └── types/                   # Core domain TypeScript interfaces
+│   ├── supabase/migrations/         # PostgreSQL schema, RLS policies & constraints
+│   └── tests/                       # Backend unit test suites
+├── frontend/                        # @cust-post/frontend (Next.js 15 Web Application)
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── (app)/
+│   │   │   │   ├── batches/[id]/    # Active batch dashboard, timeline, logger
+│   │   │   │   │   ├── maturity/    # 4-step physical maturity checklist
+│   │   │   │   │   └── troubleshoot/# Guided symptom troubleshooter
+│   │   │   │   ├── exchange/        # Soil & seed community exchange
+│   │   │   │   ├── plants/          # Plant care & compost blending hub ([slug])
+│   │   │   │   ├── profile/         # Privacy summary & 1-click account wipe
+│   │   │   │   ├── setup/           # 5-step space & container wizard
+│   │   │   │   │   └── result/      # Explainable recommendation & citations
+│   │   │   │   └── sources/         # Rule provenance & literature registry
+│   │   │   ├── api/batches/         # Batch persistence endpoints
+│   │   │   ├── globals.css          # Warm paper design tokens & Awwwards AMC smooth easing
+│   │   │   ├── layout.tsx           # App shell & responsive navigation
+│   │   │   └── page.tsx             # Public editorial landing page
+│   │   ├── components/              # UI components, wizard steps, modals, drawers
+│   │   └── lib/stores/              # Zustand wizard store with safe rehydration
+│   └── tests/                       # Frontend unit & component test suites
 ├── tests/
-│   ├── unit/                        # 25 Vitest unit test suites (121 passing tests)
-│   ├── integration/                 # Storage adapter & batch API tests
-│   └── e2e/                         # Playwright user journeys & axe accessibility specs
+│   └── integration/                 # Storage adapter & batch API integration tests
 └── docs/
     ├── PILOT_GUIDE.md               # Student & resident tester instructions
-    └── plans/                       # Full 31-task architectural plan
+    └── plans/                       # Full architectural plans
 ```
 
 ---
 
 ## 📜 License & Provenance
 
-Cust-Post is developed under open-source guidelines citing municipal composting regulations and environmental literature. All agronomic advice is peer-reviewed by the Nirman Lab Advisory Panel.
+Cust-Post is developed under open-source guidelines citing municipal composting regulations and environmental literature. All agronomic advice is curated directly from published literature (US EPA, MCGM, ADEQ, FAO). All calculations make explicit disclosures separating physical geometric vessel volume from active microbial composting capacity.

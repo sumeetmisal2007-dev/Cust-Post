@@ -64,7 +64,7 @@ export default function SetupWizardPage() {
 
   return (
     <div className="py-8 sm:py-12 max-w-4xl mx-auto px-4">
-      {/* Stepper Header */}
+
       <div className="mb-8 flex items-center justify-between gap-4">
         <div className="flex-1">
           <ProgressStepper
@@ -87,7 +87,6 @@ export default function SetupWizardPage() {
         )}
       </div>
 
-      {/* Step Components */}
       <div className="bg-surface rounded-card p-6 sm:p-8 border border-border shadow-soft amc-card-smooth">
         <div key={currentStep} className="amc-page-enter">
           {currentStep === 1 && <StepSpace onNext={handleNext} />}

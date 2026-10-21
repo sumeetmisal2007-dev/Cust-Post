@@ -80,7 +80,7 @@ export function BatchTimeline({ observations, onLogFirst }: BatchTimelineProps) 
               key={obs.id}
               className="p-4 rounded-card border border-border bg-surface shadow-xs space-y-3"
             >
-              {/* Header: Date + Waste Addition Badge */}
+
               <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-border/80">
                 <span className="text-xs font-semibold text-ink">{dateStr}</span>
 
@@ -94,9 +94,8 @@ export function BatchTimeline({ observations, onLogFirst }: BatchTimelineProps) 
                 ) : null}
               </div>
 
-              {/* Status Chips Row */}
               <div className="flex flex-wrap items-center gap-2 text-xs">
-                {/* Moisture */}
+
                 <span
                   className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border font-medium ${
                     moistureStyles[obs.moisture]?.class || "bg-stone-100"
@@ -106,7 +105,6 @@ export function BatchTimeline({ observations, onLogFirst }: BatchTimelineProps) 
                   <span>{moistureStyles[obs.moisture]?.label || obs.moisture}</span>
                 </span>
 
-                {/* Odour */}
                 <span
                   className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border font-medium ${
                     odourStyles[obs.odour]?.class || "bg-stone-100"
@@ -116,7 +114,6 @@ export function BatchTimeline({ observations, onLogFirst }: BatchTimelineProps) 
                   <span>{odourStyles[obs.odour]?.label || obs.odour}</span>
                 </span>
 
-                {/* Turning */}
                 {obs.turned && (
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-action/10 text-action border border-action/30 font-semibold">
                     <RotateCw className="h-3 w-3 shrink-0" />
@@ -124,7 +121,6 @@ export function BatchTimeline({ observations, onLogFirst }: BatchTimelineProps) 
                   </span>
                 )}
 
-                {/* Temperature */}
                 {obs.temperatureC != null && (
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface border border-border text-ink font-medium">
                     <Thermometer className="h-3 w-3 text-brand shrink-0" />
@@ -132,7 +128,6 @@ export function BatchTimeline({ observations, onLogFirst }: BatchTimelineProps) 
                   </span>
                 )}
 
-                {/* Pests */}
                 {obs.pests && obs.pests !== "none" && (
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-300 font-medium">
                     <AlertTriangle className="h-3 w-3 shrink-0" />
@@ -141,11 +136,10 @@ export function BatchTimeline({ observations, onLogFirst }: BatchTimelineProps) 
                 )}
               </div>
 
-              {/* Photo Journal Entry */}
               {obs.imageUrl && (
                 <div className="pt-2">
                   <div className="relative group max-w-xs sm:max-w-sm overflow-hidden rounded-[16px] border border-border/80 bg-surface shadow-xs hover:shadow-md transition-shadow">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
+
                     <img
                       src={obs.imageUrl}
                       alt={`Compost pile on ${dateStr}`}
@@ -160,7 +154,6 @@ export function BatchTimeline({ observations, onLogFirst }: BatchTimelineProps) 
                 </div>
               )}
 
-              {/* Observation Notes */}
               {obs.notes && (
                 <div className="pt-2 text-xs text-muted flex items-start gap-1.5 leading-relaxed bg-canvas/60 p-2.5 rounded-xs border border-border/60">
                   <FileText className="h-3.5 w-3.5 text-muted shrink-0 mt-0.5" />

@@ -66,7 +66,6 @@ export default function ProfilePage() {
         throw new Error("Failed to delete user data");
       }
 
-      // Clear local storage keys
       if (typeof window !== "undefined") {
         localStorage.clear();
       }
@@ -80,7 +79,7 @@ export default function ProfilePage() {
 
   return (
     <div className="py-8 sm:py-12 max-w-3xl mx-auto px-4 space-y-8 text-left">
-      {/* Top Breadcrumb */}
+
       <div className="flex items-center justify-between">
         <Link
           href="/"
@@ -92,7 +91,6 @@ export default function ProfilePage() {
         <span className="text-xs font-mono text-muted uppercase">Privacy & Account</span>
       </div>
 
-      {/* Header */}
       <div className="space-y-1">
         <h1 className="font-display text-3xl font-bold text-ink flex items-center gap-2.5">
           <User className="h-7 w-7 text-action" />
@@ -103,7 +101,6 @@ export default function ProfilePage() {
         </p>
       </div>
 
-      {/* Account Info Card */}
       <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-3 amc-card-smooth amc-stagger-1">
         <h3 className="text-xs font-bold uppercase tracking-wider text-muted">
           Account Status
@@ -118,7 +115,6 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      {/* Transparent Data Summary */}
       <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-4 amc-card-smooth amc-stagger-2">
         <div className="flex items-center gap-2 text-ink font-bold text-sm">
           <Database className="h-4 w-4 text-action" />
@@ -142,7 +138,6 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      {/* Privacy Guarantees */}
       <div className="p-5 rounded-card border border-border bg-surface shadow-xs space-y-3">
         <div className="flex items-center gap-2 text-ink font-bold text-sm">
           <Shield className="h-4 w-4 text-brand" />
@@ -171,7 +166,6 @@ export default function ProfilePage() {
         </ul>
       </div>
 
-      {/* Dangerous Data Erasure Section */}
       <div className="p-5 rounded-card border border-rose-300 bg-rose-50/50 space-y-3">
         <div className="flex items-center gap-2 text-rose-900 font-bold text-sm">
           <Trash2 className="h-4 w-4 text-rose-600" />

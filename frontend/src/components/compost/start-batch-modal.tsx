@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { X, Sprout, Calendar, Tag, FileText, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { CompostingMethod } from "@cust-post/backend";
+import { CompostingMethod, RecommendationVerdict } from "@cust-post/backend";
 import { batchStorageService } from "@cust-post/backend";
 
 interface StartBatchModalProps {
@@ -13,6 +13,7 @@ interface StartBatchModalProps {
   onClose: () => void;
   defaultMethod?: CompostingMethod;
   containerVolumeLitres?: number;
+  containerVerdict?: RecommendationVerdict;
 }
 
 export function StartBatchModal({
@@ -20,6 +21,7 @@ export function StartBatchModal({
   onClose,
   defaultMethod = "aerobic_bin",
   containerVolumeLitres,
+  containerVerdict,
 }: StartBatchModalProps) {
   const router = useRouter();
   const todayStr = new Date().toISOString().split("T")[0];
@@ -33,8 +35,20 @@ export function StartBatchModal({
 
   if (!isOpen) return null;
 
+  const isBlocked =
+    containerVerdict === "unsuitable" || containerVerdict === "more_info_needed";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isBlocked) {
+      setError(
+        containerVerdict === "unsuitable"
+          ? "Cannot initialize batch: Container was evaluated as unsuitable for composting."
+          : "Cannot initialize batch: Container safety evaluation requires additional verification."
+      );
+      return;
+    }
+
     if (!batchName.trim()) {
       setError("Please provide a name for your batch");
       return;
@@ -49,6 +63,7 @@ export function StartBatchModal({
         method,
         startDate,
         containerVolumeLitres,
+        containerVerdict,
         notes: notes.trim() || undefined,
       });
 
@@ -70,7 +85,7 @@ export function StartBatchModal({
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/50 backdrop-blur-xs"
     >
       <div className="relative w-full max-w-lg bg-canvas border border-border rounded-card p-6 shadow-2xl space-y-6 text-left">
-        {/* Header */}
+
         <div className="flex items-center justify-between pb-3 border-b border-border">
           <div className="flex items-center gap-2">
             <Sprout className="h-5 w-5 text-action" aria-hidden="true" />
@@ -88,14 +103,28 @@ export function StartBatchModal({
           </button>
         </div>
 
-        {/* Guest note banner */}
-        <div className="p-3.5 rounded-card bg-surface border border-border flex items-start gap-2.5 text-xs text-muted leading-relaxed">
-          <Info className="h-4 w-4 text-action shrink-0 mt-0.5" />
-          <div>
-            <strong className="text-ink">No account required: </strong>
-            Your batch and dated observations will be safely stored in your browser session. You can export or sync anytime.
+        {isBlocked && (
+          <div className="p-3.5 rounded-card bg-amber-50 border border-amber-300 text-amber-900 text-xs space-y-1">
+            <strong className="font-bold flex items-center gap-1.5 text-amber-950">
+              <span>Batch Initialization Blocked</span>
+            </strong>
+            <p>
+              {containerVerdict === "unsuitable"
+                ? "This container was evaluated as unsuitable for composting. Choose a safe, food-grade vessel before starting a batch."
+                : "This container requires additional verification checks. Please clear unresolved questions or choose a suitable vessel before starting."}
+            </p>
           </div>
-        </div>
+        )}
+
+        {!isBlocked && (
+          <div className="p-3.5 rounded-card bg-surface border border-border flex items-start gap-2.5 text-xs text-muted leading-relaxed">
+            <Info className="h-4 w-4 text-action shrink-0 mt-0.5" />
+            <div>
+              <strong className="text-ink">No account required: </strong>
+              Your batch and dated observations will be safely stored in your browser session. You can export or sync anytime.
+            </div>
+          </div>
+        )}
 
         {error && (
           <div className="p-3 rounded-card bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold">
@@ -104,7 +133,7 @@ export function StartBatchModal({
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Batch Name */}
+
           <div className="space-y-1.5">
             <label htmlFor="batch-name" className="text-xs font-semibold text-ink flex items-center gap-1.5">
               <Tag className="h-3.5 w-3.5 text-action" />
@@ -120,7 +149,6 @@ export function StartBatchModal({
             />
           </div>
 
-          {/* Start Date */}
           <div className="space-y-1.5">
             <label htmlFor="start-date" className="text-xs font-semibold text-ink flex items-center gap-1.5">
               <Calendar className="h-3.5 w-3.5 text-action" />
@@ -135,7 +163,6 @@ export function StartBatchModal({
             />
           </div>
 
-          {/* Composting Method Selection */}
           <div className="space-y-1.5">
             <label className="text-xs font-semibold text-ink">Selected Method</label>
             <select
@@ -149,7 +176,6 @@ export function StartBatchModal({
             </select>
           </div>
 
-          {/* Optional Notes */}
           <div className="space-y-1.5">
             <label htmlFor="batch-notes" className="text-xs font-semibold text-ink flex items-center gap-1.5">
               <FileText className="h-3.5 w-3.5 text-action" />
@@ -165,12 +191,11 @@ export function StartBatchModal({
             />
           </div>
 
-          {/* Action buttons */}
           <div className="pt-3 flex items-center justify-end gap-3 border-t border-border">
             <Button type="button" variant="secondary" onClick={onClose} disabled={isSubmitting}>
               Cancel
             </Button>
-            <Button type="submit" disabled={isSubmitting}>
+            <Button type="submit" disabled={isSubmitting || isBlocked}>
               {isSubmitting ? "Creating..." : "Start Tracking Batch"}
             </Button>
           </div>

@@ -31,7 +31,7 @@ export function StepReview({ onEditStep, onSubmit, onBack }: StepReviewProps) {
       </div>
 
       <div className="space-y-4">
-        {/* Step 1: Space Profile */}
+
         <div className="p-4 rounded-card border border-border bg-surface">
           <div className="flex items-center justify-between pb-3 border-b border-border">
             <div className="flex items-center gap-2">
@@ -65,7 +65,6 @@ export function StepReview({ onEditStep, onSubmit, onBack }: StepReviewProps) {
           </div>
         </div>
 
-        {/* Step 2: Container Check */}
         <div className="p-4 rounded-card border border-border bg-surface">
           <div className="flex items-center justify-between pb-3 border-b border-border">
             <div className="flex items-center gap-2">
@@ -113,7 +112,6 @@ export function StepReview({ onEditStep, onSubmit, onBack }: StepReviewProps) {
           </div>
         </div>
 
-        {/* Step 3: Waste Inputs */}
         <div className="p-4 rounded-card border border-border bg-surface">
           <div className="flex items-center justify-between pb-3 border-b border-border">
             <div className="flex items-center gap-2">
@@ -148,7 +146,6 @@ export function StepReview({ onEditStep, onSubmit, onBack }: StepReviewProps) {
           </div>
         </div>
 
-        {/* Step 4: Preferences */}
         <div className="p-4 rounded-card border border-border bg-surface">
           <div className="flex items-center justify-between pb-3 border-b border-border">
             <div className="flex items-center gap-2">
@@ -182,7 +179,6 @@ export function StepReview({ onEditStep, onSubmit, onBack }: StepReviewProps) {
         </div>
       </div>
 
-      {/* Navigation Buttons */}
       <div className="pt-4 flex items-center justify-between gap-4 border-t border-border">
         <Button type="button" variant="secondary" onClick={onBack}>
           <ArrowLeft className="mr-2 h-4 w-4" />

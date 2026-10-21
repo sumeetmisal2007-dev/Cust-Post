@@ -73,13 +73,15 @@ export function RecommendationCard({
   const currentVerdict = verdictConfig[containerResult.verdict] || verdictConfig.more_info_needed;
   const VerdictIcon = currentVerdict.icon;
 
+  const isPreliminary = containerResult.verdict === "more_info_needed";
+
   const canStartBatch =
     containerResult.verdict === "suitable" ||
     containerResult.verdict === "suitable_with_changes";
 
   return (
     <div className="space-y-8 max-w-3xl mx-auto text-left">
-      {/* Verdict Header Banner */}
+
       <div
         className={`p-6 rounded-card border ${currentVerdict.colorClass} shadow-soft flex flex-col sm:flex-row items-start gap-4`}
       >
@@ -97,7 +99,6 @@ export function RecommendationCard({
         </div>
       </div>
 
-      {/* Reasons & Evaluation Rationale */}
       <div className="p-6 rounded-card border border-border bg-surface space-y-4 shadow-xs">
         <h3 className="font-display text-base font-bold text-ink flex items-center gap-2">
           <Info className="h-4 w-4 text-action" />
@@ -113,7 +114,6 @@ export function RecommendationCard({
         </ul>
       </div>
 
-      {/* Required Modifications if Suitable with Changes */}
       {containerResult.verdict === "suitable_with_changes" &&
         containerResult.requiredModifications.length > 0 && (
           <div className="p-6 rounded-card border border-amber-300 bg-amber-50/60 space-y-3">
@@ -135,7 +135,6 @@ export function RecommendationCard({
           </div>
         )}
 
-      {/* Unresolved Checks if More Info Needed */}
       {containerResult.verdict === "more_info_needed" &&
         containerResult.unresolvedChecks.length > 0 && (
           <div className="p-6 rounded-card border border-sky-300 bg-sky-50/60 space-y-3">
@@ -157,13 +156,16 @@ export function RecommendationCard({
           </div>
         )}
 
-      {/* Recommended Method Plan */}
       {methodPlan && (
         <div className="p-6 rounded-card border border-border bg-surface space-y-6 shadow-xs">
           <div className="border-b border-border pb-4">
             <div className="flex items-center gap-2 text-action text-xs font-semibold uppercase tracking-wider">
               <Sparkles className="h-4 w-4" />
-              <span>Recommended Composting Method</span>
+              <span>
+                {isPreliminary
+                  ? "Preliminary Method Match (Container Pending Verification)"
+                  : "Recommended Composting Method"}
+              </span>
             </div>
             <h3 className="font-display text-2xl font-bold text-ink mt-1">
               {methodPlan.methodName}
@@ -173,25 +175,36 @@ export function RecommendationCard({
             </p>
           </div>
 
-          {/* Starting Setup Sequence */}
-          <div className="space-y-3">
-            <h4 className="font-semibold text-sm text-ink flex items-center gap-2">
-              <Layers className="h-4 w-4 text-brand" />
-              <span>Initial Setup Sequence</span>
-            </h4>
-            <ol className="space-y-2 pl-2">
-              {methodPlan.startingSequence.map((step, idx) => (
-                <li key={idx} className="text-sm text-text leading-relaxed flex items-start gap-2.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand">
-                    {idx + 1}
-                  </span>
-                  <span>{step}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
+          {isPreliminary ? (
+            <div className="p-4 rounded-card bg-sky-50/80 border border-sky-200 text-sky-900 space-y-1.5">
+              <div className="flex items-center gap-2 font-bold text-xs uppercase tracking-wide text-sky-800">
+                <HelpCircle className="h-4 w-4" />
+                <span>Setup Instructions Paused</span>
+              </div>
+              <p className="text-sm text-sky-950 leading-relaxed">
+                Actionable step-by-step setup instructions are paused until container safety questions are resolved.
+                Confirm that your vessel has not held toxic materials and meets food-contact safety standards before assembling compost layers.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              <h4 className="font-semibold text-sm text-ink flex items-center gap-2">
+                <Layers className="h-4 w-4 text-brand" />
+                <span>Initial Setup Sequence</span>
+              </h4>
+              <ol className="space-y-2 pl-2">
+                {methodPlan.startingSequence.map((step, idx) => (
+                  <li key={idx} className="text-sm text-text leading-relaxed flex items-start gap-2.5">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand">
+                      {idx + 1}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
 
-          {/* Routine Maintenance */}
           <div className="space-y-3 pt-3 border-t border-border">
             <h4 className="font-semibold text-sm text-ink flex items-center gap-2">
               <CalendarCheck className="h-4 w-4 text-action" />
@@ -207,7 +220,6 @@ export function RecommendationCard({
             </ul>
           </div>
 
-          {/* Excluded items */}
           {methodPlan.excludedItems.length > 0 && (
             <div className="space-y-2 pt-3 border-t border-border">
               <h4 className="font-semibold text-sm text-ink flex items-center gap-2">
@@ -222,7 +234,6 @@ export function RecommendationCard({
         </div>
       )}
 
-      {/* Action Buttons & Source Drawer Trigger */}
       <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border">
         <button
           type="button"

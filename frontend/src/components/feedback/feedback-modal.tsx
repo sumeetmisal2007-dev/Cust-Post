@@ -70,7 +70,7 @@ export function FeedbackModal({
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/50 backdrop-blur-xs"
     >
       <div className="relative w-full max-w-lg bg-canvas border border-border rounded-card p-6 shadow-2xl space-y-6 text-left">
-        {/* Header */}
+
         <div className="flex items-center justify-between pb-3 border-b border-border">
           <div className="flex items-center gap-2">
             <MessageSquare className="h-5 w-5 text-action" aria-hidden="true" />
@@ -111,7 +111,6 @@ export function FeedbackModal({
               </div>
             )}
 
-            {/* Issue Category */}
             <div className="space-y-1.5">
               <label htmlFor="issue-type" className="text-xs font-semibold text-ink">
                 What type of issue did you notice?
@@ -130,7 +129,6 @@ export function FeedbackModal({
               </select>
             </div>
 
-            {/* Description */}
             <div className="space-y-1.5">
               <label htmlFor="feedback-desc" className="text-xs font-semibold text-ink">
                 Detailed Feedback Description
@@ -146,7 +144,6 @@ export function FeedbackModal({
               />
             </div>
 
-            {/* Actions */}
             <div className="pt-3 flex items-center justify-end gap-3 border-t border-border">
               <Button type="button" variant="secondary" onClick={onClose} disabled={isSubmitting}>
                 Cancel
