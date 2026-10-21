@@ -25,9 +25,10 @@ export function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
+    const supabase = createClient();
+
     const checkUser = async () => {
       try {
-        const supabase = createClient();
         const {
           data: { user },
         } = await supabase.auth.getUser();
@@ -50,6 +51,25 @@ export function Header() {
 
     checkUser();
 
+    // Subscribe to live Supabase authentication session transitions
+    let subscription: { unsubscribe: () => void } | null = null;
+    if (typeof supabase.auth?.onAuthStateChange === "function") {
+      const sub = supabase.auth.onAuthStateChange((_event, session) => {
+        if (session?.user) {
+          setCurrentUser({
+            email: session.user.email,
+            name:
+              session.user.user_metadata?.display_name ||
+              session.user.user_metadata?.full_name ||
+              session.user.email?.split("@")[0],
+          });
+        } else {
+          setCurrentUser(null);
+        }
+      });
+      subscription = sub?.data?.subscription ?? null;
+    }
+
     const handleAuthChange = () => {
       checkUser();
     };
@@ -57,9 +77,14 @@ export function Header() {
     if (typeof window !== "undefined") {
       window.addEventListener("cust_post_auth_change", handleAuthChange);
       return () => {
+        subscription?.unsubscribe();
         window.removeEventListener("cust_post_auth_change", handleAuthChange);
       };
     }
+
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
 
   const handleSignOut = async () => {

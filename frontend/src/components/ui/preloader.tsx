@@ -116,10 +116,14 @@ export function Preloader({ durationMs = 1800 }: PreloaderProps) {
       setMessage(null);
 
       const supabase = createClient();
+      const redirectUri = `${
+        typeof window !== "undefined" ? window.location.origin : ""
+      }/auth/callback?next=${encodeURIComponent(currentPath)}`;
+
       const { data, error: authError } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${typeof window !== "undefined" ? window.location.origin : ""}/auth/callback`,
+          redirectTo: redirectUri,
         },
       });
 

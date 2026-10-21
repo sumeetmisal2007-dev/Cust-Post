@@ -14,6 +14,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AuthModal } from "@/components/auth/auth-modal";
 import { createClient } from "@/lib/supabase/client";
 import { batchStorageService } from "@cust-post/backend";
 import { CompostBatch } from "@cust-post/backend";
@@ -26,16 +27,20 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   useEffect(() => {
+    const supabase = createClient();
+
     const loadProfileData = async () => {
       try {
-        const supabase = createClient();
         const {
           data: { user },
         } = await supabase.auth.getUser();
         if (user?.email) {
           setUserEmail(user.email);
+        } else {
+          setUserEmail(null);
         }
 
         const userBatches = await batchStorageService.listBatches();
@@ -53,6 +58,22 @@ export default function ProfilePage() {
     };
 
     loadProfileData();
+
+    let subscription: { unsubscribe: () => void } | null = null;
+    if (typeof supabase.auth?.onAuthStateChange === "function") {
+      const sub = supabase.auth.onAuthStateChange((_event, session) => {
+        if (session?.user?.email) {
+          setUserEmail(session.user.email);
+        } else {
+          setUserEmail(null);
+        }
+      });
+      subscription = sub?.data?.subscription ?? null;
+    }
+
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
 
   const handleDeleteAllData = async () => {
@@ -105,13 +126,31 @@ export default function ProfilePage() {
         <h3 className="text-xs font-bold uppercase tracking-wider text-muted">
           Account Status
         </h3>
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-semibold text-ink">
-            {userEmail ? userEmail : "Guest Mode (Local Browser Storage)"}
-          </span>
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-            {userEmail ? "Authenticated" : "Anonymous Guest"}
-          </span>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="space-y-0.5">
+            <div className="text-sm font-semibold text-ink">
+              {userEmail ? userEmail : "Guest Mode (Local Browser Storage)"}
+            </div>
+            <p className="text-xs text-muted">
+              {userEmail
+                ? "Your batches and records sync safely with your Supabase account."
+                : "Your batches are saved locally in this browser. Sign in to enable multi-device sync."}
+            </p>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+              {userEmail ? "Authenticated" : "Anonymous Guest"}
+            </span>
+            {!userEmail && (
+              <Button
+                type="button"
+                size="sm"
+                onClick={() => setIsAuthModalOpen(true)}
+              >
+                Sign In / Sync
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -213,6 +252,11 @@ export default function ProfilePage() {
           </div>
         )}
       </div>
+
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+      />
     </div>
   );
 }

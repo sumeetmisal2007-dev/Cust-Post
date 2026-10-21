@@ -28,10 +28,18 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
       setMessage(null);
 
       const supabase = createClient();
+      const currentPath =
+        typeof window !== "undefined"
+          ? window.location.pathname + window.location.search
+          : "/";
+      const redirectUri = `${
+        typeof window !== "undefined" ? window.location.origin : ""
+      }/auth/callback?next=${encodeURIComponent(currentPath)}`;
+
       const { data, error: authError } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${typeof window !== "undefined" ? window.location.origin : ""}/auth/callback`,
+          redirectTo: redirectUri,
         },
       });
 
@@ -71,8 +79,19 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
       const supabase = createClient();
 
       if (mode === "magic_link") {
+        const currentPath =
+          typeof window !== "undefined"
+            ? window.location.pathname + window.location.search
+            : "/";
+        const redirectUri = `${
+          typeof window !== "undefined" ? window.location.origin : ""
+        }/auth/callback?next=${encodeURIComponent(currentPath)}`;
+
         const { error: authError } = await supabase.auth.signInWithOtp({
           email: email.trim(),
+          options: {
+            emailRedirectTo: redirectUri,
+          },
         });
         if (authError) throw authError;
         setMessage("Magic login link sent! Check your email inbox to sign in.");

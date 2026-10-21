@@ -83,9 +83,10 @@ export default function MarketplacePage() {
 
   // Load authenticated user
   useEffect(() => {
+    const supabase = createClient();
+
     const checkUser = async () => {
       try {
-        const supabase = createClient();
         const {
           data: { user },
         } = await supabase.auth.getUser();
@@ -96,6 +97,8 @@ export default function MarketplacePage() {
             email: user.email,
             name: user.user_metadata?.display_name || user.email?.split("@")[0],
           });
+        } else {
+          setCurrentUser(null);
         }
       } catch {
         // Guest mode fallback
@@ -104,12 +107,33 @@ export default function MarketplacePage() {
 
     checkUser();
 
+    let subscription: { unsubscribe: () => void } | null = null;
+    if (typeof supabase.auth?.onAuthStateChange === "function") {
+      const sub = supabase.auth.onAuthStateChange((_event, session) => {
+        if (session?.user) {
+          setCurrentUser({
+            id: session.user.id,
+            email: session.user.email,
+            name: session.user.user_metadata?.display_name || session.user.email?.split("@")[0],
+          });
+        } else {
+          setCurrentUser(null);
+        }
+      });
+      subscription = sub?.data?.subscription ?? null;
+    }
+
     if (typeof window !== "undefined") {
       window.addEventListener("cust_post_auth_change", checkUser);
       return () => {
+        subscription?.unsubscribe();
         window.removeEventListener("cust_post_auth_change", checkUser);
       };
     }
+
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
 
   // Fetch compost listings
