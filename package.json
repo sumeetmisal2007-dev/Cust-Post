@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=@cust-post/frontend",
-    "build": "npm run build --workspace=@cust-post/frontend && node scripts/postbuild.js",
+    "build": "npm run build --workspace=@cust-post/frontend",
     "start": "npm run start --workspace=@cust-post/frontend",
     "lint": "npm run lint --workspace=@cust-post/frontend",
     "test": "vitest run",
