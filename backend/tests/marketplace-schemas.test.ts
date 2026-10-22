@@ -16,6 +16,7 @@ describe("Marketplace Validation Schemas (Task 2)", () => {
         isFree: false,
         quantity: 5,
         unit: "kg",
+        imageUrl: "/images/marketplace/cust-post-vermicompost-5kg.png",
         locality: "Koramangala",
         city: "Bengaluru",
         fulfillmentType: "both",
@@ -26,6 +27,7 @@ describe("Marketplace Validation Schemas (Task 2)", () => {
       if (result.success) {
         expect(result.data.priceInr).toBe(150);
         expect(result.data.compostType).toBe("vermicompost");
+        expect(result.data.imageUrl).toBe("/images/marketplace/cust-post-vermicompost-5kg.png");
       }
     });
 

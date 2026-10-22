@@ -168,6 +168,26 @@ export function ListingDetailModal({
           </div>
         </div>
 
+        {/* Nirmaan Lab Formulation Specifications */}
+        {(listing.title.toLowerCase().includes("cust-post") ||
+          listing.sellerDisplayName.toLowerCase().includes("nirmaan") ||
+          listing.imageUrl?.includes("cust-post")) && (
+          <div className="p-4 rounded-xl border border-emerald-300/80 bg-emerald-50/70 text-xs space-y-2 text-left">
+            <div className="flex items-center gap-2 text-emerald-950 font-bold font-display">
+              <Sparkles className="h-4 w-4 text-emerald-700" />
+              <span>Nirmaan Lab Formulation & Usage Guide</span>
+            </div>
+            <div className="space-y-1.5 text-emerald-900 text-[11px] leading-relaxed">
+              <p>
+                <strong>Ingredients:</strong> Cow dung & farm-yard manure (cured), Earthworm castings (Eisenia fetida), Dry leaves & crop residue, Kitchen / vegetable waste (plant-based), Cocopeat for moisture balance. 100% natural, zero chemicals added.
+              </p>
+              <p>
+                <strong>How to Use:</strong> Pots: 1-2 spoons per small pot, mix into topsoil, water well. Repeat monthly. Garden: 1 handful per plant at root zone. Keep in a cool, dry, shaded place.
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Seller Info & Security Note */}
         <div className="p-3.5 rounded-xl bg-mint/20 border border-mint flex items-start gap-3 text-xs text-text">
           <Shield className="h-4 w-4 text-action shrink-0 mt-0.5" />

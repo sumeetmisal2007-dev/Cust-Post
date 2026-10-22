@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   X,
   PlusCircle,
@@ -28,6 +29,25 @@ interface CreateListingModalProps {
   currentUser?: { id: string; email?: string; name?: string } | null;
   onRequireAuth: () => void;
 }
+
+const PRESET_MARKETPLACE_IMAGES = [
+  {
+    label: "5kg CUST-POST Bag",
+    url: "/images/marketplace/cust-post-vermicompost-5kg.png",
+  },
+  {
+    label: "250g CUST-POST Jar",
+    url: "/images/marketplace/cust-post-vermicompost-jar-250g.png",
+  },
+  {
+    label: "Dark Humus Texture",
+    url: "/images/marketplace/vermicompost-texture-hands.png",
+  },
+  {
+    label: "Cured Compost Mound",
+    url: "/images/marketplace/vermicompost-cured-mound.png",
+  },
+];
 
 export function CreateListingModal({
   isOpen,
@@ -373,18 +393,62 @@ export function CreateListingModal({
               )}
             </div>
 
-            {/* Optional Image URL */}
-            <div className="space-y-1">
-              <label htmlFor="image-url" className="text-xs font-semibold text-ink">
-                Product Image URL (Optional)
+            {/* Optional Image URL & Preset Selection */}
+            <div className="space-y-2">
+              <label htmlFor="image-url" className="text-xs font-semibold text-ink flex items-center justify-between">
+                <span>Product Image (Optional)</span>
+                {imageUrl && (
+                  <button
+                    type="button"
+                    onClick={() => setImageUrl("")}
+                    className="text-[10px] text-muted hover:text-rose-600"
+                  >
+                    Clear Image
+                  </button>
+                )}
               </label>
               <Input
                 id="image-url"
-                type="url"
-                placeholder="https://..."
+                type="text"
+                placeholder="/images/marketplace/... or https://..."
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
               />
+              <div className="space-y-1.5 pt-1">
+                <span className="text-[11px] text-muted block">
+                  Quick select from CUST-POST product photos:
+                </span>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {PRESET_MARKETPLACE_IMAGES.map((preset) => {
+                    const isSelected = imageUrl === preset.url;
+                    return (
+                      <button
+                        key={preset.url}
+                        type="button"
+                        onClick={() => setImageUrl(preset.url)}
+                        className={`text-left p-1.5 rounded-lg border text-xs transition-all flex flex-col items-center gap-1.5 ${
+                          isSelected
+                            ? "border-action bg-mint/40 ring-1 ring-action"
+                            : "border-border bg-surface hover:border-action/40"
+                        }`}
+                      >
+                        <div className="relative w-full h-14 rounded overflow-hidden bg-muted/20">
+                          <Image
+                            src={preset.url}
+                            alt={preset.label}
+                            fill
+                            sizes="120px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <span className="text-[10px] font-medium text-ink truncate w-full text-center">
+                          {preset.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
               {errors.imageUrl && (
                 <p className="text-[11px] text-rose-600 font-medium">{errors.imageUrl[0]}</p>
               )}

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Sprout,
   PlusCircle,
@@ -328,6 +329,130 @@ export default function MarketplacePage() {
       {/* SECTION 1: COMPOST MARKETPLACE */}
       {activeSection === "compost" && (
         <div className="space-y-6 amc-fade-in">
+          {/* CUST-POST Lab Spotlight & Product Showcase */}
+          <div className="rounded-2xl border border-border/80 bg-linear-to-br from-mint/30 via-surface to-mint/10 p-5 sm:p-6 shadow-xs space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="space-y-1">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100/90 text-emerald-950 border border-emerald-300 text-[11px] font-mono uppercase font-bold tracking-wider">
+                  <Sparkles className="h-3.5 w-3.5 text-emerald-700" />
+                  <span>Nirmaan Lab Formulation</span>
+                </div>
+                <h2 className="font-display text-xl sm:text-2xl font-bold text-ink">
+                  Authentic CUST-POST™ Lab Vermicompost & Soil Amendments
+                </h2>
+                <p className="text-xs sm:text-sm text-muted">
+                  100% natural organic compost formulated with cured cow manure, Eisenia fetida worm castings, dry leaves, and cocopeat for moisture balance. Zero synthetic chemicals.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+              <div
+                className="group relative rounded-xl border border-border/80 bg-surface/90 overflow-hidden p-2 flex flex-col justify-between hover:border-action/60 transition-all cursor-pointer shadow-xs"
+                onClick={() => {
+                  const item = compostListings.find((l) => l.imageUrl?.includes("cust-post-vermicompost-5kg"));
+                  if (item) setDetailListing(item);
+                  else setCompostSearchQuery("5 kg");
+                }}
+              >
+                <div className="relative w-full h-28 rounded-lg overflow-hidden bg-muted/20">
+                  <Image
+                    src="/images/marketplace/cust-post-vermicompost-5kg.png"
+                    alt="CUST-POST 5kg Bag"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 200px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="pt-2 space-y-0.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-ink truncate">5 KG Bag</span>
+                    <span className="text-[10px] font-mono font-bold text-action">₹180</span>
+                  </div>
+                  <span className="text-[10px] text-muted block truncate">Custom Plant Compost</span>
+                </div>
+              </div>
+
+              <div
+                className="group relative rounded-xl border border-border/80 bg-surface/90 overflow-hidden p-2 flex flex-col justify-between hover:border-action/60 transition-all cursor-pointer shadow-xs"
+                onClick={() => {
+                  const item = compostListings.find((l) => l.imageUrl?.includes("cust-post-vermicompost-jar-250g"));
+                  if (item) setDetailListing(item);
+                  else setCompostSearchQuery("250 g");
+                }}
+              >
+                <div className="relative w-full h-28 rounded-lg overflow-hidden bg-muted/20">
+                  <Image
+                    src="/images/marketplace/cust-post-vermicompost-jar-250g.png"
+                    alt="CUST-POST 250g Jar"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 200px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="pt-2 space-y-0.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-ink truncate">250g Starter Jar</span>
+                    <span className="text-[10px] font-mono font-bold text-action">₹50</span>
+                  </div>
+                  <span className="text-[10px] text-muted block truncate">Potted Plant Blend</span>
+                </div>
+              </div>
+
+              <div
+                className="group relative rounded-xl border border-border/80 bg-surface/90 overflow-hidden p-2 flex flex-col justify-between hover:border-action/60 transition-all cursor-pointer shadow-xs"
+                onClick={() => {
+                  const item = compostListings.find((l) => l.imageUrl?.includes("vermicompost-texture-hands"));
+                  if (item) setDetailListing(item);
+                  else setCompostSearchQuery("castings");
+                }}
+              >
+                <div className="relative w-full h-28 rounded-lg overflow-hidden bg-muted/20">
+                  <Image
+                    src="/images/marketplace/vermicompost-texture-hands.png"
+                    alt="Dark Humus Castings"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 200px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="pt-2 space-y-0.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-ink truncate">Dark Worm Humus</span>
+                    <span className="text-[10px] font-mono font-bold text-action">₹120</span>
+                  </div>
+                  <span className="text-[10px] text-muted block truncate">Eisenia fetida Castings</span>
+                </div>
+              </div>
+
+              <div
+                className="group relative rounded-xl border border-border/80 bg-surface/90 overflow-hidden p-2 flex flex-col justify-between hover:border-action/60 transition-all cursor-pointer shadow-xs"
+                onClick={() => {
+                  const item = compostListings.find((l) => l.imageUrl?.includes("vermicompost-cured-mound"));
+                  if (item) setDetailListing(item);
+                  else setCompostSearchQuery("surplus");
+                }}
+              >
+                <div className="relative w-full h-28 rounded-lg overflow-hidden bg-muted/20">
+                  <Image
+                    src="/images/marketplace/vermicompost-cured-mound.png"
+                    alt="Bulk Compost Mound"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 200px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="pt-2 space-y-0.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-ink truncate">Cured Compost Pile</span>
+                    <span className="text-[10px] font-mono font-bold text-emerald-600">FREE</span>
+                  </div>
+                  <span className="text-[10px] text-muted block truncate">Outdoor Cured Humus</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Filter Bar */}
           <div className="space-y-4 bg-surface/60 p-4 rounded-2xl border border-border/80">
             {/* Top row: Search, Sort & My Listings filter */}

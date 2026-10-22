@@ -121,6 +121,15 @@ describe("Marketplace Feature (Task 4 & Task 7)", () => {
         expect(screen.getByRole("heading", { name: /spinach \/ palak/i })).toBeInTheDocument();
       });
     });
+
+    it("renders authentic CUST-POST lab formulation showcase banner with product images", () => {
+      render(<MarketplacePage />);
+      expect(screen.getByText(/Authentic CUST-POST™ Lab Vermicompost/i)).toBeInTheDocument();
+      expect(screen.getByAltText("CUST-POST 5kg Bag")).toBeInTheDocument();
+      expect(screen.getByAltText("CUST-POST 250g Jar")).toBeInTheDocument();
+      expect(screen.getByAltText("Dark Humus Castings")).toBeInTheDocument();
+      expect(screen.getByAltText("Bulk Compost Mound")).toBeInTheDocument();
+    });
   });
 
   describe("CompostCard Component", () => {

@@ -39,7 +39,10 @@ export const createCompostListingSchema = z
     unit: unitEnum,
     imageUrl: z
       .string()
-      .url("Must be a valid URL")
+      .refine(
+        (val) => !val || val.startsWith("/") || /^https?:\/\//.test(val),
+        "Must be a valid URL or image path"
+      )
       .optional()
       .or(z.literal("")),
     conditionMaturity: z.string().max(200).optional(),
@@ -83,7 +86,14 @@ export const updateCompostListingSchema = z.object({
   isFree: z.boolean().optional(),
   quantity: z.number().positive("Quantity must be greater than zero").optional(),
   unit: unitEnum.optional(),
-  imageUrl: z.string().url().optional().or(z.literal("")),
+  imageUrl: z
+    .string()
+    .refine(
+      (val) => !val || val.startsWith("/") || /^https?:\/\//.test(val),
+      "Must be a valid URL or image path"
+    )
+    .optional()
+    .or(z.literal("")),
   conditionMaturity: z.string().max(200).optional(),
   locality: z.string().trim().min(2).max(100).optional(),
   city: z.string().trim().min(2).max(100).optional(),
